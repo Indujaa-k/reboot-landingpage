@@ -1,11 +1,2644 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mental Health Camp — Reboot Mental Health Center</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="experience-heal-grow.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      .static-cta-bar {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        max-width: 1180px;
+        height: max-content;
+        box-sizing: border-box;
+        padding: 14px 40px;
+        background: #fff4d9;
+        border-top: 1px solid #ffe6a3;
+        border-radius: 10px;
+        position: fixed !important;
+        bottom: 16px !important;
+        left: 50% !important;
+        transform: translateX(-50%);
+        margin: 0 !important;
+        z-index: 9999;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .static-cta-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -70%;
+        width: 45%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        background: linear-gradient(
+          110deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.05) 25%,
+          rgba(255, 255, 255, 0.55) 50%,
+          rgba(255, 255, 255, 0.05) 75%,
+          transparent 100%
+        );
+        transform: skewX(-20deg);
+        animation: ctaGlossSweep 2s ease-in-out infinite;
+      }
+
+      .static-cta-bar::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: -2;
+        box-shadow: 0 0 0 rgba(255, 193, 7, 0);
+        animation: ctaGlow 2s ease-in-out infinite;
+      }
+
+      @keyframes ctaGlossSweep {
+        0% {
+          left: -70%;
+          opacity: 0;
+        }
+        15% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        85% {
+          opacity: 0;
+        }
+        100% {
+          left: 130%;
+          opacity: 0;
+        }
+      }
+
+      @keyframes ctaGlow {
+        0%,
+        70%,
+        100% {
+          box-shadow: 0 0 0 rgba(255, 193, 7, 0);
+        }
+        80% {
+          box-shadow:
+            0 0 18px rgba(255, 193, 7, 0.25),
+            0 0 35px rgba(255, 193, 7, 0.12);
+        }
+        90% {
+          box-shadow: 0 0 12px rgba(255, 193, 7, 0.15);
+        }
+      }
+
+      body {
+        padding-bottom: 100px;
+      }
+
+      .static-cta-bar .bar-logo img {
+        height: 71px;
+        width: auto;
+        display: block;
+      }
+
+      .static-cta-bar .bar-text {
+        flex: 1;
+        text-align: center;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .static-cta-bar .bar-text strong {
+        font-weight: 600;
+      }
+
+      .static-cta-bar .bar-text .sub {
+        display: block;
+        font-size: 12px;
+        color: rgba(17, 17, 17, 0.6);
+        margin-top: 2px;
+      }
+
+      .static-cta-bar .bar-btn {
+        flex-shrink: 0;
+        padding: 11px 22px;
+        background: #ffc107;
+        color: #0d0d0d;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        border-radius: 6px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border: none;
+      }
+
+      .static-cta-bar .bar-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.5s ease;
+      }
+
+      .static-cta-bar .bar-btn:hover {
+        background:
+          repeating-linear-gradient(
+            135deg,
+            rgba(17, 17, 17, 0.02) 0px,
+            rgba(17, 17, 17, 0.02) 1px,
+            transparent 1px,
+            transparent 5px
+          ),
+          #fff4d9;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(255, 193, 7, 0.35);
+      }
+
+      .static-cta-bar .bar-btn:hover::before {
+        left: 130%;
+      }
+
+      .coach {
+        max-width: 1000px;
+      }
+      .coach-portrait {
+        overflow: hidden;
+      }
+      .coach-portrait img.founder-photo {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        object-fit: cover;
+        object-position: top center;
+        opacity: 1;
+        border-radius: 0;
+      }
+
+      .coach-copy .role-line {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .rmhc-motto .mental-health-section {
+        display: grid !important;
+        grid-template-columns: 1fr 1.55fr !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 80px 0 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        column-gap: 30px !important;
+        background: transparent !important;
+      }
+
+      .rmhc-motto .mental-health-logo {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        min-height: 150px !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+        background: transparent !important;
+      }
+
+      .rmhc-motto .mental-health-logo img {
+        display: block !important;
+        width: min(230px, 85%) !important;
+        max-width: 230px !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+
+      .rmhc-motto .mental-health-content {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        min-height: 112px !important;
+        padding: 22px !important;
+        box-sizing: border-box !important;
+        background: #4363f1 !important;
+        color: #ffffff !important;
+        border-radius: 12px !important;
+      }
+
+      .rmhc-motto .mental-health-content p {
+        display: block !important;
+        width: 100% !important;
+        max-width: 700px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: "Inter", sans-serif !important;
+        font-size: clamp(15px, 1vw, 16px) !important;
+        font-weight: 300 !important;
+        line-height: 1.5 !important;
+        letter-spacing: -0.2px !important;
+        color: #ffffff !important;
+      }
+
+      @media (max-width: 768px) {
+        .rmhc-motto .mental-health-section {
+          grid-template-columns: 1fr !important;
+          row-gap: 25px !important;
+          margin-top: 50px !important;
+        }
+        .rmhc-motto .mental-health-logo {
+          min-height: 120px !important;
+          padding: 10px !important;
+        }
+        .rmhc-motto .mental-health-logo img {
+          width: min(220px, 70%) !important;
+        }
+        .rmhc-motto .mental-health-content {
+          min-height: 150px !important;
+          padding: 26px 22px !important;
+          border-radius: 10px !important;
+        }
+        .rmhc-motto .mental-health-content p {
+          font-size: 16px !important;
+          line-height: 1.5 !important;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .static-cta-bar {
+          flex-direction: column;
+          text-align: center;
+          padding: 18px 20px;
+        }
+        .static-cta-bar .bar-text {
+          order: 2;
+        }
+        .static-cta-bar .bar-btn {
+          order: 3;
+        }
+      }
+
+      .stats-strip {
+        width: 100%;
+        background: #fff4d9 !important;
+        color: #111111 !important;
+        border-top: 1px solid #ffe6a3;
+        border-bottom: 1px solid #ffe6a3;
+        box-sizing: border-box;
+      }
+
+      .stats-strip .stat {
+        color: #111111 !important;
+        border-right: 1px solid rgba(17, 17, 17, 0.12);
+        padding: 28px 20px;
+      }
+
+      .stats-strip .stat:last-child {
+        border-right: none;
+      }
+
+      .stats-strip .stat b {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #111111 !important;
+        font-size: clamp(32px, 4vw, 52px);
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+      }
+
+      .stats-strip .stat > span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(17, 17, 17, 0.65) !important;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+
+      .stats-strip .stat .stars {
+        color: #d99a00 !important;
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+
+      .mental-how-it-works {
+        max-width: 1180px;
+        width: 90%;
+        box-sizing: border-box;
+        margin: auto;
+        padding: 70px 0 40px;
+        background: #ffffff;
+        color: #0d0d0d;
+      }
+
+      .mental-how-title {
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(28px, 3.4vw, 40px);
+        font-weight: 600;
+        letter-spacing: -1.4px;
+        line-height: 1.15;
+        margin-bottom: 60px;
+      }
+
+      .mental-how-steps {
+        width: min(1000px, 92%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 45px;
+      }
+      .mental-how-step {
+        min-width: 0;
+      }
+      .mental-step-label {
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-bottom: 20px;
+      }
+      .mental-step-line {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+      .mental-step-circle {
+        flex-shrink: 0;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0d0d0d;
+        color: #ffffff;
+      }
+      .mental-step-circle svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2;
+      }
+      .mental-line {
+        height: 1px;
+        flex: 1;
+        margin-left: 15px;
+        background: #cfcfcf;
+      }
+      .mental-step-text {
+        margin-top: 26px;
+        max-width: 330px;
+      }
+      .mental-step-text strong {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 600;
+        color: #0d0d0d;
+      }
+      .mental-step-text p {
+        margin: 8px 0 0;
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        font-weight: 400;
+        color: #333;
+      }
+
+      .mental-how-cta {
+        width: min(1000px, 92%);
+        min-height: 110px;
+        margin: 70px auto 0;
+        padding: 20px 22px 20px 30px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        border: 1px solid #e6e0dc;
+        border-radius: 12px;
+        background: #fdfbf9;
+      }
+
+      .mental-how-cta-icon {
+        width: 56px;
+        height: 56px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dotted #888;
+        color: #555;
+      }
+      .mental-how-cta-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.8;
+      }
+      .mental-how-cta-text {
+        flex: 1;
+        margin-left: 22px;
+        font-family: "Inter", sans-serif;
+      }
+      .mental-how-cta-text strong {
+        display: block;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+      .mental-how-cta-text span {
+        display: block;
+        margin-top: 2px;
+        font-size: 14.5px;
+        line-height: 1.4;
+        color: #222;
+      }
+      .mental-how-cta-btn {
+        flex-shrink: 0;
+        padding: 15px 28px;
+        background: #0d0d0d;
+        color: #ffffff;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        font-size: 14.5px;
+        font-weight: 600;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        cursor: pointer;
+        border: none;
+      }
+      .mental-how-cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      @media (max-width: 768px) {
+        .mental-how-it-works {
+          margin-top: 55px;
+          padding: 55px 0 30px;
+        }
+        .mental-how-title {
+          font-size: 30px;
+          letter-spacing: -1px;
+          margin-bottom: 40px;
+        }
+        .mental-how-steps {
+          width: 88%;
+          grid-template-columns: 1fr;
+          row-gap: 40px;
+        }
+        .mental-step-line {
+          max-width: 100%;
+        }
+        .mental-step-text {
+          max-width: none;
+          margin-top: 20px;
+        }
+        .mental-step-text strong {
+          font-size: 17px;
+        }
+        .mental-step-text p {
+          font-size: 14.5px;
+        }
+        .mental-line {
+          display: none;
+        }
+        .mental-how-cta {
+          width: 88%;
+          margin-top: 45px;
+          padding: 22px;
+          flex-direction: column;
+          text-align: center;
+        }
+        .mental-how-cta-text {
+          margin: 16px 0 20px;
+        }
+        .mental-how-cta-text strong {
+          font-size: 16px;
+        }
+        .mental-how-cta-text span {
+          font-size: 13.5px;
+        }
+        .mental-how-cta-btn {
+          width: 100%;
+          text-align: center;
+          box-sizing: border-box;
+        }
+      }
+
+      .mental-outcomes {
+        max-width: 1180px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto 20px;
+        padding: 75px 5.2% 70px;
+        background: #f8f9fa;
+        color: #0d0d0d;
+      }
+      .mental-outcomes-header {
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto 60px;
+      }
+      .mental-outcomes-header h2 {
+        margin: auto;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(28px, 3.4vw, 40px);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        color: #111111;
+      }
+      .mental-outcomes-header p {
+        margin: 18px 0 0;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #555;
+      }
+      .mental-outcomes-grid {
+        width: min(1100px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 32px;
+        row-gap: 28px;
+      }
+      .mental-outcome-card:nth-child(1),
+      .mental-outcome-card:nth-child(2),
+      .mental-outcome-card:nth-child(3) {
+        grid-column: span 2;
+      }
+      .mental-outcome-card:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+      .mental-outcome-card:nth-child(5) {
+        grid-column: 4 / span 2;
+      }
+      .mental-outcome-card {
+        min-height: 180px;
+        box-sizing: border-box;
+        padding: 18px 19px 22px;
+        background: linear-gradient(135deg, #fff4e5 0%, #fcf9f5 100%);
+        border: 1px solid #e8dfd5;
+        border-radius: 12px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .mental-outcome-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      }
+      .mental-outcome-label {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        min-width: 150px;
+        padding: 8px 16px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-size: 13.5px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 1;
+        color: #111111;
+      }
+      .mental-outcome-label svg {
+        width: 17px;
+        height: 17px;
+        margin-right: 7px;
+        flex-shrink: 0;
+        stroke-width: 1.8;
+      }
+      .mental-outcome-card p {
+        margin: 18px 0 0;
+        font-family: "Inter", sans-serif;
+        font-size: 15.5px;
+        font-weight: 400;
+        line-height: 1.45;
+        letter-spacing: -0.1px;
+        color: #222222;
+      }
+
+      @media (max-width: 1000px) {
+        .mental-outcomes {
+          padding: 65px 5% 60px;
+        }
+        .mental-outcomes-header {
+          margin-bottom: 45px;
+        }
+        .mental-outcomes-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        .mental-outcome-card:nth-child(1),
+        .mental-outcome-card:nth-child(2),
+        .mental-outcome-card:nth-child(3),
+        .mental-outcome-card:nth-child(4),
+        .mental-outcome-card:nth-child(5) {
+          grid-column: auto;
+        }
+        .mental-outcome-card:nth-child(5) {
+          grid-column: 1 / -1;
+          width: calc(50% - 10px);
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 650px) {
+        .mental-outcomes {
+          padding: 55px 20px 50px;
+        }
+        .mental-outcomes-header {
+          margin-bottom: 35px;
+        }
+        .mental-outcomes-header h2 {
+          font-size: 28px;
+          letter-spacing: -0.8px;
+        }
+        .mental-outcomes-header p {
+          margin-top: 14px;
+          font-size: 15px;
+        }
+        .mental-outcomes-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .mental-outcome-card:nth-child(1),
+        .mental-outcome-card:nth-child(2),
+        .mental-outcome-card:nth-child(3),
+        .mental-outcome-card:nth-child(4),
+        .mental-outcome-card:nth-child(5) {
+          grid-column: auto;
+          width: 100%;
+          margin: 0;
+        }
+        .mental-outcome-card {
+          min-height: auto;
+          padding: 15px 16px 18px;
+          border-radius: 10px;
+        }
+        .mental-outcome-label {
+          min-width: auto;
+          padding: 8px 14px;
+          font-size: 12.5px;
+        }
+        .mental-outcome-label svg {
+          width: 16px;
+          height: 16px;
+        }
+        .mental-outcome-card p {
+          margin-top: 14px;
+          font-size: 14.5px;
+          line-height: 1.45;
+        }
+      }
+
+      [data-lucide] {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .mhc-for-you {
+        max-width: 1180px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        background:
+          repeating-linear-gradient(
+            135deg,
+            rgba(17, 17, 17, 0.02) 0px,
+            rgba(17, 17, 17, 0.02) 1px,
+            transparent 1px,
+            transparent 5px
+          ),
+          #fff4d9;
+        color: #111111;
+        padding: 48px 5% 28px;
+        font-family: "Inter", sans-serif;
+        border-radius: 20px;
+      }
+
+      .mhc-for-you-inner {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 0.9fr 1.6fr;
+        column-gap: 55px;
+        align-items: start;
+      }
+      .mhc-for-you-heading {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding-top: 5px;
+      }
+
+      .mhc-logo-circle {
+        width: 58px;
+        height: 58px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      .mhc-logo-circle img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .mhc-for-you-heading h2 {
+        margin: 0;
+        padding: 0;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(24px, 2.2vw, 32px);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.8px;
+        text-transform: uppercase;
+      }
+
+      .mhc-for-you-list {
+        width: 100%;
+        border-top: 1px solid rgba(17, 17, 17, 0.18);
+      }
+
+      .mhc-for-you-item {
+        width: 100%;
+        min-height: 70px;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        align-items: center;
+        column-gap: 0;
+        border-bottom: 1px solid rgba(17, 17, 17, 0.18);
+      }
+
+      .mhc-arrow {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: rgba(17, 17, 17, 0.55);
+      }
+      .mhc-arrow svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 1.7;
+      }
+
+      .mhc-for-you-item p {
+        margin: 0;
+        padding: 16px 0;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+        font-size: 14.5px;
+        font-weight: 400;
+        line-height: 1.45;
+        letter-spacing: -0.1px;
+      }
+
+      .mhc-for-you-note {
+        width: min(900px, 90%);
+        min-height: 40px;
+        margin: 28px auto 0;
+        padding: 11px 22px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+        font-size: 12.5px;
+        line-height: 1.45;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .mhc-for-you-note strong {
+        font-weight: 700;
+        color: #111111;
+      }
+      .mhc-for-you-note span:last-child {
+        color: #555555;
+      }
+      .mhc-warning {
+        color: #d99a00;
+        font-size: 15px;
+        margin-right: 2px;
+      }
+
+      .mhc-for-you-item {
+        transition:
+          background 0.2s ease,
+          padding-left 0.2s ease;
+      }
+      .mhc-for-you-item:hover {
+        background: rgba(17, 17, 17, 0.03);
+        padding-left: 5px;
+      }
+      .mhc-for-you-item:hover .mhc-arrow {
+        color: #111111;
+      }
+      .mhc-for-you-item:hover .mhc-arrow svg {
+        transform: translateX(3px);
+        transition: transform 0.2s ease;
+      }
+
+      @media (max-width: 900px) {
+        .mhc-for-you {
+          padding: 55px 5% 28px;
+        }
+        .mhc-for-you-inner {
+          grid-template-columns: 1fr;
+          row-gap: 40px;
+        }
+        .mhc-for-you-heading {
+          justify-content: flex-start;
+        }
+        .mhc-for-you-list {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .mhc-for-you {
+          padding: 45px 20px 25px;
+          border-radius: 14px;
+        }
+        .mhc-for-you-inner {
+          row-gap: 30px;
+        }
+        .mhc-for-you-heading {
+          gap: 14px;
+          align-items: center;
+        }
+        .mhc-logo-circle {
+          width: 50px;
+          height: 50px;
+        }
+        .mhc-logo-circle img {
+          width: 38px;
+          height: 38px;
+        }
+        .mhc-for-you-heading h2 {
+          font-size: 24px;
+          letter-spacing: -0.6px;
+        }
+        .mhc-for-you-item {
+          min-height: 74px;
+          grid-template-columns: 26px 1fr;
+        }
+        .mhc-arrow svg {
+          width: 16px;
+          height: 16px;
+        }
+        .mhc-for-you-item p {
+          padding: 14px 0;
+          font-size: 13.5px;
+          line-height: 1.45;
+        }
+        .mhc-for-you-note {
+          width: 100%;
+          margin-top: 22px;
+          padding: 12px 15px;
+          flex-wrap: wrap;
+          font-size: 11.5px;
+        }
+      }
+
+      .healthcare-faq-section {
+        max-width: 900px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 25px 0 70px;
+        background: #ffff;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+      }
+      .healthcare-faq-inner {
+        width: 90%;
+        margin: 0 auto;
+      }
+      .healthcare-faq-title {
+        margin: 0 0 56px;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(26px, 3.4vw, 36px);
+        font-weight: 600;
+        line-height: 1.15;
+        letter-spacing: -1px;
+        color: #111111;
+      }
+      .healthcare-faq {
+        width: 100%;
+      }
+      .healthcare-faq-item {
+        width: 100%;
+        border-bottom: 1px solid #dddddd;
+        box-sizing: border-box;
+      }
+      .healthcare-faq-item:first-child {
+        border-top: 0;
+      }
+      .healthcare-faq-question {
+        width: 100%;
+        min-height: 60px;
+        padding: 16px 0;
+        border: 0;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        text-align: left;
+        cursor: pointer;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.4;
+        transition: color 0.2s ease;
+      }
+      .healthcare-faq-question:hover {
+        color: #333333;
+      }
+      .healthcare-faq-icon {
+        width: 19px;
+        height: 19px;
+        flex-shrink: 0;
+        border: 1px solid #222222;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        color: #111111;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .healthcare-faq-icon svg {
+        width: 11px;
+        height: 11px;
+        stroke-width: 1.5;
+      }
+      .healthcare-faq-answer {
+        max-width: 800px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        padding-right: 30px;
+        box-sizing: border-box;
+        color: #6b6b6b;
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.6;
+        transition:
+          max-height 0.4s ease,
+          opacity 0.3s ease,
+          padding 0.4s ease;
+      }
+      .healthcare-faq-item.open .healthcare-faq-answer {
+        max-height: 300px;
+        opacity: 1;
+        padding-bottom: 42px;
+      }
+      .healthcare-faq-item.open .healthcare-faq-icon {
+        background: #ffc107;
+        border-color: #ffc107;
+        color: #111111;
+      }
+
+      @media (max-width: 900px) {
+        .healthcare-faq-inner {
+          width: 92%;
+        }
+        .healthcare-faq-title {
+          margin-bottom: 48px;
+          font-size: clamp(24px, 4vw, 32px);
+        }
+        .healthcare-faq-question {
+          font-size: 15.5px;
+        }
+        .healthcare-faq-answer {
+          font-size: 14.5px;
+          line-height: 1.6;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .healthcare-faq-section {
+          padding: 20px 0 50px;
+        }
+        .healthcare-faq-inner {
+          width: 90%;
+        }
+        .healthcare-faq-title {
+          margin-bottom: 36px;
+          font-size: 26px;
+          letter-spacing: -0.6px;
+          line-height: 1.15;
+        }
+        .healthcare-faq-question {
+          min-height: 55px;
+          padding: 16px 0;
+          font-size: 14.5px;
+          line-height: 1.4;
+          gap: 16px;
+        }
+        .healthcare-faq-icon {
+          width: 18px;
+          height: 18px;
+        }
+        .healthcare-faq-icon svg {
+          width: 10px;
+          height: 10px;
+        }
+        .healthcare-faq-answer {
+          padding-right: 20px;
+          font-size: 13.5px;
+          line-height: 1.55;
+        }
+        .healthcare-faq-item.open .healthcare-faq-answer {
+          padding-bottom: 28px;
+        }
+      }
+
+      .flexRow-section1 > div:first-child svg {
+        width: 16px;
+        height: 16px;
+        stroke-width: 2;
+      }
+
+      .healthcare-register {
+        max-width: 1180px;
+        width: 100%;
+        margin: 0 auto 10px;
+        min-height: auto;
+        box-sizing: border-box;
+        padding: 80px 30px 76px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background: repeating-linear-gradient(
+          135deg,
+          #fff4d9 0px,
+          #fff4d9 3px,
+          #fdecc4 3px,
+          #fdecc4 5px
+        );
+        color: #111111;
+        border-radius: 20px;
+      }
+
+      .healthcare-register::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.15);
+        pointer-events: none;
+      }
+
+      .healthcare-register-inner {
+        width: 100%;
+        max-width: 780px;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .healthcare-register-inner h2 {
+        margin: 0 auto;
+        max-width: 700px;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(26px, 3.4vw, 38px);
+        font-weight: 700;
+        line-height: 1.28;
+        letter-spacing: -0.8px;
+      }
+
+      .healthcare-register-description {
+        max-width: 620px;
+        margin: 28px auto 0;
+        color: #4a4a4a;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      .healthcare-register-price {
+        width: fit-content;
+        margin: 36px auto 0;
+        padding: 12px 18px;
+        border-top: 1px solid rgba(17, 17, 17, 0.2);
+        border-bottom: 1px solid rgba(17, 17, 17, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        color: #4a4a4a;
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .healthcare-register-price span:first-child {
+        color: #111111;
+        font-weight: 700;
+      }
+
+      .healthcare-register-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: min(400px, 90%);
+        min-height: 62px;
+        margin: 34px auto 0;
+        padding: 0 26px;
+        box-sizing: border-box;
+        border-radius: 9px;
+        background: #ffc107;
+        color: #050505;
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          box-shadow 0.25s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .healthcare-register-button:hover {
+        transform: translateY(-2px);
+        background: #ffc107;
+        box-shadow: 0 12px 35px rgba(255, 193, 7, 0.3);
+      }
+      .healthcare-register-button:active {
+        transform: translateY(0);
+      }
+
+      .healthcare-register-details {
+        margin: 20px auto 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 26px;
+        color: #4a4a4a;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .healthcare-register-details > div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .register-dot {
+        width: 11px;
+        height: 11px;
+        flex-shrink: 0;
+        display: inline-block;
+        border-radius: 50%;
+        background: #d99a00;
+      }
+
+      @media (max-width: 900px) {
+        .healthcare-register {
+          min-height: auto;
+          padding: 70px 25px 65px;
+        }
+        .healthcare-register-inner h2 {
+          font-size: clamp(24px, 4vw, 32px);
+          letter-spacing: -0.6px;
+        }
+        .healthcare-register-description {
+          margin-top: 24px;
+          font-size: 15px;
+        }
+        .healthcare-register-price {
+          margin-top: 30px;
+          font-size: 14px;
+        }
+        .healthcare-register-button {
+          min-height: 58px;
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .healthcare-register {
+          min-height: auto;
+          border-radius: 14px;
+          padding: 55px 18px 50px;
+        }
+        .healthcare-register-inner h2 {
+          font-size: 26px;
+          line-height: 1.25;
+          letter-spacing: -0.5px;
+        }
+        .healthcare-register-description {
+          margin-top: 22px;
+          font-size: 14.5px;
+          line-height: 1.55;
+        }
+        .healthcare-register-price {
+          margin-top: 26px;
+          padding: 10px 12px;
+          font-size: 13px;
+          flex-wrap: wrap;
+        }
+        .healthcare-register-button {
+          width: 100%;
+          min-height: 56px;
+          margin-top: 24px;
+          font-size: 15px;
+        }
+        .healthcare-register-details {
+          margin-top: 18px;
+          flex-direction: column;
+          gap: 11px;
+          font-size: 13px;
+        }
+      }
+
+      .camp-motto-section {
+        max-width: 1180px;
+        width: 90%;
+        box-sizing: border-box;
+        margin: 70px auto 0;
+        padding: 70px 6% 76px;
+        background: #fff4d9;
+        color: #111111;
+        border-radius: 20px;
+        font-family: "Inter", sans-serif;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ffe6a3;
+      }
+
+      .camp-motto-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(255, 193, 7, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 90% 90%,
+            rgba(255, 193, 7, 0.1),
+            transparent 55%
+          );
+        pointer-events: none;
+      }
+
+      .camp-motto-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 780px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .camp-motto-inner .eyebrow {
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .camp-motto-inner h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: clamp(28px, 3.6vw, 42px);
+        line-height: 1.25;
+        margin: 0 0 30px;
+        color: #111111;
+      }
+      .camp-motto-inner h2 .accent {
+        color: #d99a00;
+        display: block;
+      }
+
+      .camp-motto-inner p {
+        font-size: 16px;
+        line-height: 1.75;
+        color: #3a3a3a;
+        margin: 0 0 18px;
+        text-align: left;
+      }
+      .camp-motto-inner p.motto-lead {
+        font-size: 17px;
+        color: #111111;
+      }
+
+      .camp-motto-signoff {
+        margin-top: 34px;
+        padding-top: 26px;
+        border-top: 1px solid rgba(17, 17, 17, 0.15);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        letter-spacing: 0.04em;
+        color: #b3820a;
+        text-align: center;
+      }
+
+      .camp-motto-cta {
+        margin-top: 34px;
+        text-align: center;
+      }
+
+      @media (max-width: 700px) {
+        .camp-motto-section {
+          width: 92%;
+          padding: 55px 22px 50px;
+          border-radius: 16px;
+          margin-top: 50px;
+        }
+        .camp-motto-inner h2 {
+          font-size: 26px;
+        }
+        .camp-motto-inner p {
+          font-size: 15px;
+          line-height: 1.65;
+        }
+      }
+
+      .inline-cta-strip {
+        max-width: 1180px;
+        width: 90%;
+        margin: 30px auto 30px;
+        box-sizing: border-box;
+        padding: 26px 34px;
+        background: #fff4d9;
+        border: 1px solid #ffe6a3;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .inline-cta-strip p {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        font-size: 15.5px;
+        font-weight: 500;
+        color: #16150f;
+      }
+      .inline-cta-strip .inline-cta-btn {
+        flex-shrink: 0;
+        padding: 13px 26px;
+        background: #0d0d0d;
+        color: #ffffff;
+        border-radius: 8px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .inline-cta-strip .inline-cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      }
+
+      @media (max-width: 600px) {
+        .inline-cta-strip {
+          width: 88%;
+          padding: 22px;
+          flex-direction: column;
+          text-align: center;
+        }
+        .inline-cta-strip .inline-cta-btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      @keyframes ctaPulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.55);
+        }
+        70% {
+          box-shadow: 0 0 0 14px rgba(255, 193, 7, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+        }
+      }
+
+      .pulse-cta {
+        animation: ctaPulse 2.2s infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .pulse-cta {
+          animation: none;
+        }
+      }
+
+      .register-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 8, 10, 0.72);
+        backdrop-filter: blur(3px);
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .register-modal-overlay.open {
+        display: flex;
+      }
+      .register-modal {
+        width: 100%;
+        max-width: 460px;
+        max-height: 90vh;
+        overflow-y: auto;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 32px 28px 28px;
+        box-sizing: border-box;
+        position: relative;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+      .register-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #333;
+      }
+      .register-modal h3 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 24px;
+        margin: 0 0 6px;
+      }
+      .register-modal .modal-sub {
+        font-size: 13.5px;
+        color: #666;
+        margin-bottom: 22px;
+        line-height: 1.5;
+      }
+      .register-modal form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .register-modal label {
+        display: block;
+        font-size: 12.5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #555;
+        margin-bottom: 6px;
+      }
+      .register-modal input,
+      .register-modal select,
+      .register-modal textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: "Inter", sans-serif;
+        font-size: 14.5px;
+        background: #fafafa;
+      }
+      .register-modal input:focus,
+      .register-modal select:focus,
+      .register-modal textarea:focus {
+        outline: none;
+        border-color: #ffc107;
+        background: #fff;
+      }
+      .register-modal textarea {
+        resize: vertical;
+        min-height: 70px;
+      }
+      .register-modal .modal-submit-btn {
+        margin-top: 6px;
+        padding: 15px 20px;
+        background: #ffc107;
+        color: #0d0d0d;
+        border: none;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      .register-modal .modal-submit-btn:hover {
+        transform: translateY(-1px);
+      }
+      .register-modal .modal-submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .register-modal .modal-status {
+        margin-top: 12px;
+        font-size: 13.5px;
+        line-height: 1.5;
+        display: none;
+        padding: 10px 12px;
+        border-radius: 8px;
+      }
+      .register-modal .modal-status.show {
+        display: block;
+      }
+      .register-modal .modal-status.success {
+        background: #e7f7ea;
+        color: #1e6b34;
+      }
+      .register-modal .modal-status.error {
+        background: #fce9e9;
+        color: #96201f;
+      }
+
+      @media (max-width: 500px) {
+        .register-modal {
+          padding: 26px 20px 22px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="loader">
+      <div class="loader-word mono" id="loader-word">INITIALIZING</div>
+      <img
+        src="logo.png"
+        class="loader-logo"
+        id="loader-logo"
+        alt="Reboot Mental Health Center"
+      />
+    </div>
+
+    <section class="hero">
+      <div class="section1-flex">
+        <div class="flexRow-section1" data-aos="fade-down">
+          <div><i data-lucide="arrow-right"></i></div>
+          <div>MENTAL HEALTH CAMP</div>
+        </div>
+
+        <div class="section1-heading" data-aos="fade-up" data-aos-delay="100">
+          <h1>Reconnect With Yourself.</h1>
+        </div>
+
+        <div class="section1-flexgap">
+          <div class="section1-left" data-aos="fade-up" data-aos-delay="200">
+            Some days feel heavier than others. You may feel overwhelmed, stuck,
+            anxious, or simply unsure of what you're going through.
+            <br /><br />
+            <strong>You don't have to figure it all out alone.</strong>
+            <br /><br />
+            <span class="section1-span">
+              In just 4 hours, take the first step toward understanding your
+              mental well-being and discover what to do next.
+            </span>
+          </div>
+
+          <div
+            class="section1-flex-column"
+            data-aos="zoom-in"
+            data-aos-delay="250"
+          >
+            <div class="section1-flexgap-row">
+              <div class="section1-flexgap-row1">
+                <img src="./logo-4.png" alt="Mental Health Camp Logo" />
+              </div>
+              <div class="text-section">
+                <div class="text-section-2">
+                  <button type="button">MENTAL HEALTH CAMP</button>
+                </div>
+                <div class="text-section-3">
+                  September 4–6 · Tirupur · 4 Hours
+                </div>
+              </div>
+            </div>
+
+            <div class="section1-long-button">
+              <button
+                type="button"
+                class="pulse-cta"
+                onclick="openRegisterModal()"
+              >
+                Register for the Mental Health Camp
+              </button>
+            </div>
+
+            <div class="bulletpoints">
+              <div class="bulletpoints-1">
+                <div>No Judgment.</div>
+                <div>No Pressure.</div>
+              </div>
+              <div class="bulletpoints-2">
+                <div>
+                  Just a safe space to understand yourself, find clarity, and
+                  take the next step.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </section>
+
+    <div class="stats-strip">
+      <div class="stat" data-aos="fade-up">
+        <b class="counter" data-target="1200" data-suffix="+">0</b>
+        <span>People Reached</span>
+      </div>
+      <div class="stat" data-aos="fade-up" data-aos-delay="100">
+        <b class="counter" data-target="14" data-suffix="+">0</b>
+        <span>Communities Supported</span>
+      </div>
+      <div class="stat" data-aos="fade-up" data-aos-delay="200">
+        <b
+          ><span class="counter" data-target="4.9" data-decimal="1">0</span
+          ><span class="stars">★★★★★</span></b
+        >
+        <span>1,800+ Reviews</span>
+      </div>
+    </div>
+
+    <section class="static-cta-bar">
+      <div class="bar-logo">
+        <img src="logo-2.png" alt="Reboot Mental Health Center" />
+      </div>
+      <div class="bar-text">
+        <strong
+          ><h2>Take the first step toward better mental health.</h2></strong
+        >
+        <span class="sub">No judgment. No complicated process.</span>
+      </div>
+      <button type="button" class="bar-btn" onclick="openRegisterModal()">
+        Register Now
+      </button>
+    </section>
+
+    <section class="rmhc-motto">
+      <div class="grid">
+        <div class="left" data-aos="fade-right">
+          <div class="eyebrow">MENTAL HEALTH CAMP</div>
+          <div class="photo-frame">
+            <img src="founder.png" alt="Mental Health Camp" />
+          </div>
+          <div class="statement-card">
+            <h2>
+              Understand Yourself. <span class="accent">Feel Better.</span>
+            </h2>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="reframe" data-aos="fade-left">
+            <div class="myth">Understand Your Mind</div>
+            <div class="arrow"><i data-lucide="arrow-right"></i></div>
+            <div class="truth">
+              Learn about your thoughts, emotions, and mental well-being.
+            </div>
+          </div>
+          <div class="reframe" data-aos="fade-left" data-aos-delay="100">
+            <div class="myth">Talk Without Judgment</div>
+            <div class="arrow"><i data-lucide="arrow-right"></i></div>
+            <div class="truth">
+              A safe space to talk, listen, and be understood.
+            </div>
+          </div>
+          <div class="reframe" data-aos="fade-left" data-aos-delay="200">
+            <div class="myth">Know Your Next Step</div>
+            <div class="arrow"><i data-lucide="arrow-right"></i></div>
+            <div class="truth">
+              Get practical guidance for better mental well-being.
+            </div>
+          </div>
+          <div class="closing" data-aos="fade-up">
+            <p class="equation">4 Hours. One Important Step.</p>
+            <p>Pause. Reflect. Understand yourself better.</p>
+            <p>Understand Your Mind. Take The Next Step.</p>
+            <p class="muted">
+              No judgment. No pressure. Just support and guidance.
+            </p>
+            <div class="signoff">
+              Discover what you're feeling and why it matters. Leave with
+              greater clarity, confidence, and direction.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mental-health-section" data-aos="fade-up">
+        <div class="mental-health-logo">
+          <img src="logo-3.png" alt="Mental Health Camp" />
+        </div>
+        <div class="mental-health-content">
+          <p><strong>What's Included?</strong></p>
+          <p>
+            Mental health awareness, guided conversations, stress-management
+            tips, and professional guidance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="gallery-header" data-aos="fade-up">
+        <div>
+          <span class="gallery-label">MENTAL HEALTH CAMP</span>
+          <h2>Moments That <span>Matter</span></h2>
+          <p>
+            A glimpse into the conversations, connections, and moments shared at
+            our Mental Health Camp.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="gallery-wrapper"
+        id="galleryWrapper"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        <div class="gallery-track" id="galleryTrack">
+          <div class="gallery-item">
+            <img src="./assets/1.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/2.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/3.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/4.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/5.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/6.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/7.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/8.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/9.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/10.jpg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/11.png" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/12.jpeg" alt="Mental Health Camp" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/13.jpg" alt="Mental Health Camp" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gallery-modal" id="galleryModal">
+      <div class="gallery-modal-content">
+        <button class="gallery-close" onclick="closeGallery()">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="modal-gallery-grid">
+          <img src="./assets/1.jpg" alt="Mental Health Camp" />
+          <img src="./assets/2.jpg" alt="Mental Health Camp" />
+          <img src="./assets/3.jpg" alt="Mental Health Camp" />
+          <img src="./assets/4.jpg" alt="Mental Health Camp" />
+          <img src="./assets/5.jpg" alt="Mental Health Camp" />
+          <img src="./assets/6.jpg" alt="Mental Health Camp" />
+          <img src="./assets/7.jpg" alt="Mental Health Camp" />
+          <img src="./assets/8.jpg" alt="Mental Health Camp" />
+          <img src="./assets/9.jpg" alt="Mental Health Camp" />
+          <img src="./assets/10.jpg" alt="Mental Health Camp" />
+          <img src="./assets/11.png" alt="Mental Health Camp" />
+          <img src="./assets/12.jpeg" alt="Mental Health Camp" />
+          <img src="./assets/13.jpg" alt="Mental Health Camp" />
+        </div>
+      </div>
+    </div>
+
+    <section class="mental-how-it-works">
+      <div class="mental-how-title" data-aos="fade-up">HOW TO REGISTER</div>
+
+      <div class="mental-how-steps">
+        <div class="mental-how-step" data-aos="fade-up" data-aos-delay="0">
+          <div class="mental-step-label">Step 1</div>
+          <div class="mental-step-line">
+            <div class="mental-step-circle">
+              <i data-lucide="clipboard-pen"></i>
+            </div>
+            <div class="mental-line"></div>
+          </div>
+          <div class="mental-step-text">
+            <strong>Fill Out the Registration Form.</strong>
+            <p>Enter your basic details and choose your preferred camp date.</p>
+          </div>
+        </div>
+
+        <div class="mental-how-step" data-aos="fade-up" data-aos-delay="150">
+          <div class="mental-step-label">Step 2</div>
+          <div class="mental-step-line">
+            <div class="mental-step-circle">
+              <i data-lucide="calendar-check"></i>
+            </div>
+            <div class="mental-line"></div>
+          </div>
+          <div class="mental-step-text">
+            <strong>Choose Your Camp Slot.</strong>
+            <p>Select an available date and confirm your participation.</p>
+          </div>
+        </div>
+
+        <div class="mental-how-step" data-aos="fade-up" data-aos-delay="300">
+          <div class="mental-step-label">Step 3</div>
+          <div class="mental-step-line">
+            <div class="mental-step-circle">
+              <i data-lucide="badge-check"></i>
+            </div>
+          </div>
+          <div class="mental-step-text">
+            <strong>Get Your Confirmation.</strong>
+            <p>Receive your registration confirmation and camp details.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mental-how-cta" data-aos="fade-up">
+        <div class="mental-how-cta-icon">
+          <i data-lucide="heart-handshake"></i>
+        </div>
+        <div class="mental-how-cta-text">
+          <strong>Ready to take the first step?</strong>
+          <span>Register for the Mental Health Camp in just a few steps.</span>
+        </div>
+        <button
+          type="button"
+          class="mental-how-cta-btn"
+          onclick="openRegisterModal()"
+        >
+          Register Now
+        </button>
+      </div>
+    </section>
+
+    <section class="mental-outcomes">
+      <div class="mental-outcomes-header" data-aos="fade-up">
+        <h2>What You Take Away From the Camp.</h2>
+        <p>
+          Leave with greater clarity, confidence, and a better understanding of
+          yourself.
+        </p>
+      </div>
+
+      <div class="mental-outcomes-grid">
+        <div class="mental-outcome-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="mental-outcome-label">
+            <i data-lucide="brain"></i><span>OUTCOME 1</span>
+          </div>
+          <p>
+            A clearer understanding of your thoughts, emotions, and mental
+            well-being.
+          </p>
+        </div>
+        <div class="mental-outcome-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="mental-outcome-label">
+            <i data-lucide="sparkles"></i><span>OUTCOME 2</span>
+          </div>
+          <p>
+            Greater awareness of your emotional patterns and the factors
+            affecting you.
+          </p>
+        </div>
+        <div
+          class="mental-outcome-card"
+          data-aos="fade-up"
+          data-aos-delay="160"
+        >
+          <div class="mental-outcome-label">
+            <i data-lucide="shield-check"></i><span>OUTCOME 3</span>
+          </div>
+          <p>
+            Practical ways to handle stress, emotional pressure, and everyday
+            challenges.
+          </p>
+        </div>
+        <div
+          class="mental-outcome-card"
+          data-aos="fade-up"
+          data-aos-delay="240"
+        >
+          <div class="mental-outcome-label">
+            <i data-lucide="message-circle"></i><span>OUTCOME 4</span>
+          </div>
+          <p>
+            More confidence to talk about your mental health and ask for support
+            when needed.
+          </p>
+        </div>
+        <div
+          class="mental-outcome-card"
+          data-aos="fade-up"
+          data-aos-delay="320"
+        >
+          <div class="mental-outcome-label">
+            <i data-lucide="compass"></i><span>OUTCOME 5</span>
+          </div>
+          <p>
+            A clearer sense of what to do next and when professional support may
+            be helpful.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="section-head reveal" data-aos="fade-up">
+        <div class="eyebrow">Stories</div>
+        <h2>People who took the first step toward better mental health</h2>
+      </div>
+
+      <div class="test-grid reveal">
+        <div class="test-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="stars">★★★★★</div>
+          <p>
+            "I finally had a space where I could talk about what I was feeling
+            without being judged. It helped me understand myself better."
+          </p>
+          <footer><b>Participant</b><span>Tiruppur</span></footer>
+        </div>
+        <div class="test-card" data-aos="fade-up" data-aos-delay="120">
+          <div class="stars">★★★★★</div>
+          <p>
+            "The biggest difference was realizing that asking for help doesn't
+            make me weak. It gave me the confidence to take care of myself."
+          </p>
+          <footer><b>Participant</b><span>Coimbatore</span></footer>
+        </div>
+        <div class="test-card" data-aos="fade-up" data-aos-delay="240">
+          <div class="stars">★★★★★</div>
+          <p>
+            "The workshop gave me clarity about what I was experiencing and
+            helped me understand what my next step should be."
+          </p>
+          <footer><b>Participant</b><span>Tamil Nadu</span></footer>
+        </div>
+      </div>
+    </section>
+
+    <div class="inline-cta-strip" data-aos="fade-up">
+      <p>Ready to feel understood? Seats for the camp are limited.</p>
+      <button
+        type="button"
+        class="inline-cta-btn"
+        onclick="openRegisterModal()"
+      >
+        Register Now
+      </button>
+    </div>
+
+    <section class="coach">
+      <div class="coach-portrait" data-aos="fade-right">
+        <img
+          src="founder.png"
+          alt="M. Shajitha Rahima, Founder of Reboot Mental Health Center"
+          class="founder-photo"
+        />
+      </div>
+
+      <div class="coach-copy" data-aos="fade-left">
+        <div class="eyebrow">About the Founder</div>
+        <h2 style="color: #050505">M. Shajitha Rahima</h2>
+        <div class="role-line">
+          Founder — Reboot Mental Health Center · Psychologist · Counselling
+          &amp; Psychotherapy Professional
+        </div>
+        <p>
+          M. Shajitha Rahima is a psychology professional, mental-health
+          practitioner, educator, and founder with more than 10 years of
+          experience in counselling, psychotherapy, student wellbeing,
+          life-skills education, training, and psychological interventions.
+        </p>
+        <p>
+          Her professional journey spans schools, colleges, and community
+          settings, where she has worked with children, adolescents, educators,
+          and families — conducting 100+ workshops and delivering counselling
+          and psychological interventions across CBT, REBT, Behaviour
+          Modification, Expressive Art Therapy, NLP, Group Counselling, and Life
+          Skills.
+        </p>
+        <p>
+          Driven by the belief that psychology should extend beyond the
+          counselling room, she founded Reboot Mental Health Center — a platform
+          focused on making mental-health support, psychological education, life
+          skills, and wellbeing more accessible, practical, and meaningful for
+          everyday life.
+        </p>
+        <div class="coach-stats">
+          <div><b>10+</b><span>YEARS EXPERIENCE</span></div>
+          <div><b>100+</b><span>WORKSHOPS CONDUCTED</span></div>
+          <div><b>1,200+</b><span>LIVES SUPPORTED</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mhc-for-you">
+      <div class="mhc-for-you-inner">
+        <div class="mhc-for-you-heading" data-aos="fade-right">
+          <div class="mhc-logo-circle">
+            <img src="logo-2.png" alt="Mental Health Camp Logo" />
+          </div>
+          <h2>THIS CAMP IS<br />FOR YOU IF...</h2>
+        </div>
+
+        <div class="mhc-for-you-list" data-aos="fade-up">
+          <div class="mhc-for-you-item">
+            <div class="mhc-arrow"><i data-lucide="arrow-right"></i></div>
+            <p>
+              You want to understand your mental health and learn more about
+              yourself.
+            </p>
+          </div>
+          <div class="mhc-for-you-item">
+            <div class="mhc-arrow"><i data-lucide="arrow-right"></i></div>
+            <p>
+              You're feeling stressed, overwhelmed, emotionally tired, or simply
+              not like yourself lately.
+            </p>
+          </div>
+          <div class="mhc-for-you-item">
+            <div class="mhc-arrow"><i data-lucide="arrow-right"></i></div>
+            <p>
+              You want practical ways to manage stress, emotions, and everyday
+              pressure.
+            </p>
+          </div>
+          <div class="mhc-for-you-item">
+            <div class="mhc-arrow"><i data-lucide="arrow-right"></i></div>
+            <p>
+              You want a safe space to talk openly, ask questions, and be heard
+              without judgment.
+            </p>
+          </div>
+          <div class="mhc-for-you-item">
+            <div class="mhc-arrow"><i data-lucide="arrow-right"></i></div>
+            <p>
+              You want to learn when professional support may be helpful and
+              what your next step could be.
+            </p>
+          </div>
+          <div class="mhc-for-you-item">
+            <div class="mhc-arrow"><i data-lucide="arrow-right"></i></div>
+            <p>
+              You believe your mental well-being deserves the same attention as
+              your physical health.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mhc-for-you-note">
+        <span class="mhc-warning">●</span>
+        <strong>You don't need to wait until you're struggling.</strong>
+        <span
+          >If you want to understand yourself better, this camp is a good place
+          to start.</span
+        >
+      </div>
+    </section>
+
+    <section class="camp-motto-section">
+      <div class="camp-motto-inner">
+        <div class="eyebrow" data-aos="fade-up">Mental Health Camp Motto</div>
+        <h2 data-aos="fade-up" data-aos-delay="80">
+          Mental Health Is Not a Luxury.
+          <span class="accent">It Is a Right.</span>
+        </h2>
+        <p class="motto-lead" data-aos="fade-up" data-aos-delay="120">
+          Mental health is not a privilege reserved for those who can afford it.
+          It is a fundamental part of being human — just as essential as
+          physical health. Yet, stigma, misconceptions, and the belief that
+          mental health care is "too expensive" continue to keep people from
+          seeking the support they deserve.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="160">
+          Through this Mental Health Camp, Reboot Mental Health Center takes a
+          step towards changing that narrative.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="200">
+          We believe that seeking help is not a sign of weakness. It is an act
+          of courage, awareness, and self-care. Every person deserves access to
+          professional, compassionate, and quality mental health care,
+          regardless of their background or financial status.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="240">
+          This camp is more than an initiative — it is a statement of what
+          mental health care in Tiruppur can and should be.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="280">
+          Reboot Mental Health Center is committed to setting a new standard for
+          accessible mental health care in Tiruppur — where seeking help is
+          normal, care is affordable, and no one is left behind.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="320">
+          Because mental health is not a luxury. It is the first step towards a
+          healthier, stronger, and more meaningful life.
+        </p>
+        <div class="camp-motto-signoff" data-aos="fade-up" data-aos-delay="360">
+          REBOOT MENTAL HEALTH CENTER — BREAKING THE STIGMA. MAKING MENTAL
+          HEALTH ACCESSIBLE. BUILDING A HEALTHIER TIRUPPUR.
+        </div>
+        <div class="camp-motto-cta" data-aos="zoom-in" data-aos-delay="400">
+          <button
+            type="button"
+            class="mental-how-cta-btn pulse-cta"
+            onclick="openRegisterModal()"
+          >
+            Register for the Camp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="healthcare-faq-section">
+      <div class="healthcare-faq-inner">
+        <h2 class="healthcare-faq-title" data-aos="fade-up">
+          HONEST ANSWERS TO REAL QUESTIONS
+        </h2>
+
+        <div class="healthcare-faq">
+          <div class="healthcare-faq-item" data-aos="fade-up">
+            <button class="healthcare-faq-question">
+              <span>What is the Mental Health Camp?</span>
+              <span class="healthcare-faq-icon"
+                ><i data-lucide="plus"></i
+              ></span>
+            </button>
+            <div class="healthcare-faq-answer">
+              The Mental Health Camp is a guided 4-hour experience designed to
+              help you understand your mental well-being, learn practical
+              strategies, ask questions, and take the right next step.
+            </div>
+          </div>
+
+          <div class="healthcare-faq-item" data-aos="fade-up">
+            <button class="healthcare-faq-question">
+              <span>Who can attend the camp?</span>
+              <span class="healthcare-faq-icon"
+                ><i data-lucide="plus"></i
+              ></span>
+            </button>
+            <div class="healthcare-faq-answer">
+              Anyone who wants to learn more about mental health and improve
+              their emotional well-being can attend. You don't need to have a
+              diagnosed mental health condition to participate.
+            </div>
+          </div>
+
+          <div class="healthcare-faq-item" data-aos="fade-up">
+            <button class="healthcare-faq-question">
+              <span>Where and when is the camp happening?</span>
+              <span class="healthcare-faq-icon"
+                ><i data-lucide="plus"></i
+              ></span>
+            </button>
+            <div class="healthcare-faq-answer">
+              The Mental Health Camp is an in-person event in Tiruppur, taking
+              place from September 4–6. Each camp session is approximately 4
+              hours.
+            </div>
+          </div>
+
+          <div class="healthcare-faq-item" data-aos="fade-up">
+            <button class="healthcare-faq-question">
+              <span>What will happen during the camp?</span>
+              <span class="healthcare-faq-icon"
+                ><i data-lucide="plus"></i
+              ></span>
+            </button>
+            <div class="healthcare-faq-answer">
+              You'll learn about mental health, participate in guided
+              conversations, explore practical ways to manage stress and
+              emotions, and have the opportunity to ask questions in a safe and
+              supportive environment.
+            </div>
+          </div>
+
+          <div class="healthcare-faq-item" data-aos="fade-up">
+            <button class="healthcare-faq-question">
+              <span>Do I need to register before attending?</span>
+              <span class="healthcare-faq-icon"
+                ><i data-lucide="plus"></i
+              ></span>
+            </button>
+            <div class="healthcare-faq-answer">
+              Yes. Registration is required to reserve your place at the camp.
+              Once you register, our team will contact you with the relevant
+              camp details and confirmation.
+            </div>
+          </div>
+
+          <div class="healthcare-faq-item" data-aos="fade-up">
+            <button class="healthcare-faq-question">
+              <span>What will I take away from the camp?</span>
+              <span class="healthcare-faq-icon"
+                ><i data-lucide="plus"></i
+              ></span>
+            </button>
+            <div class="healthcare-faq-answer">
+              You'll leave with greater awareness of your mental well-being,
+              practical tools for managing everyday challenges, and a clearer
+              understanding of what your next step could be.
+            </div>
+          </div>
+        </div>
+
+        <div class="camp-motto-cta" data-aos="fade-up">
+          <button
+            type="button"
+            class="mental-how-cta-btn"
+            onclick="openRegisterModal()"
+          >
+            Still have questions? Register and we'll reach out
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="healthcare-register" id="register">
+      <div class="healthcare-register-inner" data-aos="zoom-in">
+        <h2>
+          You Can Keep Ignoring What You're Going Through.<br />Or You Can Spend
+          4 Hours Understanding What You Need.
+        </h2>
+        <p class="healthcare-register-description">
+          No judgment. No pressure. Just a clear, supportive space to understand
+          your mental health and discover what you can do next. Registration
+          secures your seat at the in-person camp and an optional personal
+          appointment slot.
+        </p>
+        <button
+          type="button"
+          class="healthcare-register-button pulse-cta"
+          onclick="openRegisterModal()"
+        >
+          REGISTER NOW
+        </button>
+        <div class="healthcare-register-details">
+          <div><span class="register-dot"></span>9:00 AM – 1:00 PM IST</div>
+          <div><span class="register-dot"></span>In-Person Camp, Tiruppur</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="foot-brand" style="color: #050505">
+        <img src="logo-2.png" alt="Reboot Mental Health Center" />
+        REBOOT MENTAL HEALTH CENTER
+      </div>
+      <div>© 2026 Reboot Mental Health Center. All rights reserved.</div>
+    </footer>
+
+    <div class="register-modal-overlay" id="register-modal-overlay">
+      <div class="register-modal">
+        <button
+          type="button"
+          class="register-modal-close"
+          onclick="closeRegisterModal()"
+          aria-label="Close"
+        >
+          <i data-lucide="x"></i>
+        </button>
+        <h3>Register for the Camp</h3>
+        <div class="modal-sub">
+          Reserve your seat at the in-person Mental Health Camp and, if you'd
+          like, request a personal appointment. We'll email your confirmation.
+        </div>
+
+        <form id="register-form">
+          <div>
+            <label for="reg-name">Full Name</label
+            ><input type="text" id="reg-name" name="name" required />
+          </div>
+          <div>
+            <label for="reg-phone">Phone Number</label
+            ><input type="tel" id="reg-phone" name="phone" required />
+          </div>
+          <div>
+            <label for="reg-email">Email Address</label
+            ><input type="email" id="reg-email" name="email" required />
+          </div>
+          <div>
+            <label for="reg-type">I want to register for</label>
+            <select id="reg-type" name="registration_type">
+              <option value="Camp Only">The Camp Only</option>
+              <option value="Camp + Personal Appointment">
+                The Camp + a Personal Appointment
+              </option>
+              <option value="Personal Appointment Only">
+                A Personal Appointment Only
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="reg-message"
+              >Anything you'd like us to know? (optional)</label
+            ><textarea id="reg-message" name="message"></textarea>
+          </div>
+          <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
+            Confirm Registration
+          </button>
+          <div class="modal-status" id="modal-status"></div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+        if (window.AOS) {
+          AOS.init({
+            duration: 700,
+            easing: "ease-out-cubic",
+            once: true,
+            offset: 60,
+          });
+        }
+      });
+
+      const loader = document.getElementById("loader");
+      const loaderLogo = document.getElementById("loader-logo");
+      const loaderWord = document.getElementById("loader-word");
+
+      function runIntro() {
+        requestAnimationFrame(() => {
+          loaderLogo.style.opacity = "1";
+        });
+        setTimeout(() => {
+          loaderWord.classList.add("show");
+        }, 150);
+        setTimeout(() => {
+          loaderLogo.classList.add("grow");
+          loaderWord.classList.remove("show");
+        }, 500);
+        setTimeout(() => {
+          loaderLogo.classList.add("settle");
+        }, 1750);
+        setTimeout(() => {
+          loader.classList.add("hide");
+        }, 2350);
+        setTimeout(() => {
+          loader.style.display = "none";
+          if (window.AOS) AOS.refresh();
+        }, 3150);
+      }
+      runIntro();
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("in");
+          });
+        },
+        { threshold: 0.15 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => {
+        io.observe(el);
+      });
+
+      document.querySelectorAll(".healthcare-faq-question").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = btn.closest(".healthcare-faq-item");
+          document
+            .querySelectorAll(".healthcare-faq-item.open")
+            .forEach((otherItem) => {
+              if (otherItem !== item) {
+                otherItem.classList.remove("open");
+                const otherIcon = otherItem.querySelector(
+                  ".healthcare-faq-icon",
+                );
+                otherIcon.innerHTML = '<i data-lucide="plus"></i>';
+              }
+            });
+          const isOpening = !item.classList.contains("open");
+          item.classList.toggle("open", isOpening);
+          const icon = item.querySelector(".healthcare-faq-icon");
+          icon.innerHTML = isOpening
+            ? '<i data-lucide="minus"></i>'
+            : '<i data-lucide="plus"></i>';
+          lucide.createIcons();
+        });
+      });
+
+      const registerOverlay = document.getElementById("register-modal-overlay");
+      function openRegisterModal() {
+        registerOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeRegisterModal() {
+        registerOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      registerOverlay.addEventListener("click", (e) => {
+        if (e.target === registerOverlay) closeRegisterModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeRegisterModal();
+      });
+
+      const registerForm = document.getElementById("register-form");
+      const modalSubmitBtn = document.getElementById("modal-submit-btn");
+      const modalStatus = document.getElementById("modal-status");
+
+      registerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        modalStatus.classList.remove("show", "success", "error");
+
+        const payload = {
+          name: document.getElementById("reg-name").value.trim(),
+          phone: document.getElementById("reg-phone").value.trim(),
+          email: document.getElementById("reg-email").value.trim(),
+          registration_type: document.getElementById("reg-type").value,
+          message: document.getElementById("reg-message").value.trim(),
+        };
+
+        modalSubmitBtn.disabled = true;
+        modalSubmitBtn.textContent = "Sending...";
+
+        try {
+          const res = await fetch("send-registration.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await res.json().catch(() => ({ success: false }));
+
+          if (res.ok && data.success) {
+            modalStatus.textContent =
+              "Thank you! Your registration was received. We'll email your confirmation shortly.";
+            modalStatus.classList.add("show", "success");
+            registerForm.reset();
+          } else {
+            throw new Error(data.error || "Something went wrong.");
+          }
+        } catch (err) {
+          modalStatus.textContent =
+            "We couldn't send your registration right now. Please call/WhatsApp us directly, or try again in a moment.";
+          modalStatus.classList.add("show", "error");
+        } finally {
+          modalSubmitBtn.disabled = false;
+          modalSubmitBtn.textContent = "Confirm Registration";
+        }
+      });
+
+      const counters = document.querySelectorAll(".counter");
+
+      const startCounter = (counter) => {
+        const target = parseFloat(counter.dataset.target);
+        const decimal = parseInt(counter.dataset.decimal || "0");
+        const suffix = counter.dataset.suffix || "";
+        const duration = 2800;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const currentValue = target * easeOut;
+          counter.textContent = currentValue.toFixed(decimal) + suffix;
+          if (progress < 1) requestAnimationFrame(updateCounter);
+          else counter.textContent = target.toFixed(decimal) + suffix;
+        }
+        requestAnimationFrame(updateCounter);
+      };
+
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                const counters = entry.target.querySelectorAll(".counter");
+                counters.forEach((counter) => {
+                  startCounter(counter);
+                });
+              }, 2000);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 },
+      );
+
+      const statsStrip = document.querySelector(".stats-strip");
+      if (statsStrip) observer.observe(statsStrip);
+    </script>
+  </body>
 </html>
