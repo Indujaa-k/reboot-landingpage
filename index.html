@@ -365,15 +365,67 @@
       }
 
       .mental-how-it-works {
-        max-width: 1180px;
-        width: 90%;
+        width: 100%;
         box-sizing: border-box;
-        margin: auto;
         padding: 70px 0 40px;
         background: #ffffff;
         color: #0d0d0d;
       }
+      .photo-layout {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-bottom: 50px;
+      }
 
+      .photo-header {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        border-radius: 14px;
+        margin-bottom: 12px;
+      }
+
+      .photo-header img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .photo-columns {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .photo-box {
+        height: 280px;
+        overflow: hidden;
+        border-radius: 14px;
+      }
+
+      .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      @media (max-width: 700px) {
+        .photo-columns {
+          grid-template-columns: 1fr;
+        }
+
+        .photo-header {
+          height: 130px;
+        }
+
+        .photo-box {
+          height: 220px;
+        }
+      }
       .mental-how-title {
         text-align: center;
         font-family: "Inter", sans-serif;
@@ -416,7 +468,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #0d0d0d;
+        background: #ffc107;
         color: #ffffff;
       }
       .mental-step-circle svg {
@@ -454,7 +506,7 @@
       .mental-how-cta {
         width: min(1000px, 92%);
         min-height: 110px;
-        margin: 70px auto 0;
+        margin: 70px 10% 0;
         padding: 20px 22px 20px 30px;
         box-sizing: border-box;
         display: flex;
@@ -500,23 +552,41 @@
       }
       .mental-how-cta-btn {
         flex-shrink: 0;
+
         padding: 15px 28px;
-        background: #0d0d0d;
-        color: #ffffff;
+
+        background: #ffc107;
+        color: #111111;
+
         border-radius: 10px;
+
         text-decoration: none;
+
         font-family: "Inter", sans-serif;
+
         font-size: 14.5px;
-        font-weight: 600;
+        font-weight: 700;
+
+        border: none;
+
+        cursor: pointer;
+
         transition:
           transform 0.2s ease,
-          box-shadow 0.2s ease;
-        cursor: pointer;
-        border: none;
+          box-shadow 0.3s ease;
+
+        box-shadow:
+          0 0 10px rgba(255, 193, 7, 0.35),
+          0 0 25px rgba(255, 193, 7, 0.2);
       }
+
       .mental-how-cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px);
+
+        box-shadow:
+          0 0 15px rgba(255, 193, 7, 0.65),
+          0 0 35px rgba(255, 193, 7, 0.45),
+          0 8px 25px rgba(255, 193, 7, 0.3);
       }
 
       @media (max-width: 768px) {
@@ -574,12 +644,11 @@
       }
 
       .mental-outcomes {
-        max-width: 1180px;
         width: 100%;
         box-sizing: border-box;
         margin: 0 auto 20px;
-        padding: 75px 5.2% 70px;
-        background: #f8f9fa;
+        padding: 10px 5.2% 70px;
+        background: #ffffff;
         color: #0d0d0d;
       }
       .mental-outcomes-header {
@@ -624,19 +693,66 @@
         grid-column: 4 / span 2;
       }
       .mental-outcome-card {
+        position: relative;
+        overflow: hidden;
+
         min-height: 180px;
         box-sizing: border-box;
+
         padding: 18px 19px 22px;
-        background: linear-gradient(135deg, #fff4e5 0%, #fcf9f5 100%);
+
+        background: linear-gradient(160deg, #f5e9cb 34%, #ffffff 72%);
+
         border: 1px solid #e8dfd5;
         border-radius: 12px;
+
         transition:
           transform 0.2s ease,
           box-shadow 0.2s ease;
       }
+
+      /* Glossy shine */
+      .mental-outcome-card::after {
+        content: "";
+
+        position: absolute;
+        top: -100%;
+        left: -60%;
+
+        width: 45%;
+        height: 300%;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.65),
+          transparent
+        );
+
+        transform: rotate(20deg);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition:
+          left 0.6s ease,
+          opacity 0.3s ease;
+      }
+
+      /* Hover */
       .mental-outcome-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+
+        box-shadow:
+          0 10px 25px rgba(0, 0, 0, 0.08),
+          0 0 18px rgba(255, 193, 7, 0.12);
+      }
+
+      /* Shine sweep */
+      .mental-outcome-card:hover::after {
+        left: 120%;
+        opacity: 1;
       }
       .mental-outcome-label {
         display: flex;
@@ -915,13 +1031,21 @@
         .mhc-for-you {
           padding: 55px 5% 28px;
         }
+
         .mhc-for-you-inner {
           grid-template-columns: 1fr;
           row-gap: 40px;
         }
+
         .mhc-for-you-heading {
           justify-content: flex-start;
         }
+
+        /* Hide logo on responsive */
+        .mhc-logo-circle {
+          display: none;
+        }
+
         .mhc-for-you-list {
           width: 100%;
         }
@@ -932,38 +1056,42 @@
           padding: 45px 20px 25px;
           border-radius: 14px;
         }
+
         .mhc-for-you-inner {
           row-gap: 30px;
         }
+
         .mhc-for-you-heading {
-          gap: 14px;
+          gap: 0;
           align-items: center;
         }
+
+        /* Keep logo hidden */
         .mhc-logo-circle {
-          width: 50px;
-          height: 50px;
+          display: none;
         }
-        .mhc-logo-circle img {
-          width: 38px;
-          height: 38px;
-        }
+
         .mhc-for-you-heading h2 {
           font-size: 24px;
           letter-spacing: -0.6px;
         }
+
         .mhc-for-you-item {
           min-height: 74px;
           grid-template-columns: 26px 1fr;
         }
+
         .mhc-arrow svg {
           width: 16px;
           height: 16px;
         }
+
         .mhc-for-you-item p {
           padding: 14px 0;
           font-size: 13.5px;
           line-height: 1.45;
         }
+
         .mhc-for-you-note {
           width: 100%;
           margin-top: 22px;
@@ -972,13 +1100,12 @@
           font-size: 11.5px;
         }
       }
-
       .healthcare-faq-section {
         max-width: 900px;
         width: 100%;
         box-sizing: border-box;
         margin: 0 auto;
-        padding: 25px 0 70px;
+        padding: 50px 0 70px;
         background: #ffff;
         color: #111111;
         font-family: "Inter", sans-serif;
@@ -1341,43 +1468,27 @@
       }
 
       .camp-motto-section {
-        max-width: 1180px;
-        width: 90%;
+        width: 100%;
         box-sizing: border-box;
         margin: 70px auto 0;
         padding: 70px 6% 76px;
-        background: #fff4d9;
+        background: white !important;
         color: #111111;
         border-radius: 20px;
         font-family: "Inter", sans-serif;
         position: relative;
         overflow: hidden;
-        border: 1px solid #ffe6a3;
       }
 
       .camp-motto-section::before {
         content: "";
         position: absolute;
         inset: 0;
-        background:
-          radial-gradient(
-            circle at 15% 10%,
-            rgba(255, 193, 7, 0.18),
-            transparent 55%
-          ),
-          radial-gradient(
-            circle at 90% 90%,
-            rgba(255, 193, 7, 0.1),
-            transparent 55%
-          );
-        pointer-events: none;
       }
-
       .camp-motto-inner {
         position: relative;
         z-index: 1;
-        max-width: 780px;
-        margin: 0 auto;
+        width: auto;
         text-align: center;
       }
       .camp-motto-inner .eyebrow {
@@ -1656,6 +1767,173 @@
           padding: 26px 20px 22px;
         }
       }
+      /* =========================================================
+   COACH / FOUNDER - RESPONSIVE
+========================================================= */
+
+      /* Tablet */
+      @media (max-width: 900px) {
+        .coach {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 60px 6vw;
+        }
+
+        .coach-portrait {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .founder-photo {
+          width: min(420px, 80vw);
+          height: auto;
+        }
+
+        .coach-copy {
+          text-align: center;
+          max-width: 750px;
+          margin: 0 auto;
+        }
+
+        .coach-copy .eyebrow {
+          text-align: center;
+        }
+
+        .coach-copy h2 {
+          text-align: center;
+        }
+
+        .coach-copy .role-line {
+          text-align: center;
+          font-size: 12px;
+          line-height: 1.6;
+          margin-bottom: 18px;
+        }
+
+        .coach-copy p {
+          text-align: center;
+        }
+
+        .coach-stats {
+          justify-content: center;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 600px) {
+        .coach {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          padding: 45px 5vw;
+        }
+
+        .coach-portrait {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .founder-photo {
+          width: min(340px, 85vw);
+          max-width: 100%;
+          height: auto;
+        }
+
+        .coach-copy {
+          width: 100%;
+          max-width: 100%;
+          text-align: center;
+        }
+
+        .coach-copy .eyebrow {
+          text-align: center;
+          font-size: 11px;
+        }
+
+        .coach-copy h2 {
+          text-align: center;
+          font-size: 30px;
+          line-height: 1.15;
+          margin-bottom: 10px;
+        }
+
+        .coach-copy .role-line {
+          text-align: center;
+          font-size: 11.5px;
+          line-height: 1.6;
+          margin: 0 auto 18px;
+          max-width: 450px;
+        }
+
+        .coach-copy p {
+          text-align: center;
+          font-size: 14px;
+          line-height: 1.7;
+        }
+
+        .coach-stats {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+          margin-top: 25px;
+          text-align: center;
+        }
+
+        .coach-stats div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .coach-stats b {
+          font-size: 22px;
+        }
+
+        .coach-stats span {
+          font-size: 9px;
+          line-height: 1.4;
+        }
+      }
+
+      /* Small Mobile */
+      @media (max-width: 400px) {
+        .coach {
+          padding: 40px 4vw;
+          gap: 25px;
+        }
+
+        .founder-photo {
+          width: 82vw;
+        }
+
+        .coach-copy h2 {
+          font-size: 27px;
+        }
+
+        .coach-copy .role-line {
+          font-size: 10.5px;
+          line-height: 1.55;
+        }
+
+        .coach-copy p {
+          font-size: 13.5px;
+          line-height: 1.65;
+        }
+
+        .coach-stats {
+          gap: 6px;
+        }
+
+        .coach-stats b {
+          font-size: 20px;
+        }
+
+        .coach-stats span {
+          font-size: 8px;
+        }
+      }
     </style>
   </head>
 
@@ -1672,73 +1950,79 @@
 
     <section class="hero">
       <div class="section1-flex">
-        <div class="flexRow-section1" data-aos="fade-down">
-          <div><i data-lucide="arrow-right"></i></div>
-          <div>MENTAL HEALTH CAMP</div>
+        <div class="flexRow-section1">
+          <div>→</div>
+          <div>Mental Health Is Not a Luxury. It Is a Right</div>
         </div>
-
-        <div class="section1-heading" data-aos="fade-up" data-aos-delay="100">
-          <h1>Reconnect With Yourself.</h1>
+        <div class="section1-heading">
+          <h1>Mental Health Care for Everyone.</h1>
         </div>
-
         <div class="section1-flexgap">
-          <div class="section1-left" data-aos="fade-up" data-aos-delay="200">
-            Some days feel heavier than others. You may feel overwhelmed, stuck,
-            anxious, or simply unsure of what you're going through.
-            <br /><br />
-            <strong>You don't have to figure it all out alone.</strong>
-            <br /><br />
-            <span class="section1-span">
-              In just 4 hours, take the first step toward understanding your
-              mental well-being and discover what to do next.
-            </span>
+          <div class="section1-left">
+            Mental health is not a privilege reserved for those who can afford
+            it. It is a fundamental part of being human—just as essential as
+            physical health.
+            <br />
+            <span class="section1-span"
+              >Seeking help is not a sign of weakness. It is an act of courage,
+              awareness, and self-care.</span
+            >
           </div>
-
-          <div
-            class="section1-flex-column"
-            data-aos="zoom-in"
-            data-aos-delay="250"
-          >
+          <div class="section1-flex-column">
             <div class="section1-flexgap-row">
               <div class="section1-flexgap-row1">
-                <img src="./logo-4.png" alt="Mental Health Camp Logo" />
+                <img src="./logo-1.png" />
               </div>
+
               <div class="text-section">
+                <div class="text-section-1">4th, 5th & 6th Sept,2026</div>
                 <div class="text-section-2">
-                  <button type="button">MENTAL HEALTH CAMP</button>
+                  <button>Mental Health Camp</button>
                 </div>
-                <div class="text-section-3">
-                  September 4–6 · Tirupur · 4 Hours
-                </div>
+                <div class="text-section-3">10:00 AM – 6:00 PM</div>
               </div>
             </div>
-
             <div class="section1-long-button">
-              <button
-                type="button"
-                class="pulse-cta"
-                onclick="openRegisterModal()"
-              >
-                Register for the Mental Health Camp
-              </button>
+              <button>Take the First Step – Register Now</button>
             </div>
-
             <div class="bulletpoints">
               <div class="bulletpoints-1">
-                <div>No Judgment.</div>
-                <div>No Pressure.</div>
+                <div>Professional care</div>
+                <div>Compassionate support</div>
               </div>
               <div class="bulletpoints-2">
-                <div>
-                  Just a safe space to understand yourself, find clarity, and
-                  take the next step.
-                </div>
+                <div>Prioritize your mental health.</div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div></div>
+      <div class="countdown-bar">
+        <span class="countdown-label">Register in next</span>
+        <div class="countdown-units">
+          <div class="countdown-unit">
+            <b id="cd-days">--</b><span>Days</span>
+          </div>
+          <div class="countdown-unit">
+            <b id="cd-hours">--</b><span>Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <b id="cd-mins">--</b><span>Minutes</span>
+          </div>
+          <div class="countdown-unit">
+            <b id="cd-secs">--</b><span>Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ehg-section">
+      <div class="ehg-word">Experience</div>
+      <div class="ehg-dot">•</div>
+      <div class="ehg-word">Heal</div>
+      <div class="ehg-dot">•</div>
+      <div class="ehg-word">Grow</div>
     </section>
 
     <div class="stats-strip">
@@ -1773,156 +2057,145 @@
         Register Now
       </button>
     </section>
+    <!-- =========================================================
+     Experience section — markup only.
+     Link style.css and this script tag from your page <head>/<body>.
+     ========================================================= -->
 
-    <section class="rmhc-motto">
-      <div class="grid">
-        <div class="left" data-aos="fade-right">
-          <div class="eyebrow">MENTAL HEALTH CAMP</div>
-          <div class="photo-frame">
-            <img src="founder.png" alt="Mental Health Camp" />
-          </div>
-          <div class="statement-card">
-            <h2>
-              Understand Yourself. <span class="accent">Feel Better.</span>
-            </h2>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="reframe" data-aos="fade-left">
-            <div class="myth">Understand Your Mind</div>
-            <div class="arrow"><i data-lucide="arrow-right"></i></div>
-            <div class="truth">
-              Learn about your thoughts, emotions, and mental well-being.
-            </div>
-          </div>
-          <div class="reframe" data-aos="fade-left" data-aos-delay="100">
-            <div class="myth">Talk Without Judgment</div>
-            <div class="arrow"><i data-lucide="arrow-right"></i></div>
-            <div class="truth">
-              A safe space to talk, listen, and be understood.
-            </div>
-          </div>
-          <div class="reframe" data-aos="fade-left" data-aos-delay="200">
-            <div class="myth">Know Your Next Step</div>
-            <div class="arrow"><i data-lucide="arrow-right"></i></div>
-            <div class="truth">
-              Get practical guidance for better mental well-being.
-            </div>
-          </div>
-          <div class="closing" data-aos="fade-up">
-            <p class="equation">4 Hours. One Important Step.</p>
-            <p>Pause. Reflect. Understand yourself better.</p>
-            <p>Understand Your Mind. Take The Next Step.</p>
-            <p class="muted">
-              No judgment. No pressure. Just support and guidance.
-            </p>
-            <div class="signoff">
-              Discover what you're feeling and why it matters. Leave with
-              greater clarity, confidence, and direction.
-            </div>
-          </div>
-        </div>
+    <section class="experience-section">
+      <div class="experience-header">
+        <span>YOU DON'T HAVE TO HANDLE IT ALONE</span>
+        <h2>Does Any of This Feel <i>Familiar?</i></h2>
+        <p>
+          Sometimes, it can be difficult to explain exactly what you're feeling.
+          If any of these resonate with you, you're not alone.
+        </p>
       </div>
 
-      <div class="mental-health-section" data-aos="fade-up">
-        <div class="mental-health-logo">
-          <img src="logo-3.png" alt="Mental Health Camp" />
+      <div class="experience-grid" id="expGrid">
+        <div class="experience-card">
+          <div class="experience-image">
+            <img src="./assets/overthinking.webp" alt="Overthinking" />
+          </div>
+          <div class="experience-content">
+            <span>01</span>
+            <h3>Constant Overthinking?</h3>
+            <!-- <p>
+              Your mind never seems to slow down, even when you want to rest.
+            </p> -->
+          </div>
         </div>
-        <div class="mental-health-content">
-          <p><strong>What's Included?</strong></p>
-          <p>
-            Mental health awareness, guided conversations, stress-management
-            tips, and professional guidance.
-          </p>
+
+        <div class="experience-card reverse">
+          <div class="experience-image">
+            <img
+              src="./assets/Feeling emotionally exhausted.jpg"
+              alt="Emotionally exhausted"
+            />
+          </div>
+          <div class="experience-content">
+            <span>02</span>
+            <h3>Feeling Emotionally Exhausted?</h3>
+            <!-- <p>
+              Everything feels heavy, and even simple things take too much
+              energy.
+            </p> -->
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-image">
+            <img
+              src="./assets/Difficulty sleeping.jpg"
+              alt="Difficulty sleeping"
+            />
+          </div>
+          <div class="experience-content">
+            <span>03</span>
+            <h3>Difficulty Sleeping?</h3>
+            <!-- <p>
+              Your thoughts keep you awake when your body desperately needs
+              rest.
+            </p> -->
+          </div>
+        </div>
+
+        <div class="experience-card reverse">
+          <div class="experience-image">
+            <img src="./assets/Anxiety or excessive worry.webp" alt="Anxiety" />
+          </div>
+          <div class="experience-content">
+            <span>04</span>
+            <h3>Anxiety or Excessive Worry?</h3>
+            <!-- <p>You constantly worry about what might happen next.</p> -->
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-image">
+            <img
+              src="./assets/Lack of motivation.jpeg"
+              alt="Lack of motivation"
+            />
+          </div>
+          <div class="experience-content">
+            <span>05</span>
+            <h3>Lack of Motivation?</h3>
+            <!-- <p>
+              Things you once enjoyed may no longer feel meaningful or exciting.
+            </p> -->
+          </div>
+        </div>
+
+        <div class="experience-card reverse">
+          <div class="experience-image">
+            <img
+              src="./assets/Relationship or family stress.webp"
+              alt="Relationship stress"
+            />
+          </div>
+          <div class="experience-content">
+            <span>06</span>
+            <h3>Relationship or Family Stress?</h3>
+            <!-- <p>
+              Important relationships may feel complicated, draining, or
+              difficult.
+            </p> -->
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-image">
+            <img
+              src="./assets/Feeling disconnected.jpg"
+              alt="Feeling overwhelmed"
+            />
+          </div>
+
+            <div class="experience-content">
+              <span>07</span>
+              <h3>Feeling Disconnected or Overwhelmed?</h3>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-image">
+              <img
+                src="./assets/lowself.jpg"
+                alt="Low self confidence"
+              />
+            </div>
+
+            <div class="experience-content">
+              <span>08</span>
+              <h3>Struggling With Self-Confidence?</h3>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="gallery-section">
-      <div class="gallery-header" data-aos="fade-up">
-        <div>
-          <span class="gallery-label">MENTAL HEALTH CAMP</span>
-          <h2>Moments That <span>Matter</span></h2>
-          <p>
-            A glimpse into the conversations, connections, and moments shared at
-            our Mental Health Camp.
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="gallery-wrapper"
-        id="galleryWrapper"
-        data-aos="fade-up"
-        data-aos-delay="150"
-      >
-        <div class="gallery-track" id="galleryTrack">
-          <div class="gallery-item">
-            <img src="./assets/1.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/2.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/3.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/4.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/5.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/6.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/7.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/8.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/9.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/10.jpg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/11.png" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/12.jpeg" alt="Mental Health Camp" />
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/13.jpg" alt="Mental Health Camp" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="gallery-modal" id="galleryModal">
-      <div class="gallery-modal-content">
-        <button class="gallery-close" onclick="closeGallery()">
-          <i data-lucide="x"></i>
-        </button>
-        <div class="modal-gallery-grid">
-          <img src="./assets/1.jpg" alt="Mental Health Camp" />
-          <img src="./assets/2.jpg" alt="Mental Health Camp" />
-          <img src="./assets/3.jpg" alt="Mental Health Camp" />
-          <img src="./assets/4.jpg" alt="Mental Health Camp" />
-          <img src="./assets/5.jpg" alt="Mental Health Camp" />
-          <img src="./assets/6.jpg" alt="Mental Health Camp" />
-          <img src="./assets/7.jpg" alt="Mental Health Camp" />
-          <img src="./assets/8.jpg" alt="Mental Health Camp" />
-          <img src="./assets/9.jpg" alt="Mental Health Camp" />
-          <img src="./assets/10.jpg" alt="Mental Health Camp" />
-          <img src="./assets/11.png" alt="Mental Health Camp" />
-          <img src="./assets/12.jpeg" alt="Mental Health Camp" />
-          <img src="./assets/13.jpg" alt="Mental Health Camp" />
-        </div>
-      </div>
-    </div>
+    <!-- --------------how to register ------------------- -->
 
     <section class="mental-how-it-works">
       <div class="mental-how-title" data-aos="fade-up">HOW TO REGISTER</div>
@@ -1987,6 +2260,123 @@
         </button>
       </div>
     </section>
+
+    <!-- ------------------cards with buttons ------------------------------>
+
+    <section class="camp-section" aria-labelledby="camp-for-heading">
+      <div class="camp-head">
+        <span class="camp-eyebrow">Find your path</span>
+        <h2 id="camp-for-heading">Who Is This Camp For?</h2>
+        <p>
+          Three groups walk in through different doors, carrying different
+          weights.
+        </p>
+      </div>
+
+      <div class="camp-boxes">
+        <div class="camp-box" data-tone="c1">
+          <span class="box-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 21s-7-5.2-9.2-9.6C1.2 7.8 3.6 4 7.6 4c1.9 0 3.4 1 4.4 2.4C13 5 14.5 4 16.4 4c4 0 6.4 3.8 4.8 7.4C19 15.8 12 21 12 21z"
+              />
+            </svg>
+          </span>
+          <h3 class="box-heading">For Individuals</h3>
+          <p class="box-sub">For anyone carrying it quietly, on their own.</p>
+
+          <div class="sub-list">
+            <div class="sub-item">
+              <p class="sub-title">Stress &amp; anxiety</p>
+            </div>
+            <div class="sub-item">
+              <p class="sub-title">Emotional burnout</p>
+            </div>
+            <div class="sub-item">
+              <p class="sub-title">Sleep-related concerns</p>
+            </div>
+            <div class="sub-item"><p class="sub-title">Overthinking</p></div>
+            <div class="sub-item">
+              <p class="sub-title">Low confidence / motivation</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="camp-box" data-tone="c2">
+          <span class="box-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4z"
+              />
+              <path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7" />
+              <path d="M17.5 9.5a3 3 0 1 0 0-6" />
+            </svg>
+          </span>
+          <h3 class="box-heading">For Parents</h3>
+          <p class="box-sub">
+            For anyone trying to understand a child from the outside.
+          </p>
+
+          <div class="sub-list">
+            <div class="sub-item">
+              <p class="sub-title">Behavioural &amp; emotional changes</p>
+            </div>
+            <div class="sub-item">
+              <p class="sub-title">Supporting teenagers</p>
+            </div>
+            <div class="sub-item">
+              <p class="sub-title">Communication challenges</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="camp-box" data-tone="c3">
+          <span class="box-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 10 12 4 2 10l10 6 10-6z" />
+              <path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5" />
+            </svg>
+          </span>
+          <h3 class="box-heading">For Young Adults / Students</h3>
+          <p class="box-sub">
+            For anyone figuring out who they're becoming, under pressure.
+          </p>
+
+          <div class="sub-list">
+            <div class="sub-item">
+              <p class="sub-title">Academic pressure</p>
+            </div>
+            <div class="sub-item"><p class="sub-title">Career stress</p></div>
+            <div class="sub-item">
+              <p class="sub-title">Relationship concerns</p>
+            </div>
+            <div class="sub-item"><p class="sub-title">Social anxiety</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ------------------cards with buttons ------------------------------>
 
     <section class="mental-outcomes">
       <div class="mental-outcomes-header" data-aos="fade-up">
@@ -2057,7 +2447,154 @@
         </div>
       </div>
     </section>
+    <section class="gallery-section">
+      <!-- =========================
+       GALLERY HEADING
+  ========================== -->
 
+      <div class="gallery-header">
+        <span class="gallery-label">MENTAL HEALTH CAMP</span>
+
+        <h2>Moments That <span>Matter</span></h2>
+
+        <p>
+          A glimpse into the conversations, connections, and moments shared at
+          our Mental Health Camp.
+        </p>
+      </div>
+
+      <!-- =========================
+       GALLERY
+  ========================== -->
+
+      <div class="gallery-wrapper" id="galleryWrapper">
+        <div class="gallery-track" id="galleryTrack">
+          <!-- SET 1 -->
+
+          <div class="gallery-item">
+            <img src="./assets/1.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/2.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/3.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/4.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/5.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/6.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/7.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/8.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/9.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/10.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/11.png" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/12.jpeg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/13.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <!-- SET 2 -->
+
+          <div class="gallery-item">
+            <img src="./assets/1.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/2.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/3.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/4.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/5.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/6.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/7.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/8.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/9.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/10.jpg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/11.png" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/12.jpeg" alt="Mental Health Camp" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/13.jpg" alt="Mental Health Camp" />
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================
+       IMAGE LIGHTBOX
+  ========================== -->
+
+      <div class="gallery-lightbox" id="gallery-lightbox">
+        <button
+          class="gallery-lightbox-close"
+          id="gallery-lightbox-close"
+          aria-label="Close image"
+        >
+          <i data-lucide="x"></i>
+        </button>
+
+        <img id="gallery-lightbox-image" src="" alt="Mental Health Camp" />
+      </div>
+    </section>
     <section class="testimonials">
       <div class="section-head reveal" data-aos="fade-up">
         <div class="eyebrow">Stories</div>
@@ -2154,7 +2691,29 @@
           <div class="mhc-logo-circle">
             <img src="logo-2.png" alt="Mental Health Camp Logo" />
           </div>
-          <h2>THIS CAMP IS<br />FOR YOU IF...</h2>
+          <div class="camp-title-area">
+            <h2>THIS CAMP IS<br />FOR YOU IF...</h2>
+
+            <div class="camp-image-grid">
+              <img
+                src="./if-1.jpg"
+                alt="People talking together"
+                class="camp-img camp-img-1"
+              />
+
+              <img
+                src="./if-3.jpg"
+                alt="Person practicing mindfulness"
+                class="camp-img camp-img-2"
+              />
+
+              <img
+                src="./if-2.jpg"
+                alt="Journaling and self reflection"
+                class="camp-img camp-img-3"
+              />
+            </div>
+          </div>
         </div>
 
         <div class="mhc-for-you-list" data-aos="fade-up">
@@ -2220,6 +2779,27 @@
           Mental Health Is Not a Luxury.
           <span class="accent">It Is a Right.</span>
         </h2>
+        <div class="photo-layout">
+          <!-- Top small banner -->
+          <div class="photo-header">
+            <img src="./gdi-1.jpg" alt="Banner" />
+          </div>
+
+          <!-- Three images -->
+          <div class="photo-columns">
+            <div class="photo-box">
+              <img src="./assets/10.jpg" alt="Image 1" />
+            </div>
+
+            <div class="photo-box">
+              <img src="./assets/2.jpg" alt="Image 2" />
+            </div>
+
+            <div class="photo-box">
+              <img src="./assets/8.jpg" alt="Image 3" />
+            </div>
+          </div>
+        </div>
         <p class="motto-lead" data-aos="fade-up" data-aos-delay="120">
           Mental health is not a privilege reserved for those who can afford it.
           It is a fundamental part of being human — just as essential as
@@ -2268,97 +2848,98 @@
 
     <section class="healthcare-faq-section">
       <div class="healthcare-faq-inner">
-        <h2 class="healthcare-faq-title" data-aos="fade-up">
-          HONEST ANSWERS TO REAL QUESTIONS
-        </h2>
+        <div>
+          <h2 class="healthcare-faq-title" data-aos="fade-up">
+            HONEST ANSWERS TO REAL QUESTIONS
+          </h2>
 
-        <div class="healthcare-faq">
-          <div class="healthcare-faq-item" data-aos="fade-up">
-            <button class="healthcare-faq-question">
-              <span>What is the Mental Health Camp?</span>
-              <span class="healthcare-faq-icon"
-                ><i data-lucide="plus"></i
-              ></span>
-            </button>
-            <div class="healthcare-faq-answer">
-              The Mental Health Camp is a guided 4-hour experience designed to
-              help you understand your mental well-being, learn practical
-              strategies, ask questions, and take the right next step.
+          <div class="healthcare-faq">
+            <div class="healthcare-faq-item" data-aos="fade-up">
+              <button class="healthcare-faq-question">
+                <span>What is the Mental Health Camp?</span>
+                <span class="healthcare-faq-icon"
+                  ><i data-lucide="plus"></i
+                ></span>
+              </button>
+              <div class="healthcare-faq-answer">
+                The Mental Health Camp is a guided 4-hour experience designed to
+                help you understand your mental well-being, learn practical
+                strategies, ask questions, and take the right next step.
+              </div>
             </div>
-          </div>
 
-          <div class="healthcare-faq-item" data-aos="fade-up">
-            <button class="healthcare-faq-question">
-              <span>Who can attend the camp?</span>
-              <span class="healthcare-faq-icon"
-                ><i data-lucide="plus"></i
-              ></span>
-            </button>
-            <div class="healthcare-faq-answer">
-              Anyone who wants to learn more about mental health and improve
-              their emotional well-being can attend. You don't need to have a
-              diagnosed mental health condition to participate.
+            <div class="healthcare-faq-item" data-aos="fade-up">
+              <button class="healthcare-faq-question">
+                <span>Who can attend the camp?</span>
+                <span class="healthcare-faq-icon"
+                  ><i data-lucide="plus"></i
+                ></span>
+              </button>
+              <div class="healthcare-faq-answer">
+                Anyone who wants to learn more about mental health and improve
+                their emotional well-being can attend. You don't need to have a
+                diagnosed mental health condition to participate.
+              </div>
             </div>
-          </div>
 
-          <div class="healthcare-faq-item" data-aos="fade-up">
-            <button class="healthcare-faq-question">
-              <span>Where and when is the camp happening?</span>
-              <span class="healthcare-faq-icon"
-                ><i data-lucide="plus"></i
-              ></span>
-            </button>
-            <div class="healthcare-faq-answer">
-              The Mental Health Camp is an in-person event in Tiruppur, taking
-              place from September 4–6. Each camp session is approximately 4
-              hours.
+            <div class="healthcare-faq-item" data-aos="fade-up">
+              <button class="healthcare-faq-question">
+                <span>Where and when is the camp happening?</span>
+                <span class="healthcare-faq-icon"
+                  ><i data-lucide="plus"></i
+                ></span>
+              </button>
+              <div class="healthcare-faq-answer">
+                The Mental Health Camp is an in-person event in Tiruppur, taking
+                place from September 4–6. Each camp session is approximately 4
+                hours.
+              </div>
             </div>
-          </div>
 
-          <div class="healthcare-faq-item" data-aos="fade-up">
-            <button class="healthcare-faq-question">
-              <span>What will happen during the camp?</span>
-              <span class="healthcare-faq-icon"
-                ><i data-lucide="plus"></i
-              ></span>
-            </button>
-            <div class="healthcare-faq-answer">
-              You'll learn about mental health, participate in guided
-              conversations, explore practical ways to manage stress and
-              emotions, and have the opportunity to ask questions in a safe and
-              supportive environment.
+            <div class="healthcare-faq-item" data-aos="fade-up">
+              <button class="healthcare-faq-question">
+                <span>What will happen during the camp?</span>
+                <span class="healthcare-faq-icon"
+                  ><i data-lucide="plus"></i
+                ></span>
+              </button>
+              <div class="healthcare-faq-answer">
+                You'll learn about mental health, participate in guided
+                conversations, explore practical ways to manage stress and
+                emotions, and have the opportunity to ask questions in a safe
+                and supportive environment.
+              </div>
             </div>
-          </div>
 
-          <div class="healthcare-faq-item" data-aos="fade-up">
-            <button class="healthcare-faq-question">
-              <span>Do I need to register before attending?</span>
-              <span class="healthcare-faq-icon"
-                ><i data-lucide="plus"></i
-              ></span>
-            </button>
-            <div class="healthcare-faq-answer">
-              Yes. Registration is required to reserve your place at the camp.
-              Once you register, our team will contact you with the relevant
-              camp details and confirmation.
+            <div class="healthcare-faq-item" data-aos="fade-up">
+              <button class="healthcare-faq-question">
+                <span>Do I need to register before attending?</span>
+                <span class="healthcare-faq-icon"
+                  ><i data-lucide="plus"></i
+                ></span>
+              </button>
+              <div class="healthcare-faq-answer">
+                Yes. Registration is required to reserve your place at the camp.
+                Once you register, our team will contact you with the relevant
+                camp details and confirmation.
+              </div>
             </div>
-          </div>
 
-          <div class="healthcare-faq-item" data-aos="fade-up">
-            <button class="healthcare-faq-question">
-              <span>What will I take away from the camp?</span>
-              <span class="healthcare-faq-icon"
-                ><i data-lucide="plus"></i
-              ></span>
-            </button>
-            <div class="healthcare-faq-answer">
-              You'll leave with greater awareness of your mental well-being,
-              practical tools for managing everyday challenges, and a clearer
-              understanding of what your next step could be.
+            <div class="healthcare-faq-item" data-aos="fade-up">
+              <button class="healthcare-faq-question">
+                <span>What will I take away from the camp?</span>
+                <span class="healthcare-faq-icon"
+                  ><i data-lucide="plus"></i
+                ></span>
+              </button>
+              <div class="healthcare-faq-answer">
+                You'll leave with greater awareness of your mental well-being,
+                practical tools for managing everyday challenges, and a clearer
+                understanding of what your next step could be.
+              </div>
             </div>
           </div>
         </div>
-
         <div class="camp-motto-cta" data-aos="fade-up">
           <button
             type="button"
@@ -2423,42 +3004,98 @@
 
         <form id="register-form">
           <div>
-            <label for="reg-name">Full Name</label
-            ><input type="text" id="reg-name" name="name" required />
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" name="name" required />
           </div>
+
           <div>
-            <label for="reg-phone">Phone Number</label
-            ><input type="tel" id="reg-phone" name="phone" required />
+            <label for="reg-phone">Phone Number</label>
+            <input type="tel" id="reg-phone" name="phone" required />
           </div>
+
           <div>
-            <label for="reg-email">Email Address</label
-            ><input type="email" id="reg-email" name="email" required />
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" name="email" required />
           </div>
+
+          <!-- How did you hear about us? -->
           <div>
-            <label for="reg-type">I want to register for</label>
-            <select id="reg-type" name="registration_type">
-              <option value="Camp Only">The Camp Only</option>
-              <option value="Camp + Personal Appointment">
-                The Camp + a Personal Appointment
+            <label for="reg-source">How did you hear about us?</label>
+            <select id="reg-source" name="source" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Friend or Family Referral">
+                Friend / Family Referral
               </option>
-              <option value="Personal Appointment Only">
-                A Personal Appointment Only
+              <option value="Doctor Referral">
+                Doctor / Professional Referral
               </option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Other">Other</option>
             </select>
           </div>
+
+          <!-- Location -->
           <div>
-            <label for="reg-message"
-              >Anything you'd like us to know? (optional)</label
-            ><textarea id="reg-message" name="message"></textarea>
+            <label for="reg-location">Where are you located?</label>
+            <input
+              type="text"
+              id="reg-location"
+              name="location"
+              placeholder="City / Town"
+              required
+            />
           </div>
+
+          <!-- Reason -->
+          <div>
+            <label for="reg-reason">What is the main reason for joining?</label>
+            <select id="reg-reason" name="reason" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Mental Wellness">Mental Wellness</option>
+              <option value="Stress Management">Stress Management</option>
+              <option value="Anxiety">Anxiety / Worry</option>
+              <option value="Depression">Low Mood / Depression</option>
+              <option value="Personal Growth">Personal Growth</option>
+              <option value="Relationship Concerns">
+                Relationship Concerns
+              </option>
+              <option value="Work or Study Stress">Work / Study Stress</option>
+              <option value="Curious to Learn">Curious to Learn More</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Gender -->
+          <div>
+            <label for="reg-gender">Gender</label>
+            <select id="reg-gender" name="gender" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="reg-message">
+              Anything you'd like us to know? (optional)
+            </label>
+            <textarea id="reg-message" name="message"></textarea>
+          </div>
+
           <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
             Confirm Registration
           </button>
+
           <div class="modal-status" id="modal-status"></div>
         </form>
       </div>
     </div>
-
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
@@ -2639,6 +3276,320 @@
 
       const statsStrip = document.querySelector(".stats-strip");
       if (statsStrip) observer.observe(statsStrip);
+
+      // ===== Countdown counter =====
+      (function () {
+        // 16th August 2026, 9:00 AM IST -> update this if the event date changes
+        const targetDate = new Date("2026-09-04T09:00:00+05:30").getTime();
+
+        const daysEl = document.getElementById("cd-days");
+        const hoursEl = document.getElementById("cd-hours");
+        const minsEl = document.getElementById("cd-mins");
+        const secsEl = document.getElementById("cd-secs");
+
+        function updateCountdown() {
+          const now = Date.now();
+          let diff = targetDate - now;
+
+          if (diff <= 0) {
+            daysEl.textContent = "0";
+            hoursEl.textContent = "0";
+            minsEl.textContent = "0";
+            secsEl.textContent = "0";
+            clearInterval(timer);
+            return;
+          }
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const mins = Math.floor((diff / (1000 * 60)) % 60);
+          const secs = Math.floor((diff / 1000) % 60);
+
+          daysEl.textContent = days;
+          hoursEl.textContent = hours;
+          minsEl.textContent = mins;
+          secsEl.textContent = secs;
+        }
+
+        updateCountdown();
+        const timer = setInterval(updateCountdown, 1000);
+      })();
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const section = document.querySelector(".ehg-section");
+        const items = section.querySelectorAll(".ehg-word, .ehg-dot");
+
+        // stagger each item by 0.5s, in the order they appear in the DOM
+        items.forEach((el, i) => {
+          el.style.animationDelay = `${i * 0.5}s`;
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                section.classList.add("in-view");
+                observer.unobserve(section);
+              }
+            });
+          },
+          { threshold: 0.4 },
+        );
+
+        observer.observe(section);
+      });
+    </script>
+
+    <script>
+      /* =========================================================
+     GALLERY - AUTO SCROLL + DRAG + LIGHTBOX
+  ========================================================= */
+
+      const galleryWrapper = document.getElementById("galleryWrapper");
+      const galleryTrack = document.getElementById("galleryTrack");
+
+      /* =========================================================
+     SETTINGS
+  ========================================================= */
+
+      const GALLERY_SPEED = 40;
+      // Smaller number = faster
+      // Larger number = slower
+
+      /* =========================================================
+     VARIABLES
+  ========================================================= */
+
+      let galleryPosition = 0;
+      let isDragging = false;
+      let startX = 0;
+      let dragStartPosition = 0;
+      let hasMoved = false;
+      let lastTime = performance.now();
+      let oneSetWidth = 0;
+      let galleryHovered = false;
+
+      /* =========================================================
+     CALCULATE WIDTH OF ONE SET
+  ========================================================= */
+
+      function calculateGalleryWidth() {
+        const items = galleryTrack.querySelectorAll(".gallery-item");
+
+        /*
+      We have 26 items total.
+      First 13 = Set 1
+      Second 13 = Set 2
+    */
+
+        const firstItem = items[0];
+        if (!firstItem) return;
+
+        const itemStyle = window.getComputedStyle(galleryTrack);
+        const gap = parseFloat(itemStyle.gap) || 0;
+        const itemWidth = firstItem.getBoundingClientRect().width;
+
+        /*
+      13 images + 12 gaps between them + 1 gap connecting to the next set
+    */
+
+        oneSetWidth = itemWidth * 13 + gap * 13;
+      }
+
+      calculateGalleryWidth();
+      window.addEventListener("resize", calculateGalleryWidth);
+
+      /* =========================================================
+     KEEP POSITION INSIDE LOOP
+  ========================================================= */
+
+      function normalizeGalleryPosition() {
+        if (oneSetWidth <= 0) return;
+
+        /* Moving LEFT */
+        while (galleryPosition <= -oneSetWidth) {
+          galleryPosition += oneSetWidth;
+        }
+
+        /* Moving RIGHT */
+        while (galleryPosition > 0) {
+          galleryPosition -= oneSetWidth;
+        }
+      }
+
+      /* =========================================================
+     APPLY POSITION
+  ========================================================= */
+
+      function updateGalleryPosition() {
+        normalizeGalleryPosition();
+        galleryTrack.style.transform = `translate3d(${galleryPosition}px, 0, 0)`;
+      }
+
+      /* =========================================================
+     AUTO SCROLL (paused on hover or while dragging)
+  ========================================================= */
+
+      function galleryAnimation(time) {
+        const delta = time - lastTime;
+        lastTime = time;
+
+        if (!isDragging && !galleryHovered) {
+          galleryPosition -= delta / GALLERY_SPEED;
+          updateGalleryPosition();
+        }
+
+        requestAnimationFrame(galleryAnimation);
+      }
+
+      requestAnimationFrame(galleryAnimation);
+
+      /* =========================================================
+     PAUSE ON HOVER
+  ========================================================= */
+
+      galleryWrapper.addEventListener("mouseenter", () => {
+        galleryHovered = true;
+      });
+
+      galleryWrapper.addEventListener("mouseleave", () => {
+        galleryHovered = false;
+      });
+
+      /* =========================================================
+     MOUSE / TOUCH DRAG START
+  ========================================================= */
+
+      galleryWrapper.addEventListener("pointerdown", (e) => {
+        isDragging = true;
+        hasMoved = false;
+        startX = e.clientX;
+        dragStartPosition = galleryPosition;
+        galleryWrapper.classList.add("dragging");
+        galleryWrapper.setPointerCapture(e.pointerId);
+      });
+
+      /* =========================================================
+     DRAG MOVE
+  ========================================================= */
+
+      galleryWrapper.addEventListener("pointermove", (e) => {
+        if (!isDragging) return;
+
+        const movement = e.clientX - startX;
+
+        /* Detect actual dragging */
+        if (Math.abs(movement) > 5) {
+          hasMoved = true;
+        }
+
+        galleryPosition = dragStartPosition + movement;
+        updateGalleryPosition();
+      });
+
+      /* =========================================================
+     IMAGE LIGHTBOX (declared before pointerup uses them)
+  ========================================================= */
+
+      const galleryLightbox = document.getElementById("gallery-lightbox");
+      const galleryLightboxImage = document.getElementById(
+        "gallery-lightbox-image",
+      );
+      const galleryLightboxClose = document.getElementById(
+        "gallery-lightbox-close",
+      );
+
+      /* =========================================================
+     DRAG END (also handles tap-to-open here, since pointer
+     capture breaks the native click event's target)
+  ========================================================= */
+
+      galleryWrapper.addEventListener("pointerup", (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        galleryWrapper.classList.remove("dragging");
+
+        try {
+          galleryWrapper.releasePointerCapture(e.pointerId);
+        } catch (error) {}
+
+        /* If it wasn't a drag, treat it as a tap/click on an image */
+        if (!hasMoved) {
+          const realTarget = document.elementFromPoint(e.clientX, e.clientY);
+          const item = realTarget ? realTarget.closest(".gallery-item") : null;
+
+          if (item) {
+            const image = item.querySelector("img");
+            if (image) {
+              galleryLightboxImage.src = image.src;
+              galleryLightboxImage.alt = image.alt || "Mental Health Camp";
+              galleryLightbox.classList.add("open");
+              document.body.style.overflow = "hidden";
+            }
+          }
+        }
+
+        hasMoved = false;
+      });
+
+      /* =========================================================
+     DRAG CANCEL
+  ========================================================= */
+
+      galleryWrapper.addEventListener("pointercancel", () => {
+        isDragging = false;
+        galleryWrapper.classList.remove("dragging");
+      });
+
+      /* CLOSE LIGHTBOX */
+      function closeGalleryLightbox() {
+        galleryLightbox.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      galleryLightboxClose.addEventListener("click", closeGalleryLightbox);
+
+      /* CLICK BLACK BACKGROUND */
+      galleryLightbox.addEventListener("click", (e) => {
+        if (e.target === galleryLightbox) {
+          closeGalleryLightbox();
+        }
+      });
+
+      /* ESC */
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeGalleryLightbox();
+        }
+      });
+    </script>
+
+    <script>
+      (function () {
+        var boxes = document.querySelectorAll(".camp-box");
+        if ("IntersectionObserver" in window) {
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+          );
+          boxes.forEach(function (b) {
+            observer.observe(b);
+          });
+        } else {
+          boxes.forEach(function (b) {
+            b.classList.add("is-visible");
+          });
+        }
+      })();
     </script>
   </body>
 </html>
