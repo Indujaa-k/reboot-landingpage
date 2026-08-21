@@ -3,49 +3,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 20% 20%, #16202c 0%, #0b1117 55%, #070a0d 100%);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f7f7f5;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   padding: 24px;
 }
 
 .login-panel {
   width: 100%;
   max-width: 380px;
-  background: #101820;
-  border: 1px solid #1f2b38;
-  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #ececea;
+  border-top: 4px solid #ffc107;
+  border-radius: 12px;
   padding: 40px 36px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 20px 60px rgba(31, 30, 27, 0.08);
 }
 
 .login-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 32px;
 }
 
-.login-brand-mark {
-  color: #4dd6c7;
-  font-size: 18px;
+.login-logo {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 
 .login-brand-name {
-  color: #6b7d8f;
+  color: #8a8880;
   font-size: 12px;
   letter-spacing: 3px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .login-title {
-  color: #f2f5f7;
+  color: #1f1e1b;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 0 6px 0;
 }
 
 .login-subtitle {
-  color: #7d8b98;
+  color: #8a8880;
   font-size: 13px;
   line-height: 1.5;
   margin: 0 0 28px 0;
@@ -57,18 +64,18 @@
 }
 
 .login-label {
-  color: #9fb0bd;
+  color: #4a4944;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 6px;
   letter-spacing: 0.3px;
 }
 
 .login-form input {
-  background: #0b1218;
-  border: 1px solid #24313e;
+  background: #fbfaf7;
+  border: 1px solid #e2e0d8;
   border-radius: 6px;
-  color: #f2f5f7;
+  color: #1f1e1b;
   font-size: 14px;
   padding: 11px 12px;
   margin-bottom: 18px;
@@ -78,17 +85,17 @@
 }
 
 .login-form input:focus {
-  border-color: #4dd6c7;
+  border-color: #ffc107;
 }
 
 .login-form input::placeholder {
-  color: #4a5966;
+  color: #b3b1a8;
 }
 
 .login-error {
-  background: rgba(224, 96, 96, 0.1);
-  border: 1px solid rgba(224, 96, 96, 0.35);
-  color: #e08686;
+  background: rgba(214, 69, 69, 0.08);
+  border: 1px solid rgba(214, 69, 69, 0.3);
+  color: #b23a3a;
   font-size: 13px;
   padding: 9px 12px;
   border-radius: 6px;
@@ -96,15 +103,17 @@
 }
 
 .login-button {
-  background: #4dd6c7;
-  color: #06110f;
+  background: #ffc107;
+  color: #1f1e1b;
   border: none;
   border-radius: 6px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 12px;
   cursor: pointer;
-  transition: opacity 0.15s ease, transform 0.1s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.1s ease;
 }
 
 .login-button:hover:not(:disabled) {

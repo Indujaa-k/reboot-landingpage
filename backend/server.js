@@ -1,15 +1,15 @@
-const path = require('path');
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const connectDB = require('./config/db');
-const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+const path = require("path");
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const connectDB = require("./config/db");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
-const authRoutes = require('./route/authRoutes');
-const userRoutes = require('./route/userRoutes');
+const authRoutes = require("./route/authRoutes");
+const userRoutes = require("./route/userRoutes");
 const paymentRoutes = require("./route/paymentRoutes");
 const registrationRoutes = require("./route/registrationRoutes");
-
+const AdminregistrationRoutes = require("./route/adminRegistration");
 connectDB();
 
 const app = express();
@@ -24,7 +24,7 @@ app.use(
   cors({
     origin: allowedOrigins,
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -32,13 +32,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/registrations", registrationRoutes);
-
-app.get('/', (req, res) => {
-  res.send('API is running...');
+app.use("/api/adminregistrations", AdminregistrationRoutes);
+app.get("/", (req, res) => {
+  res.send("API is running...");
 });
 
 // Error handling middleware (must be last)
