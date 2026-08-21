@@ -3003,7 +3003,7 @@
           like, request a personal appointment. We'll email your confirmation.
         </div>
 
-        <form id="register-form">
+     <form id="register-form">
   <div>
     <label for="reg-name">Full Name</label>
     <input type="text" id="reg-name" name="name" required />
@@ -3012,6 +3012,11 @@
   <div>
     <label for="reg-phone">Phone Number</label>
     <input type="tel" id="reg-phone" name="phone" required />
+  </div>
+
+  <div>
+    <label for="reg-email">Email Address</label>
+    <input type="email" id="reg-email" name="email" required />
   </div>
 
   <div>
@@ -3029,16 +3034,12 @@
     </select>
   </div>
 
-  <div>
-    <label for="reg-time">Preferred Time</label>
-    <select id="reg-time" name="preferredTime" required>
-      <option value="" disabled selected>Select a slot</option>
-      <option value="10:00 AM - 12:00 PM">10:00 AM – 12:00 PM</option>
-      <option value="12:00 PM - 2:00 PM">12:00 PM – 2:00 PM</option>
-      <option value="2:00 PM - 4:00 PM">2:00 PM – 4:00 PM</option>
-      <option value="4:00 PM - 6:00 PM">4:00 PM – 6:00 PM</option>
-    </select>
-  </div>
+ <div>
+  <label for="reg-time">Preferred Time</label>
+  <select id="reg-time" name="preferredTime" required>
+    <option value="" disabled selected>Select a date first</option>
+  </select>
+</div>
 
   <div>
     <label for="reg-source">How did you hear about us?</label>
@@ -3072,7 +3073,7 @@
   </div>
 
   <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
-    Pay ₹499 & Register
+    Pay ₹699 & Register
   </button>
 
   <div class="modal-status" id="modal-status"></div>

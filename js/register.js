@@ -8,14 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.getElementById("register-form");
   const modalSubmitBtn = document.getElementById("modal-submit-btn");
   const modalStatus = document.getElementById("modal-status");
+  const dateSelect = document.getElementById("reg-date");
+  const timeSelect = document.getElementById("reg-time");
 
-  // Check if elements exist before proceeding
-  if (!registerForm || !modalSubmitBtn || !modalStatus) {
+  if (!registerForm || !modalSubmitBtn || !modalStatus || !dateSelect || !timeSelect) {
     console.warn("Registration form elements not found");
     return;
   }
 
-  const API_BASE = "http://localhost:3004"; // set to your API origin if different, e.g. "https://api.rebootmentalhealth.in"
+  const API_BASE = "http://localhost:3004"; // set to your API origin if different
 
   function setStatus(message, type) {
     modalStatus.textContent = message;
@@ -28,6 +29,52 @@ document.addEventListener("DOMContentLoaded", () => {
     modalSubmitBtn.textContent = label;
   }
 
+  /* -----------------------------------------------------------------------
+     SLOT AVAILABILITY
+     Whenever the date changes, fetch seat counts for that date and
+     rebuild the time dropdown — full slots are shown but disabled.
+  ----------------------------------------------------------------------- */
+  async function loadSlotsForDate(date) {
+    timeSelect.innerHTML = '<option value="" disabled selected>Loading slots...</option>';
+    timeSelect.disabled = true;
+
+    try {
+      const res = await fetch(`${API_BASE}/api/registrations/availability?date=${encodeURIComponent(date)}`);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Could not load slots.");
+
+      timeSelect.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      placeholder.textContent = "Select a slot";
+      timeSelect.appendChild(placeholder);
+
+      data.slots.forEach((slot) => {
+        const opt = document.createElement("option");
+        opt.value = slot.time;
+        opt.textContent = slot.full
+          ? `${slot.time} — Full`
+          : `${slot.time} (${slot.available} seat${slot.available === 1 ? "" : "s"} left)`;
+        opt.disabled = slot.full;
+        timeSelect.appendChild(opt);
+      });
+
+      timeSelect.disabled = false;
+    } catch (err) {
+      timeSelect.innerHTML = '<option value="" disabled selected>Could not load slots — try again</option>';
+      console.error("Slot availability fetch failed:", err);
+    }
+  }
+
+  dateSelect.addEventListener("change", () => {
+    if (dateSelect.value) loadSlotsForDate(dateSelect.value);
+  });
+
+  /* -----------------------------------------------------------------------
+     SUBMIT
+  ----------------------------------------------------------------------- */
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     modalStatus.classList.remove("show", "success", "error");
@@ -35,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = {
       name: document.getElementById("reg-name").value.trim(),
       phone: document.getElementById("reg-phone").value.trim(),
+      email: document.getElementById("reg-email").value.trim(),
       age: Number(document.getElementById("reg-age").value),
       preferredDate: document.getElementById("reg-date").value,
       preferredTime: document.getElementById("reg-time").value,
@@ -42,8 +90,16 @@ document.addEventListener("DOMContentLoaded", () => {
       reason: document.getElementById("reg-reason").value,
     };
 
-    // Basic validation
-    if (!formData.name || !formData.phone || !formData.age || !formData.preferredDate || !formData.preferredTime) {
+    if (
+      !formData.name ||
+      !formData.phone ||
+      !formData.email ||
+      !formData.age ||
+      !formData.preferredDate ||
+      !formData.preferredTime ||
+      !formData.source ||
+      !formData.reason
+    ) {
       setStatus("Please fill in all required fields.", "error");
       return;
     }
@@ -62,6 +118,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const order = await orderRes.json();
 
+      // Slot filled up between selection and submit (server-side check).
+      if (orderRes.status === 409) {
+        setLoading(false, "Pay ₹499 & Register");
+        setStatus(order.error || "That slot just filled up. Please pick another.", "error");
+        loadSlotsForDate(formData.preferredDate); // refresh dropdown so it reflects reality
+        return;
+      }
+
       if (!orderRes.ok) throw new Error(order.error || "Could not start payment.");
 
       setLoading(false, "Pay ₹499 & Register");
@@ -76,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         prefill: {
           name: formData.name,
           contact: formData.phone,
+          email: formData.email,
         },
         theme: { color: "#ffc107" },
         handler: async (response) => {
@@ -131,11 +196,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!regRes.ok) throw new Error(regData.error || "Payment succeeded but registration failed to save.");
 
-      setStatus(
-        `Registration confirmed! Reference: ${regData.referenceNumber}. We'll email/WhatsApp your camp details.`,
-        "success"
-      );
       registerForm.reset();
+      timeSelect.innerHTML = '<option value="" disabled selected>Select a date first</option>';
+
+      const successParams = new URLSearchParams({
+        ref: regData.referenceNumber,
+        name: formData.name,
+        date: formData.preferredDate,
+        time: formData.preferredTime,
+      });
+      window.location.href = `success.html?${successParams.toString()}`;
+      return;
     } catch (err) {
       setStatus(err.message, "error");
     } finally {
