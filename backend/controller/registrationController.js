@@ -5,8 +5,8 @@
    succeeds, with the form data + Razorpay payment/order IDs.
    ========================================================================= */
 
-const Registration = require("../models/Registration");
-const { CAMP_FEE_RUPEES } = require("./payment.controller");
+const Registration = require("../model/Registration");
+const { CAMP_FEE_RUPEES } = require("./paymentController");
 
 function generateReferenceNumber() {
   const stamp = Date.now().toString(36).toUpperCase();
