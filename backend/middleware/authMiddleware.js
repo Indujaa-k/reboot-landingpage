@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const Admin = require('../models/adminModel');
+const Admin = require('../model/adminModel');
 
 // Protects routes - verifies JWT sent in Authorization header (Bearer token)
 const protect = async (req, res, next) => {

@@ -5,10 +5,10 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
-const paymentRoutes = require("./routes/payment.routes");
-const registrationRoutes = require("./routes/registration.routes");
+const authRoutes = require('./route/authRoutes');
+const userRoutes = require('./route/userRoutes');
+const paymentRoutes = require("./route/payment.routes");
+const registrationRoutes = require("./route/registration.routes");
 
 connectDB();
 
