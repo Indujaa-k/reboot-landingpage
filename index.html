@@ -14,7 +14,6 @@
     />
 
     <link rel="stylesheet" href="index.css" />
-  
 
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
@@ -789,9 +788,6 @@
       }
 
       @media (max-width: 1000px) {
-        .mental-outcomes {
-          padding: 65px 5% 60px;
-        }
         .mental-outcomes-header {
           margin-bottom: 45px;
         }
@@ -814,9 +810,6 @@
       }
 
       @media (max-width: 650px) {
-        .mental-outcomes {
-          padding: 55px 20px 50px;
-        }
         .mental-outcomes-header {
           margin-bottom: 35px;
         }
@@ -828,11 +821,7 @@
           margin-top: 14px;
           font-size: 15px;
         }
-        .mental-outcomes-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 10px;
-        }
+
         .mental-outcome-card:nth-child(1),
         .mental-outcome-card:nth-child(2),
         .mental-outcome-card:nth-child(3),
@@ -848,9 +837,7 @@
           border-radius: 10px;
         }
         .mental-outcome-label {
-          min-width: auto;
-          padding: 8px 14px;
-          font-size: 12.5px;
+          display: none;
         }
         .mental-outcome-label svg {
           width: 16px;
@@ -1983,7 +1970,9 @@
               </div>
             </div>
             <div class="section1-long-button">
-              <button>Take the First Step – Register Now</button>
+              <button type="button" onclick="openRegisterModal()">
+                Take the First Step – Register Now
+              </button>
             </div>
             <div class="bulletpoints">
               <div class="bulletpoints-1">
@@ -2172,24 +2161,20 @@
             />
           </div>
 
-            <div class="experience-content">
-              <span>07</span>
-              <h3>Feeling Disconnected or Overwhelmed?</h3>
-            </div>
+          <div class="experience-content">
+            <span>07</span>
+            <h3>Feeling Disconnected or Overwhelmed?</h3>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-image">
+            <img src="./assets/lowself.jpg" alt="Low self confidence" />
           </div>
 
-          <div class="experience-card">
-            <div class="experience-image">
-              <img
-                src="./assets/lowself.jpg"
-                alt="Low self confidence"
-              />
-            </div>
-
-            <div class="experience-content">
-              <span>08</span>
-              <h3>Struggling With Self-Confidence?</h3>
-            </div>
+          <div class="experience-content">
+            <span>08</span>
+            <h3>Struggling With Self-Confidence?</h3>
           </div>
         </div>
       </div>
@@ -2266,7 +2251,9 @@
     <section class="camp-section" aria-labelledby="camp-for-heading">
       <div class="camp-head">
         <span class="camp-eyebrow">Find your path</span>
+
         <h2 id="camp-for-heading">Who Is This Camp For?</h2>
+
         <p>
           Three groups walk in through different doors, carrying different
           weights.
@@ -2274,6 +2261,7 @@
       </div>
 
       <div class="camp-boxes">
+        <!-- FOR INDIVIDUALS -->
         <div class="camp-box" data-tone="c1">
           <span class="box-icon" aria-hidden="true">
             <svg
@@ -2289,26 +2277,33 @@
               />
             </svg>
           </span>
+
           <h3 class="box-heading">For Individuals</h3>
-          <p class="box-sub">For anyone carrying it quietly, on their own.</p>
+
+          <p class="box-sub">
+            For anyone carrying it quietly, on their own, every day.
+          </p>
 
           <div class="sub-list">
             <div class="sub-item">
               <p class="sub-title">Stress &amp; anxiety</p>
             </div>
+
             <div class="sub-item">
               <p class="sub-title">Emotional burnout</p>
             </div>
+
             <div class="sub-item">
               <p class="sub-title">Sleep-related concerns</p>
             </div>
-            <div class="sub-item"><p class="sub-title">Overthinking</p></div>
+
             <div class="sub-item">
-              <p class="sub-title">Low confidence / motivation</p>
+              <p class="sub-title">Overthinking</p>
             </div>
           </div>
         </div>
 
+        <!-- FOR PARENTS -->
         <div class="camp-box" data-tone="c2">
           <span class="box-icon" aria-hidden="true">
             <svg
@@ -2326,7 +2321,9 @@
               <path d="M17.5 9.5a3 3 0 1 0 0-6" />
             </svg>
           </span>
+
           <h3 class="box-heading">For Parents</h3>
+
           <p class="box-sub">
             For anyone trying to understand a child from the outside.
           </p>
@@ -2335,15 +2332,22 @@
             <div class="sub-item">
               <p class="sub-title">Behavioural &amp; emotional changes</p>
             </div>
+
             <div class="sub-item">
               <p class="sub-title">Supporting teenagers</p>
             </div>
+
             <div class="sub-item">
               <p class="sub-title">Communication challenges</p>
+            </div>
+
+            <div class="sub-item">
+              <p class="sub-title">Parent-child concerns</p>
             </div>
           </div>
         </div>
 
+        <!-- FOR YOUNG ADULTS / STUDENTS -->
         <div class="camp-box" data-tone="c3">
           <span class="box-icon" aria-hidden="true">
             <svg
@@ -2358,7 +2362,9 @@
               <path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5" />
             </svg>
           </span>
+
           <h3 class="box-heading">For Young Adults / Students</h3>
+
           <p class="box-sub">
             For anyone figuring out who they're becoming, under pressure.
           </p>
@@ -2367,11 +2373,18 @@
             <div class="sub-item">
               <p class="sub-title">Academic pressure</p>
             </div>
-            <div class="sub-item"><p class="sub-title">Career stress</p></div>
+
+            <div class="sub-item">
+              <p class="sub-title">Career stress</p>
+            </div>
+
             <div class="sub-item">
               <p class="sub-title">Relationship concerns</p>
             </div>
-            <div class="sub-item"><p class="sub-title">Social anxiety</p></div>
+
+            <div class="sub-item">
+              <p class="sub-title">Social anxiety</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2390,59 +2403,55 @@
       <div class="mental-outcomes-grid">
         <div class="mental-outcome-card" data-aos="fade-up" data-aos-delay="0">
           <div class="mental-outcome-label">
-            <i data-lucide="brain"></i><span>OUTCOME 1</span>
+            <i data-lucide="brain"></i>
+            <span>OUTCOME 1</span>
           </div>
-          <p>
-            A clearer understanding of your thoughts, emotions, and mental
-            well-being.
-          </p>
+          <p>Better understanding of your thoughts.</p>
         </div>
+
         <div class="mental-outcome-card" data-aos="fade-up" data-aos-delay="80">
           <div class="mental-outcome-label">
-            <i data-lucide="sparkles"></i><span>OUTCOME 2</span>
+            <i data-lucide="sparkles"></i>
+            <span>OUTCOME 2</span>
           </div>
-          <p>
-            Greater awareness of your emotional patterns and the factors
-            affecting you.
-          </p>
+          <p>Greater awareness of your emotional.</p>
         </div>
+
         <div
           class="mental-outcome-card"
           data-aos="fade-up"
           data-aos-delay="160"
         >
           <div class="mental-outcome-label">
-            <i data-lucide="shield-check"></i><span>OUTCOME 3</span>
+            <i data-lucide="shield-check"></i>
+            <span>OUTCOME 3</span>
           </div>
-          <p>
-            Practical ways to handle stress, emotional pressure, and everyday
-            challenges.
-          </p>
+          <p>Practical ways to manage stress and daily challenges.</p>
         </div>
+
         <div
           class="mental-outcome-card"
           data-aos="fade-up"
           data-aos-delay="240"
         >
           <div class="mental-outcome-label">
-            <i data-lucide="message-circle"></i><span>OUTCOME 4</span>
+            <i data-lucide="message-circle"></i>
+            <span>OUTCOME 4</span>
           </div>
-          <p>
-            More confidence to talk about your mental health and ask for support
-            when needed.
-          </p>
+          <p>More confidence to discuss your mental health and seek support.</p>
         </div>
+
         <div
           class="mental-outcome-card"
           data-aos="fade-up"
           data-aos-delay="320"
         >
           <div class="mental-outcome-label">
-            <i data-lucide="compass"></i><span>OUTCOME 5</span>
+            <i data-lucide="compass"></i>
+            <span>OUTCOME 5</span>
           </div>
           <p>
-            A clearer sense of what to do next and when professional support may
-            be helpful.
+            Clearer next steps and knowing when professional support may help.
           </p>
         </div>
       </div>
@@ -2772,70 +2781,67 @@
         >
       </div>
     </section>
-
     <section class="camp-motto-section">
       <div class="camp-motto-inner">
         <div class="eyebrow" data-aos="fade-up">Mental Health Camp Motto</div>
+
         <h2 data-aos="fade-up" data-aos-delay="80">
           Mental Health Is Not a Luxury.
           <span class="accent">It Is a Right.</span>
         </h2>
+
         <div class="photo-layout">
-          <!-- Top small banner -->
           <div class="photo-header">
-            <img src="./gdi-1.jpg" alt="Banner" />
+            <img src="./gdi-1.jpg" alt="Mental Health Camp" />
           </div>
 
-          <!-- Three images -->
           <div class="photo-columns">
             <div class="photo-box">
-              <img src="./assets/10.jpg" alt="Image 1" />
+              <img src="./assets/10.jpg" alt="Mental Health Camp" />
             </div>
 
             <div class="photo-box">
-              <img src="./assets/2.jpg" alt="Image 2" />
+              <img src="./assets/2.jpg" alt="Mental Health Camp" />
             </div>
 
             <div class="photo-box">
-              <img src="./assets/8.jpg" alt="Image 3" />
+              <img src="./assets/8.jpg" alt="Mental Health Camp" />
             </div>
           </div>
         </div>
+
         <p class="motto-lead" data-aos="fade-up" data-aos-delay="120">
-          Mental health is not a privilege reserved for those who can afford it.
-          It is a fundamental part of being human — just as essential as
-          physical health. Yet, stigma, misconceptions, and the belief that
-          mental health care is "too expensive" continue to keep people from
-          seeking the support they deserve.
+          Mental health is an essential part of a healthy life. Yet stigma,
+          misconceptions, and cost often prevent people from seeking help.
         </p>
+
         <p data-aos="fade-up" data-aos-delay="160">
-          Through this Mental Health Camp, Reboot Mental Health Center takes a
-          step towards changing that narrative.
+          Through this camp, Reboot Mental Health Center aims to make
+          professional mental health care more accessible and approachable.
         </p>
+
         <p data-aos="fade-up" data-aos-delay="200">
-          We believe that seeking help is not a sign of weakness. It is an act
-          of courage, awareness, and self-care. Every person deserves access to
-          professional, compassionate, and quality mental health care,
+          Seeking help is not weakness. It is an act of courage, awareness, and
+          self-care. Everyone deserves compassionate and quality care,
           regardless of their background or financial status.
         </p>
+
         <p data-aos="fade-up" data-aos-delay="240">
-          This camp is more than an initiative — it is a statement of what
-          mental health care in Tiruppur can and should be.
+          Together, we can make mental health care in Tiruppur more accessible,
+          affordable, and free from stigma.
         </p>
+
         <p data-aos="fade-up" data-aos-delay="280">
-          Reboot Mental Health Center is committed to setting a new standard for
-          accessible mental health care in Tiruppur — where seeking help is
-          normal, care is affordable, and no one is left behind.
+          Because mental health is not a luxury. It is a right — and a
+          foundation for a healthier, stronger, and more meaningful life.
         </p>
-        <p data-aos="fade-up" data-aos-delay="320">
-          Because mental health is not a luxury. It is the first step towards a
-          healthier, stronger, and more meaningful life.
-        </p>
-        <div class="camp-motto-signoff" data-aos="fade-up" data-aos-delay="360">
+
+        <div class="camp-motto-signoff" data-aos="fade-up" data-aos-delay="320">
           REBOOT MENTAL HEALTH CENTER — BREAKING THE STIGMA. MAKING MENTAL
-          HEALTH ACCESSIBLE. BUILDING A HEALTHIER TIRUPPUR.
+          HEALTH ACCESSIBLE.
         </div>
-        <div class="camp-motto-cta" data-aos="zoom-in" data-aos-delay="400">
+
+        <div class="camp-motto-cta" data-aos="zoom-in" data-aos-delay="360">
           <button
             type="button"
             class="mental-how-cta-btn pulse-cta"
@@ -3003,85 +3009,91 @@
           like, request a personal appointment. We'll email your confirmation.
         </div>
 
-     <form id="register-form">
-  <div>
-    <label for="reg-name">Full Name</label>
-    <input type="text" id="reg-name" name="name" required />
-  </div>
+        <form id="register-form">
+          <div>
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" name="name" required />
+          </div>
 
-  <div>
-    <label for="reg-phone">Phone Number</label>
-    <input type="tel" id="reg-phone" name="phone" required />
-  </div>
+          <div>
+            <label for="reg-phone">Phone Number</label>
+            <input type="tel" id="reg-phone" name="phone" required />
+          </div>
 
-  <div>
-    <label for="reg-email">Email Address</label>
-    <input type="email" id="reg-email" name="email" required />
-  </div>
+          <div>
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" name="email" required />
+          </div>
 
-  <div>
-    <label for="reg-age">Age</label>
-    <input type="number" id="reg-age" name="age" min="1" required />
-  </div>
+          <div>
+            <label for="reg-age">Age</label>
+            <input type="number" id="reg-age" name="age" min="1" required />
+          </div>
 
-  <div>
-    <label for="reg-date">Preferred Camp Date</label>
-    <select id="reg-date" name="preferredDate" required>
-      <option value="" disabled selected>Select a date</option>
-      <option value="2026-09-04">4th Sept 2026</option>
-      <option value="2026-09-05">5th Sept 2026</option>
-      <option value="2026-09-06">6th Sept 2026</option>
-    </select>
-  </div>
+          <div>
+            <label for="reg-date">Preferred Camp Date</label>
+            <select id="reg-date" name="preferredDate" required>
+              <option value="" disabled selected>Select a date</option>
+              <option value="2026-09-04">4th Sept 2026</option>
+              <option value="2026-09-05">5th Sept 2026</option>
+              <option value="2026-09-06">6th Sept 2026</option>
+            </select>
+          </div>
 
- <div>
-  <label for="reg-time">Preferred Time</label>
-  <select id="reg-time" name="preferredTime" required>
-    <option value="" disabled selected>Select a date first</option>
-  </select>
-</div>
+          <div>
+            <label for="reg-time">Preferred Time</label>
+            <select id="reg-time" name="preferredTime" required>
+              <option value="" disabled selected>Select a date first</option>
+            </select>
+          </div>
 
-  <div>
-    <label for="reg-source">How did you hear about us?</label>
-    <select id="reg-source" name="source" required>
-      <option value="" disabled selected>Select an option</option>
-      <option value="Instagram">Instagram</option>
-      <option value="Facebook">Facebook</option>
-      <option value="YouTube">YouTube</option>
-      <option value="Google Search">Google Search</option>
-      <option value="Friend or Family Referral">Friend / Family Referral</option>
-      <option value="Doctor Referral">Doctor / Professional Referral</option>
-      <option value="WhatsApp">WhatsApp</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
+          <div>
+            <label for="reg-source">How did you hear about us?</label>
+            <select id="reg-source" name="source" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Friend or Family Referral">
+                Friend / Family Referral
+              </option>
+              <option value="Doctor Referral">
+                Doctor / Professional Referral
+              </option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-  <div>
-    <label for="reg-reason">What is the main reason for joining?</label>
-    <select id="reg-reason" name="reason" required>
-      <option value="" disabled selected>Select an option</option>
-      <option value="Mental Wellness">Mental Wellness</option>
-      <option value="Stress Management">Stress Management</option>
-      <option value="Anxiety">Anxiety / Worry</option>
-      <option value="Depression">Low Mood / Depression</option>
-      <option value="Personal Growth">Personal Growth</option>
-      <option value="Relationship Concerns">Relationship Concerns</option>
-      <option value="Work or Study Stress">Work / Study Stress</option>
-      <option value="Curious to Learn">Curious to Learn More</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
+          <div>
+            <label for="reg-reason">What is the main reason for joining?</label>
+            <select id="reg-reason" name="reason" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Mental Wellness">Mental Wellness</option>
+              <option value="Stress Management">Stress Management</option>
+              <option value="Anxiety">Anxiety / Worry</option>
+              <option value="Depression">Low Mood / Depression</option>
+              <option value="Personal Growth">Personal Growth</option>
+              <option value="Relationship Concerns">
+                Relationship Concerns
+              </option>
+              <option value="Work or Study Stress">Work / Study Stress</option>
+              <option value="Curious to Learn">Curious to Learn More</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-  <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
-    Pay ₹699 & Register
-  </button>
+          <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
+            Pay ₹699 & Register
+          </button>
 
-  <div class="modal-status" id="modal-status"></div>
-</form>
+          <div class="modal-status" id="modal-status"></div>
+        </form>
       </div>
     </div>
-    
-     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script>
@@ -3478,4 +3490,3 @@
     <script src="js/register.js"></script>
   </body>
 </html>
-
