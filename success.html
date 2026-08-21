@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registration Confirmed — Reboot Mental Health Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500&display=swap"
+  rel="stylesheet"
+/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff4d9;
+    font-family: "Inter", sans-serif;
+    color: #111111;
+    padding: 24px;
+  }
+  .confirm-card {
+    width: 100%;
+    max-width: 520px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 44px 36px 38px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .confirm-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    background: #ffc107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .confirm-icon svg { width: 36px; height: 36px; stroke-width: 2.5; color: #111111; }
+  .confirm-card h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin: 0 0 10px;
+  }
+  .confirm-card p.sub {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 26px;
+  }
+  .confirm-ref {
+    background: #fff4d9;
+    border: 1px solid #ffe6a3;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 26px;
+  }
+  .confirm-ref span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #777; margin-bottom: 4px; }
+  .confirm-ref b { font-size: 18px; letter-spacing: 0.02em; }
+  .confirm-details {
+    text-align: left;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-bottom: 28px;
+  }
+  .confirm-details div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .confirm-details div span:first-child { color: #777; }
+  .confirm-details div span:last-child { font-weight: 600; text-align: right; }
+  .confirm-note {
+    font-size: 13.5px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 26px;
+  }
+  .confirm-back {
+    display: inline-block;
+    padding: 13px 28px;
+    background: #0d0d0d;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="confirm-card" id="confirm-card">
+    <div class="confirm-icon"><i data-lucide="check"></i></div>
+    <h1>You're Registered!</h1>
+    <p class="sub">
+      Thank you for taking the first step. We've received your payment and
+      reserved your seat at the Mental Health Camp. A confirmation email is
+      on its way to you.
+    </p>
+
+    <div class="confirm-ref">
+      <span>Reference Number</span>
+      <b id="ref-number">—</b>
+    </div>
+
+    <div class="confirm-details" id="confirm-details"></div>
+
+    <p class="confirm-note">
+      No judgment. No pressure. If anything changes, just reply to the
+      confirmation email or reach out to us directly — we'll take care of
+      the rest.
+    </p>
+
+    <a class="confirm-back" href="index.html">Back to Home</a>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
+    const name = params.get("name");
+    const date = params.get("date");
+    const time = params.get("time");
+
+    if (!ref) {
+      // Someone landed here directly without a completed registration.
+      document.getElementById("confirm-card").innerHTML =
+        '<div class="confirm-icon"><i data-lucide="info"></i></div>' +
+        "<h1>No Registration Found</h1>" +
+        '<p class="sub">We couldn\'t find a completed registration for this page. Please register from the homepage.</p>' +
+        '<a class="confirm-back" href="index.html">Back to Home</a>';
+      lucide.createIcons();
+    } else {
+      document.getElementById("ref-number").textContent = ref;
+
+      const rows = [];
+      if (name) rows.push(["Name", name]);
+      if (date) rows.push(["Camp Date", date]);
+      if (time) rows.push(["Preferred Time", time]);
+
+      document.getElementById("confirm-details").innerHTML = rows
+        .map(
+          ([label, value]) =>
+            `<div><span>${label}</span><span>${value}</span></div>`
+        )
+        .join("");
+    }
+  </script>
+</body>
+</html>
