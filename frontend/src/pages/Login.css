@@ -1,0 +1,121 @@
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 20% 20%, #16202c 0%, #0b1117 55%, #070a0d 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 24px;
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 380px;
+  background: #101820;
+  border: 1px solid #1f2b38;
+  border-radius: 10px;
+  padding: 40px 36px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.login-brand-mark {
+  color: #4dd6c7;
+  font-size: 18px;
+}
+
+.login-brand-name {
+  color: #6b7d8f;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.login-title {
+  color: #f2f5f7;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.login-subtitle {
+  color: #7d8b98;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 28px 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-label {
+  color: #9fb0bd;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.login-form input {
+  background: #0b1218;
+  border: 1px solid #24313e;
+  border-radius: 6px;
+  color: #f2f5f7;
+  font-size: 14px;
+  padding: 11px 12px;
+  margin-bottom: 18px;
+  outline: none;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.login-form input:focus {
+  border-color: #4dd6c7;
+}
+
+.login-form input::placeholder {
+  color: #4a5966;
+}
+
+.login-error {
+  background: rgba(224, 96, 96, 0.1);
+  border: 1px solid rgba(224, 96, 96, 0.35);
+  color: #e08686;
+  font-size: 13px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+.login-button {
+  background: #4dd6c7;
+  color: #06110f;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.login-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.login-button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
