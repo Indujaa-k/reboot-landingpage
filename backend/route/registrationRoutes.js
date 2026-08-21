@@ -8,6 +8,7 @@ const router = express.Router();
 const registrationController = require("../controller/registrationController");
 
 router.post("/", registrationController.createRegistration);
+router.get("/availability", registrationController.getSlotAvailability);
 router.get("/:referenceNumber", registrationController.getRegistrationByReference);
 
 module.exports = router;
