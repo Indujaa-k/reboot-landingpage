@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 
 const registrationSchema = new mongoose.Schema(
@@ -8,6 +7,11 @@ const registrationSchema = new mongoose.Schema(
     name: { type: String, required: true, trim: true },
     phone: { type: String, required: true, trim: true },
     age: { type: Number, required: true },
+    gender: {
+      type: String,
+      enum: ["male", "female", "other", "not_specified"],
+      default: "not_specified",
+    },
     preferredDate: { type: String, required: true },
     preferredTime: { type: String, required: true },
     reason: { type: String, required: true },
