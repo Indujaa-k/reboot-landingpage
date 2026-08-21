@@ -71,3 +71,7 @@ exports.verifyPayment = (req, res) => {
 };
 
 exports.CAMP_FEE_RUPEES = CAMP_FEE_RUPEES;
+
+exports.getKey = (req, res) => {
+  res.json({ key: process.env.RAZORPAY_KEY_ID });
+};

@@ -14,7 +14,7 @@
     />
 
     <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="experience-heal-grow.css" />
+  
 
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
@@ -3003,102 +3003,89 @@
         </div>
 
         <form id="register-form">
-          <div>
-            <label for="reg-name">Full Name</label>
-            <input type="text" id="reg-name" name="name" required />
-          </div>
+  <div>
+    <label for="reg-name">Full Name</label>
+    <input type="text" id="reg-name" name="name" required />
+  </div>
 
-          <div>
-            <label for="reg-phone">Phone Number</label>
-            <input type="tel" id="reg-phone" name="phone" required />
-          </div>
+  <div>
+    <label for="reg-phone">Phone Number</label>
+    <input type="tel" id="reg-phone" name="phone" required />
+  </div>
 
-          <div>
-            <label for="reg-email">Email Address</label>
-            <input type="email" id="reg-email" name="email" required />
-          </div>
+  <div>
+    <label for="reg-age">Age</label>
+    <input type="number" id="reg-age" name="age" min="1" required />
+  </div>
 
-          <!-- How did you hear about us? -->
-          <div>
-            <label for="reg-source">How did you hear about us?</label>
-            <select id="reg-source" name="source" required>
-              <option value="" disabled selected>Select an option</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Facebook">Facebook</option>
-              <option value="YouTube">YouTube</option>
-              <option value="Google Search">Google Search</option>
-              <option value="Friend or Family Referral">
-                Friend / Family Referral
-              </option>
-              <option value="Doctor Referral">
-                Doctor / Professional Referral
-              </option>
-              <option value="WhatsApp">WhatsApp</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+  <div>
+    <label for="reg-date">Preferred Camp Date</label>
+    <select id="reg-date" name="preferredDate" required>
+      <option value="" disabled selected>Select a date</option>
+      <option value="2026-09-04">4th Sept 2026</option>
+      <option value="2026-09-05">5th Sept 2026</option>
+      <option value="2026-09-06">6th Sept 2026</option>
+    </select>
+  </div>
 
-          <!-- Location -->
-          <div>
-            <label for="reg-location">Where are you located?</label>
-            <input
-              type="text"
-              id="reg-location"
-              name="location"
-              placeholder="City / Town"
-              required
-            />
-          </div>
+  <div>
+    <label for="reg-time">Preferred Time</label>
+    <select id="reg-time" name="preferredTime" required>
+      <option value="" disabled selected>Select a slot</option>
+      <option value="10:00 AM - 12:00 PM">10:00 AM – 12:00 PM</option>
+      <option value="12:00 PM - 2:00 PM">12:00 PM – 2:00 PM</option>
+      <option value="2:00 PM - 4:00 PM">2:00 PM – 4:00 PM</option>
+      <option value="4:00 PM - 6:00 PM">4:00 PM – 6:00 PM</option>
+    </select>
+  </div>
 
-          <!-- Reason -->
-          <div>
-            <label for="reg-reason">What is the main reason for joining?</label>
-            <select id="reg-reason" name="reason" required>
-              <option value="" disabled selected>Select an option</option>
-              <option value="Mental Wellness">Mental Wellness</option>
-              <option value="Stress Management">Stress Management</option>
-              <option value="Anxiety">Anxiety / Worry</option>
-              <option value="Depression">Low Mood / Depression</option>
-              <option value="Personal Growth">Personal Growth</option>
-              <option value="Relationship Concerns">
-                Relationship Concerns
-              </option>
-              <option value="Work or Study Stress">Work / Study Stress</option>
-              <option value="Curious to Learn">Curious to Learn More</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+  <div>
+    <label for="reg-source">How did you hear about us?</label>
+    <select id="reg-source" name="source" required>
+      <option value="" disabled selected>Select an option</option>
+      <option value="Instagram">Instagram</option>
+      <option value="Facebook">Facebook</option>
+      <option value="YouTube">YouTube</option>
+      <option value="Google Search">Google Search</option>
+      <option value="Friend or Family Referral">Friend / Family Referral</option>
+      <option value="Doctor Referral">Doctor / Professional Referral</option>
+      <option value="WhatsApp">WhatsApp</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
 
-          <!-- Gender -->
-          <div>
-            <label for="reg-gender">Gender</label>
-            <select id="reg-gender" name="gender" required>
-              <option value="" disabled selected>Select an option</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Non-binary">Non-binary</option>
-              <option value="Prefer not to say">Prefer not to say</option>
-            </select>
-          </div>
+  <div>
+    <label for="reg-reason">What is the main reason for joining?</label>
+    <select id="reg-reason" name="reason" required>
+      <option value="" disabled selected>Select an option</option>
+      <option value="Mental Wellness">Mental Wellness</option>
+      <option value="Stress Management">Stress Management</option>
+      <option value="Anxiety">Anxiety / Worry</option>
+      <option value="Depression">Low Mood / Depression</option>
+      <option value="Personal Growth">Personal Growth</option>
+      <option value="Relationship Concerns">Relationship Concerns</option>
+      <option value="Work or Study Stress">Work / Study Stress</option>
+      <option value="Curious to Learn">Curious to Learn More</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
 
-          <div>
-            <label for="reg-message">
-              Anything you'd like us to know? (optional)
-            </label>
-            <textarea id="reg-message" name="message"></textarea>
-          </div>
+  <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
+    Pay ₹499 & Register
+  </button>
 
-          <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
-            Confirm Registration
-          </button>
-
-          <div class="modal-status" id="modal-status"></div>
-        </form>
+  <div class="modal-status" id="modal-status"></div>
+</form>
       </div>
     </div>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    
+     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script>
+      /* =========================================================
+         INIT: lucide icons + AOS
+      ========================================================= */
       document.addEventListener("DOMContentLoaded", () => {
         lucide.createIcons();
         if (window.AOS) {
@@ -3111,6 +3098,9 @@
         }
       });
 
+      /* =========================================================
+         LOADER INTRO (this is what unhides the page)
+      ========================================================= */
       const loader = document.getElementById("loader");
       const loaderLogo = document.getElementById("loader-logo");
       const loaderWord = document.getElementById("loader-word");
@@ -3139,6 +3129,9 @@
       }
       runIntro();
 
+      /* =========================================================
+         REVEAL ON SCROLL (.reveal elements)
+      ========================================================= */
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -3151,6 +3144,9 @@
         io.observe(el);
       });
 
+      /* =========================================================
+         FAQ ACCORDION
+      ========================================================= */
       document.querySelectorAll(".healthcare-faq-question").forEach((btn) => {
         btn.addEventListener("click", () => {
           const item = btn.closest(".healthcare-faq-item");
@@ -3175,7 +3171,12 @@
         });
       });
 
+      /* =========================================================
+         REGISTER MODAL (openRegisterModal must be global for
+         inline onclick attributes across the page)
+      ========================================================= */
       const registerOverlay = document.getElementById("register-modal-overlay");
+
       function openRegisterModal() {
         registerOverlay.classList.add("open");
         document.body.style.overflow = "hidden";
@@ -3191,54 +3192,9 @@
         if (e.key === "Escape") closeRegisterModal();
       });
 
-      const registerForm = document.getElementById("register-form");
-      const modalSubmitBtn = document.getElementById("modal-submit-btn");
-      const modalStatus = document.getElementById("modal-status");
-
-      registerForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        modalStatus.classList.remove("show", "success", "error");
-
-        const payload = {
-          name: document.getElementById("reg-name").value.trim(),
-          phone: document.getElementById("reg-phone").value.trim(),
-          email: document.getElementById("reg-email").value.trim(),
-          registration_type: document.getElementById("reg-type").value,
-          message: document.getElementById("reg-message").value.trim(),
-        };
-
-        modalSubmitBtn.disabled = true;
-        modalSubmitBtn.textContent = "Sending...";
-
-        try {
-          const res = await fetch("send-registration.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-
-          const data = await res.json().catch(() => ({ success: false }));
-
-          if (res.ok && data.success) {
-            modalStatus.textContent =
-              "Thank you! Your registration was received. We'll email your confirmation shortly.";
-            modalStatus.classList.add("show", "success");
-            registerForm.reset();
-          } else {
-            throw new Error(data.error || "Something went wrong.");
-          }
-        } catch (err) {
-          modalStatus.textContent =
-            "We couldn't send your registration right now. Please call/WhatsApp us directly, or try again in a moment.";
-          modalStatus.classList.add("show", "error");
-        } finally {
-          modalSubmitBtn.disabled = false;
-          modalSubmitBtn.textContent = "Confirm Registration";
-        }
-      });
-
-      const counters = document.querySelectorAll(".counter");
-
+      /* =========================================================
+         STATS COUNTER (.counter elements in .stats-strip)
+      ========================================================= */
       const startCounter = (counter) => {
         const target = parseFloat(counter.dataset.target);
         const decimal = parseInt(counter.dataset.decimal || "0");
@@ -3257,13 +3213,12 @@
         requestAnimationFrame(updateCounter);
       };
 
-      const observer = new IntersectionObserver(
+      const statsObserver = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               setTimeout(() => {
-                const counters = entry.target.querySelectorAll(".counter");
-                counters.forEach((counter) => {
+                entry.target.querySelectorAll(".counter").forEach((counter) => {
                   startCounter(counter);
                 });
               }, 2000);
@@ -3275,11 +3230,12 @@
       );
 
       const statsStrip = document.querySelector(".stats-strip");
-      if (statsStrip) observer.observe(statsStrip);
+      if (statsStrip) statsObserver.observe(statsStrip);
 
-      // ===== Countdown counter =====
+      /* =========================================================
+         COUNTDOWN TIMER
+      ========================================================= */
       (function () {
-        // 16th August 2026, 9:00 AM IST -> update this if the event date changes
         const targetDate = new Date("2026-09-04T09:00:00+05:30").getTime();
 
         const daysEl = document.getElementById("cd-days");
@@ -3314,53 +3270,42 @@
         updateCountdown();
         const timer = setInterval(updateCountdown, 1000);
       })();
-    </script>
 
-    <script>
+      /* =========================================================
+         "EXPERIENCE • HEAL • GROW" STAGGERED DROP
+      ========================================================= */
       document.addEventListener("DOMContentLoaded", () => {
         const section = document.querySelector(".ehg-section");
         const items = section.querySelectorAll(".ehg-word, .ehg-dot");
 
-        // stagger each item by 0.5s, in the order they appear in the DOM
         items.forEach((el, i) => {
           el.style.animationDelay = `${i * 0.5}s`;
         });
 
-        const observer = new IntersectionObserver(
+        const ehgObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 section.classList.add("in-view");
-                observer.unobserve(section);
+                ehgObserver.unobserve(section);
               }
             });
           },
           { threshold: 0.4 },
         );
 
-        observer.observe(section);
+        ehgObserver.observe(section);
       });
     </script>
 
     <script>
       /* =========================================================
-     GALLERY - AUTO SCROLL + DRAG + LIGHTBOX
-  ========================================================= */
-
+         GALLERY - AUTO SCROLL + DRAG + LIGHTBOX
+      ========================================================= */
       const galleryWrapper = document.getElementById("galleryWrapper");
       const galleryTrack = document.getElementById("galleryTrack");
 
-      /* =========================================================
-     SETTINGS
-  ========================================================= */
-
-      const GALLERY_SPEED = 40;
-      // Smaller number = faster
-      // Larger number = slower
-
-      /* =========================================================
-     VARIABLES
-  ========================================================= */
+      const GALLERY_SPEED = 40; // smaller = faster, larger = slower
 
       let galleryPosition = 0;
       let isDragging = false;
@@ -3371,19 +3316,8 @@
       let oneSetWidth = 0;
       let galleryHovered = false;
 
-      /* =========================================================
-     CALCULATE WIDTH OF ONE SET
-  ========================================================= */
-
       function calculateGalleryWidth() {
         const items = galleryTrack.querySelectorAll(".gallery-item");
-
-        /*
-      We have 26 items total.
-      First 13 = Set 1
-      Second 13 = Set 2
-    */
-
         const firstItem = items[0];
         if (!firstItem) return;
 
@@ -3391,46 +3325,27 @@
         const gap = parseFloat(itemStyle.gap) || 0;
         const itemWidth = firstItem.getBoundingClientRect().width;
 
-        /*
-      13 images + 12 gaps between them + 1 gap connecting to the next set
-    */
-
+        // 13 images + 12 gaps between them + 1 gap connecting to next set
         oneSetWidth = itemWidth * 13 + gap * 13;
       }
 
       calculateGalleryWidth();
       window.addEventListener("resize", calculateGalleryWidth);
 
-      /* =========================================================
-     KEEP POSITION INSIDE LOOP
-  ========================================================= */
-
       function normalizeGalleryPosition() {
         if (oneSetWidth <= 0) return;
-
-        /* Moving LEFT */
         while (galleryPosition <= -oneSetWidth) {
           galleryPosition += oneSetWidth;
         }
-
-        /* Moving RIGHT */
         while (galleryPosition > 0) {
           galleryPosition -= oneSetWidth;
         }
       }
 
-      /* =========================================================
-     APPLY POSITION
-  ========================================================= */
-
       function updateGalleryPosition() {
         normalizeGalleryPosition();
         galleryTrack.style.transform = `translate3d(${galleryPosition}px, 0, 0)`;
       }
-
-      /* =========================================================
-     AUTO SCROLL (paused on hover or while dragging)
-  ========================================================= */
 
       function galleryAnimation(time) {
         const delta = time - lastTime;
@@ -3443,24 +3358,14 @@
 
         requestAnimationFrame(galleryAnimation);
       }
-
       requestAnimationFrame(galleryAnimation);
-
-      /* =========================================================
-     PAUSE ON HOVER
-  ========================================================= */
 
       galleryWrapper.addEventListener("mouseenter", () => {
         galleryHovered = true;
       });
-
       galleryWrapper.addEventListener("mouseleave", () => {
         galleryHovered = false;
       });
-
-      /* =========================================================
-     MOUSE / TOUCH DRAG START
-  ========================================================= */
 
       galleryWrapper.addEventListener("pointerdown", (e) => {
         isDragging = true;
@@ -3471,27 +3376,13 @@
         galleryWrapper.setPointerCapture(e.pointerId);
       });
 
-      /* =========================================================
-     DRAG MOVE
-  ========================================================= */
-
       galleryWrapper.addEventListener("pointermove", (e) => {
         if (!isDragging) return;
-
         const movement = e.clientX - startX;
-
-        /* Detect actual dragging */
-        if (Math.abs(movement) > 5) {
-          hasMoved = true;
-        }
-
+        if (Math.abs(movement) > 5) hasMoved = true;
         galleryPosition = dragStartPosition + movement;
         updateGalleryPosition();
       });
-
-      /* =========================================================
-     IMAGE LIGHTBOX (declared before pointerup uses them)
-  ========================================================= */
 
       const galleryLightbox = document.getElementById("gallery-lightbox");
       const galleryLightboxImage = document.getElementById(
@@ -3500,11 +3391,6 @@
       const galleryLightboxClose = document.getElementById(
         "gallery-lightbox-close",
       );
-
-      /* =========================================================
-     DRAG END (also handles tap-to-open here, since pointer
-     capture breaks the native click event's target)
-  ========================================================= */
 
       galleryWrapper.addEventListener("pointerup", (e) => {
         if (!isDragging) return;
@@ -3515,7 +3401,6 @@
           galleryWrapper.releasePointerCapture(e.pointerId);
         } catch (error) {}
 
-        /* If it wasn't a drag, treat it as a tap/click on an image */
         if (!hasMoved) {
           const realTarget = document.elementFromPoint(e.clientX, e.clientY);
           const item = realTarget ? realTarget.closest(".gallery-item") : null;
@@ -3534,16 +3419,11 @@
         hasMoved = false;
       });
 
-      /* =========================================================
-     DRAG CANCEL
-  ========================================================= */
-
       galleryWrapper.addEventListener("pointercancel", () => {
         isDragging = false;
         galleryWrapper.classList.remove("dragging");
       });
 
-      /* CLOSE LIGHTBOX */
       function closeGalleryLightbox() {
         galleryLightbox.classList.remove("open");
         document.body.style.overflow = "";
@@ -3551,14 +3431,12 @@
 
       galleryLightboxClose.addEventListener("click", closeGalleryLightbox);
 
-      /* CLICK BLACK BACKGROUND */
       galleryLightbox.addEventListener("click", (e) => {
         if (e.target === galleryLightbox) {
           closeGalleryLightbox();
         }
       });
 
-      /* ESC */
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           closeGalleryLightbox();
@@ -3567,6 +3445,9 @@
     </script>
 
     <script>
+      /* =========================================================
+         "WHO IS THIS CAMP FOR" BOX REVEAL
+      ========================================================= */
       (function () {
         var boxes = document.querySelectorAll(".camp-box");
         if ("IntersectionObserver" in window) {
@@ -3591,5 +3472,8 @@
         }
       })();
     </script>
+
+    <script src="js/register.js"></script>
   </body>
 </html>
+
