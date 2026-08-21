@@ -1,29 +1,19 @@
-/* ===================== MODAL OPEN/CLOSE (must stay global — used by inline onclick) ===================== */
-const registerOverlay = document.getElementById("register-modal-overlay");
+/* ===================== REGISTRATION + PAYMENT FLOW =====================
+   Modal open/close (openRegisterModal/closeRegisterModal, the overlay
+   click-outside listener, and the Escape-key listener) are already
+   defined in the inline <script> inside index.html — not redeclared
+   here to avoid a duplicate top-level `const registerOverlay`. */
 
-function openRegisterModal() {
-  registerOverlay.classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-function closeRegisterModal() {
-  registerOverlay.classList.remove("open");
-  document.body.style.overflow = "";
-}
-
-registerOverlay.addEventListener("click", (e) => {
-  if (e.target === registerOverlay) closeRegisterModal();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeRegisterModal();
-});
-
-/* ===================== REGISTRATION + PAYMENT FLOW ===================== */
 document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.getElementById("register-form");
   const modalSubmitBtn = document.getElementById("modal-submit-btn");
   const modalStatus = document.getElementById("modal-status");
+
+  // Check if elements exist before proceeding
+  if (!registerForm || !modalSubmitBtn || !modalStatus) {
+    console.warn("Registration form elements not found");
+    return;
+  }
 
   const API_BASE = "http://localhost:3004"; // set to your API origin if different, e.g. "https://api.rebootmentalhealth.in"
 
@@ -52,10 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
       reason: document.getElementById("reg-reason").value,
     };
 
+    // Basic validation
+    if (!formData.name || !formData.phone || !formData.age || !formData.preferredDate || !formData.preferredTime) {
+      setStatus("Please fill in all required fields.", "error");
+      return;
+    }
+
     setLoading(true, "Processing...");
 
     try {
       const keyRes = await fetch(`${API_BASE}/api/payment/key`);
+      if (!keyRes.ok) throw new Error("Failed to get payment key");
       const { key } = await keyRes.json();
 
       const orderRes = await fetch(`${API_BASE}/api/payment/create-order`, {
