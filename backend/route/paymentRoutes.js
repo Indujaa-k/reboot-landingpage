@@ -10,4 +10,6 @@ const paymentController = require("../controller/paymentController");
 router.post("/create-order", paymentController.createOrder);
 router.post("/verify", paymentController.verifyPayment);
 
+router.get("/key", paymentController.getKey);
+
 module.exports = router;
