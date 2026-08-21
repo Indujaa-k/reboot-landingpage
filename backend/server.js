@@ -7,6 +7,8 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const paymentRoutes = require("./routes/payment.routes");
+const registrationRoutes = require("./routes/registration.routes");
 
 connectDB();
 
@@ -20,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use("/api/payment", paymentRoutes);
+app.use("/api/registrations", registrationRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running...');
