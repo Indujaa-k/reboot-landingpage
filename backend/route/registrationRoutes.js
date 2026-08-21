@@ -5,7 +5,7 @@
 
 const express = require("express");
 const router = express.Router();
-const registrationController = require("../controllers/registration.controller");
+const registrationController = require("../controller/registrationController");
 
 router.post("/", registrationController.createRegistration);
 router.get("/:referenceNumber", registrationController.getRegistrationByReference);
