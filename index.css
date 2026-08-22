@@ -813,7 +813,8 @@ a {
   /* no section background — sits on whatever the page already has */
   background: transparent;
   color: var(--ink);
-  padding: 80px 24px 90px;
+  padding: 80px 0x !important;
+  margin-top: 100px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -884,6 +885,7 @@ a {
   }
 }
 @media (max-width: 640px) {
+  
   .experience-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1202,7 +1204,8 @@ a {
   --font-body: "Work Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  padding: 6rem 1.5rem 7rem;
+  padding: 0rem 1.5rem 7rem;
+  margin-top: 50px;
   max-width: 1180px;
   /* margin: 0 auto; */
   background: linear-gradient(160deg, var(--bg1), var(--bg2));
@@ -1796,7 +1799,7 @@ a {
 
 /* section shared */
 section {
-  padding: 120px 6vw;
+  /* padding: 120px 6vw; */
   position: relative;
 }
 .section-head {
@@ -1962,6 +1965,7 @@ section {
 .testimonials {
   background: var(--bg-card);
   padding: 10px 6vw;
+  margin-top: 90px;
 }
 .test-grid {
   max-width: 1080px;
@@ -2254,6 +2258,7 @@ footer.site-footer {
 
   .gallery-header h2 {
     letter-spacing: -1.5px;
+    font-size: 25px;
   }
 
   .gallery-header p {
