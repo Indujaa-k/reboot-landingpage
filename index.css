@@ -332,8 +332,12 @@ a {
     gap: 8px;
   }
 
+  .flexRow-section1{
+    margin-bottom: 15px;
+  }
+
   .section1-heading {
-    font-size: 24px;
+    font-size: 15px !important;
   }
 
   .section1-left {
@@ -3361,6 +3365,12 @@ footer.site-footer {
   [class*="inner"],
   [class*="content"] {
     min-width: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .mental-outcomes{
+    margin-top: 50px;
   }
 }
 
