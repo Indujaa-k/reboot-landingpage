@@ -2,6 +2,8 @@ const express = require("express");
 const ExcelJS = require("exceljs");
 const Registration = require("../model/Registration");
 const { protect } = require("../middleware/authMiddleware");
+const { CAMP_SLOTS, getSlotCapacity } = require("../config/slots");
+const { CAMP_DATE_LABELS } = require("../controller/registrationController");
 
 const router = express.Router();
 
@@ -17,16 +19,27 @@ const AGE_GROUP_LABELS = {
   60: "60+",
 };
 
-// Builds a Mongo filter object from shared query params used by both
-// the list endpoint and the export endpoint, so exports always match
-// whatever the admin is currently viewing/filtering on screen.
+// Builds a Mongo filter object from shared query params used by the list
+// endpoint, the export endpoint, and now the per-slot registrant lookup
+// (preferredDate + preferredTime), so all three stay consistent.
 const buildFilter = (query) => {
-  const { search, status, source, gender, from, to } = query;
+  const {
+    search,
+    status,
+    source,
+    gender,
+    from,
+    to,
+    preferredDate,
+    preferredTime,
+  } = query;
   const filter = {};
 
   if (status) filter.paymentStatus = status;
   if (source) filter.source = source;
   if (gender) filter.gender = gender;
+  if (preferredDate) filter.preferredDate = preferredDate;
+  if (preferredTime) filter.preferredTime = preferredTime;
 
   if (from || to) {
     filter.createdAt = {};
@@ -54,6 +67,7 @@ const buildFilter = (query) => {
 
 // @route   GET /api/registrations
 // @desc    List registrations (transaction history) with filters + pagination
+//          Also used to fetch "who's in this slot" via preferredDate/preferredTime.
 // @access  Private
 router.get("/", protect, async (req, res, next) => {
   try {
@@ -211,6 +225,75 @@ router.get("/analytics", protect, async (req, res, next) => {
   }
 });
 
+// @route   GET /api/registrations/slots
+// @desc    Seats taken/available per camp date + time slot (paid seats only).
+//          Capacity is per-date: 24/slot on 4th Sept, 28/slot on 5th & 6th.
+// @access  Private
+router.get("/slots", protect, async (req, res, next) => {
+  try {
+    const dates = Object.keys(CAMP_DATE_LABELS);
+
+    const counts = await Registration.aggregate([
+      {
+        $match: {
+          paymentStatus: "paid",
+          preferredDate: { $in: dates },
+        },
+      },
+      {
+        $group: {
+          _id: { date: "$preferredDate", time: "$preferredTime" },
+          taken: { $sum: 1 },
+        },
+      },
+    ]);
+
+    const countMap = {};
+    counts.forEach((c) => {
+      countMap[`${c._id.date}|${c._id.time}`] = c.taken;
+    });
+
+    const slotsByDate = dates.map((date) => {
+      const capacity = getSlotCapacity(date);
+
+      const slots = CAMP_SLOTS.map((time) => {
+        const taken = countMap[`${date}|${time}`] || 0;
+        return {
+          time,
+          taken,
+          capacity,
+          available: Math.max(capacity - taken, 0),
+          full: taken >= capacity,
+          fillPercent: Math.min(
+            100,
+            Math.round((taken / (capacity || 1)) * 100),
+          ),
+        };
+      });
+
+      const totalTaken = slots.reduce((sum, s) => sum + s.taken, 0);
+      const totalCapacity = slots.length * capacity;
+
+      return {
+        date,
+        label: CAMP_DATE_LABELS[date] || date,
+        slots,
+        totalTaken,
+        totalCapacity,
+        totalAvailable: Math.max(totalCapacity - totalTaken, 0),
+        totalFillPercent: Math.min(
+          100,
+          Math.round((totalTaken / (totalCapacity || 1)) * 100),
+        ),
+      };
+    });
+
+    res.json({ slotsByDate });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // @route   GET /api/registrations/export
 // @desc    Export the (optionally filtered) registrations as an .xlsx file
 // @access  Private
@@ -295,6 +378,13 @@ router.get("/export", protect, async (req, res, next) => {
     summarySheet.getColumn(1).width = 26;
     summarySheet.getColumn(2).width = 20;
 
+    // Build the file as a buffer instead of streaming straight to `res`.
+    // workbook.xlsx.write(res) ends the response stream itself, and a
+    // follow-up res.end() can throw and break the connection mid-flight —
+    // that shows up in the browser as a blocked/CORS-looking failure
+    // rather than a clean error. Buffering avoids that entirely.
+    const buffer = await workbook.xlsx.writeBuffer();
+
     res.setHeader(
       "Content-Type",
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -303,12 +393,11 @@ router.get("/export", protect, async (req, res, next) => {
       "Content-Disposition",
       `attachment; filename="transactions-${Date.now()}.xlsx"`,
     );
+    res.setHeader("Content-Length", buffer.length);
 
-    await workbook.xlsx.write(res);
-    res.end();
+    res.status(200).send(buffer);
   } catch (error) {
     next(error);
   }
 });
-
 module.exports = router;

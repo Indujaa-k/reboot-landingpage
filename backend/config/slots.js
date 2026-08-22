@@ -1,8 +1,9 @@
 /* =========================================================================
    config/slots.js
-   Single source of truth for camp time slots + per-slot capacity.
+   Single source of truth for camp time slots + per-slot, per-date capacity.
    Import this anywhere you need to validate or list slots, so the
-   registration controller and payment controller never drift apart.
+   registration controller, payment controller, and admin routes never
+   drift apart.
    ========================================================================= */
 
 const CAMP_SLOTS = [
@@ -13,6 +14,25 @@ const CAMP_SLOTS = [
   "5:00 PM - 6:30 PM",
 ];
 
-const SLOT_CAPACITY = 24; // seats per slot, per day
+// Seats per slot, per camp date. 4th Sept runs at a smaller capacity than
+// the 5th/6th.
+const SLOT_CAPACITY_BY_DATE = {
+  "2026-09-04": 24,
+  "2026-09-05": 28,
+  "2026-09-06": 28,
+};
 
-module.exports = { CAMP_SLOTS, SLOT_CAPACITY };
+// Fallback used only if a date somehow isn't in the map above.
+const DEFAULT_SLOT_CAPACITY = 28;
+
+// Single lookup used everywhere instead of a flat SLOT_CAPACITY constant.
+function getSlotCapacity(date) {
+  return SLOT_CAPACITY_BY_DATE[date] ?? DEFAULT_SLOT_CAPACITY;
+}
+
+module.exports = {
+  CAMP_SLOTS,
+  SLOT_CAPACITY_BY_DATE,
+  DEFAULT_SLOT_CAPACITY,
+  getSlotCapacity,
+};
