@@ -1,24 +1,8 @@
-/* =========================================================================
-   controllers/registration.controller.js
-   Saves a registration AFTER payment.controller.verifyPayment has already
-   confirmed the signature. Called by the frontend right after verification
-   succeeds, with the form data + Razorpay payment/order IDs. Also sends a
-   confirmation email via Nodemailer.
-
-   Capacity: each (preferredDate, preferredTime) combo is capped at
-   SLOT_CAPACITY paid registrations. Checked here as a final safety net —
-   the primary gate should be in payment.controller before an order is
-   created (see note at the bottom of this file).
-
-   Reference numbers: RMC-26001, RMC-26002, ... — atomically incremented
-   via the Counter model so concurrent registrations never collide.
-   ========================================================================= */
-
 const Registration = require("../model/Registration");
 const Counter = require("../model/Counter");
 const { CAMP_FEE_RUPEES } = require("./paymentController");
 const { sendConfirmationEmail } = require("../utils/mailer");
-const { CAMP_SLOTS, SLOT_CAPACITY } = require("../config/slots");
+const { CAMP_SLOTS, getSlotCapacity } = require("../config/slots");
 
 const CAMP_DATE_LABELS = {
   "2026-09-04": "4th Sept 2026",
@@ -28,8 +12,6 @@ const CAMP_DATE_LABELS = {
 
 /* -------------------------------------------------------------------------
    Reference numbers: RMC-26001, RMC-26002, ...
-   "26" = 2-digit year, "001" = sequential counter for that year,
-   atomically incremented so concurrent registrations never collide.
 ------------------------------------------------------------------------- */
 async function generateReferenceNumber() {
   const yearShort = new Date().getFullYear().toString().slice(-2);
@@ -38,7 +20,7 @@ async function generateReferenceNumber() {
   const counter = await Counter.findOneAndUpdate(
     { _id: counterId },
     { $inc: { seq: 1 } },
-    { new: true, upsert: true }
+    { new: true, upsert: true },
   );
 
   const seqPadded = String(counter.seq).padStart(3, "0");
@@ -58,9 +40,12 @@ async function getSlotSeatsTaken(preferredDate, preferredTime) {
 }
 exports.getSlotSeatsTaken = getSlotSeatsTaken;
 
+// Capacity is now date-dependent (24 on 4th Sept, 28 on 5th/6th), so this
+// looks up the right number for the date being checked instead of using a
+// single flat constant.
 async function isSlotFull(preferredDate, preferredTime) {
   const taken = await getSlotSeatsTaken(preferredDate, preferredTime);
-  return taken >= SLOT_CAPACITY;
+  return taken >= getSlotCapacity(preferredDate);
 }
 exports.isSlotFull = isSlotFull;
 
@@ -76,17 +61,19 @@ exports.getSlotAvailability = async (req, res) => {
       return res.status(400).json({ error: "Missing date query param." });
     }
 
+    const capacity = getSlotCapacity(date);
+
     const slots = await Promise.all(
       CAMP_SLOTS.map(async (time) => {
         const taken = await getSlotSeatsTaken(date, time);
         return {
           time,
-          capacity: SLOT_CAPACITY,
+          capacity,
           taken,
-          available: Math.max(SLOT_CAPACITY - taken, 0),
-          full: taken >= SLOT_CAPACITY,
+          available: Math.max(capacity - taken, 0),
+          full: taken >= capacity,
         };
-      })
+      }),
     );
 
     res.json({ date, slots });
@@ -114,8 +101,19 @@ exports.createRegistration = async (req, res) => {
       orderId,
     } = req.body;
 
-    if (!name || !phone || !email || !age || !preferredDate || !preferredTime || !reason || !source) {
-      return res.status(400).json({ error: "Missing required registration fields." });
+    if (
+      !name ||
+      !phone ||
+      !email ||
+      !age ||
+      !preferredDate ||
+      !preferredTime ||
+      !reason ||
+      !source
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Missing required registration fields." });
     }
     if (!paymentId || !orderId) {
       return res.status(400).json({ error: "Missing payment reference." });
@@ -124,12 +122,6 @@ exports.createRegistration = async (req, res) => {
       return res.status(400).json({ error: "Invalid time slot." });
     }
 
-    // Final safety-net check. In the normal flow, payment.controller's
-    // create-order step already blocks full slots before charging anyone —
-    // this only fires in the rare race where the last seat filled between
-    // order creation and this save. Payment has already succeeded at this
-    // point, so this needs a manual refund on your end (Razorpay dashboard
-    // or refund API) since we don't auto-refund here.
     const full = await isSlotFull(preferredDate, preferredTime);
     if (full) {
       return res.status(409).json({
@@ -156,8 +148,6 @@ exports.createRegistration = async (req, res) => {
       paymentStatus: "paid",
     });
 
-    // Fire-and-log: don't fail the API response if the email hiccups —
-    // the registration itself is already saved and paid for.
     sendConfirmationEmail({
       to: email,
       name,
@@ -195,3 +185,4 @@ exports.getRegistrationByReference = async (req, res) => {
     res.status(500).json({ error: "Could not fetch registration." });
   }
 };
+exports.CAMP_DATE_LABELS = CAMP_DATE_LABELS;

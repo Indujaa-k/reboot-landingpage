@@ -14,7 +14,7 @@
 
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
-const { CAMP_SLOTS, SLOT_CAPACITY } = require("../config/slots");
+const { CAMP_SLOTS, getSlotCapacity } = require("../config/slots");
 
 const CAMP_FEE_RUPEES = 699;
 
@@ -29,7 +29,9 @@ const razorpay = new Razorpay({
 ------------------------------------------------------------------------- */
 exports.getKey = (req, res) => {
   if (!process.env.RAZORPAY_KEY_ID) {
-    return res.status(500).json({ error: "Payment gateway is not configured." });
+    return res
+      .status(500)
+      .json({ error: "Payment gateway is not configured." });
   }
   res.json({ key: process.env.RAZORPAY_KEY_ID });
 };
@@ -52,10 +54,30 @@ exports.createOrder = async (req, res) => {
       return res.status(400).json({ error: "Missing registration details." });
     }
 
-    const { name, phone, email, age, preferredDate, preferredTime, reason, source } = registration;
+    const {
+      name,
+      phone,
+      email,
+      age,
+      preferredDate,
+      preferredTime,
+      reason,
+      source,
+    } = registration;
 
-    if (!name || !phone || !email || !age || !preferredDate || !preferredTime || !reason || !source) {
-      return res.status(400).json({ error: "Missing required registration fields." });
+    if (
+      !name ||
+      !phone ||
+      !email ||
+      !age ||
+      !preferredDate ||
+      !preferredTime ||
+      !reason ||
+      !source
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Missing required registration fields." });
     }
 
     if (!CAMP_SLOTS.includes(preferredTime)) {
@@ -68,8 +90,11 @@ exports.createOrder = async (req, res) => {
 
     const full = await isSlotFull(preferredDate, preferredTime);
     if (full) {
+      // Capacity is per-date (24 on 4th Sept, 28 on 5th/6th), so look up
+      // the right number for this specific date rather than a flat constant.
+      const capacity = getSlotCapacity(preferredDate);
       return res.status(409).json({
-        error: `Sorry, that slot is fully booked (max ${SLOT_CAPACITY} per slot). Please choose a different time.`,
+        error: `Sorry, that slot is fully booked (max ${capacity} per slot). Please choose a different time.`,
       });
     }
 
@@ -95,7 +120,9 @@ exports.createOrder = async (req, res) => {
     });
   } catch (err) {
     console.error("Creating Razorpay order failed:", err);
-    res.status(500).json({ error: "Could not start payment. Please try again." });
+    res
+      .status(500)
+      .json({ error: "Could not start payment. Please try again." });
   }
 };
 
@@ -109,10 +136,13 @@ exports.createOrder = async (req, res) => {
 ------------------------------------------------------------------------- */
 exports.verifyPayment = (req, res) => {
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+      req.body;
 
     if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-      return res.status(400).json({ error: "Missing payment verification fields." });
+      return res
+        .status(400)
+        .json({ error: "Missing payment verification fields." });
     }
 
     const expectedSignature = crypto
@@ -123,13 +153,17 @@ exports.verifyPayment = (req, res) => {
     const isValid = expectedSignature === razorpay_signature;
 
     if (!isValid) {
-      return res.status(400).json({ success: false, error: "Payment signature mismatch." });
+      return res
+        .status(400)
+        .json({ success: false, error: "Payment signature mismatch." });
     }
 
     res.json({ success: true });
   } catch (err) {
     console.error("Verifying payment failed:", err);
-    res.status(500).json({ success: false, error: "Could not verify payment." });
+    res
+      .status(500)
+      .json({ success: false, error: "Could not verify payment." });
   }
 };
 
