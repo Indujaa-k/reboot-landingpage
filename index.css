@@ -2919,6 +2919,8 @@ footer.site-footer {
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .experience-section .experience-card:nth-child(8) {
@@ -2954,6 +2956,8 @@ footer.site-footer {
   .experience-section * {
     animation: none !important;
     transition: none !important;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   /* Cards stay completely still */
@@ -2993,6 +2997,8 @@ footer.site-footer {
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 16px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
 
   .experience-card {
@@ -3288,5 +3294,293 @@ footer.site-footer {
   .static-cta-bar .bar-btn {
     padding: 8px 10px !important;
     font-size: 11px !important;
+  }
+}
+@media (max-width: 900px) {
+  .mental-outcomes-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .mental-outcome-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+/* ================================
+   TABLET + MOBILE WIDTH FIX
+   ================================ */
+
+@media (max-width: 900px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  section,
+  header,
+  footer,
+  main,
+  .container,
+  .section,
+  .section-inner {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Prevent padding from increasing total width */
+  section,
+  header,
+  footer,
+  main,
+  div {
+    box-sizing: border-box;
+  }
+
+  /* Images/videos stay inside their containers */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Grids fit available width */
+  [class*="grid"] {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Flex children are allowed to shrink */
+  .container,
+  .section-inner,
+  [class*="inner"],
+  [class*="content"] {
+    min-width: 0;
+  }
+}
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 600px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  section,
+  main,
+  header,
+  footer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+  }
+}
+/* ================================
+   CAMP MOTTO - COMPACT CONTENT
+================================ */
+
+.camp-motto-section {
+  padding: 55px 20px;
+}
+
+.camp-motto-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.camp-motto-inner .eyebrow {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.camp-motto-inner h2 {
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 25px;
+}
+
+.camp-motto-inner p {
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 14px;
+}
+
+.camp-motto-inner .motto-lead {
+  font-size: 16px;
+  line-height: 1.65;
+  margin-top: 22px;
+}
+
+.camp-motto-signoff {
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 22px;
+  letter-spacing: 0.5px;
+}
+
+.camp-motto-cta {
+  margin-top: 22px;
+}
+
+/* Image sizing */
+.photo-layout {
+  margin: 20px 0;
+}
+
+.photo-header img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.photo-box {
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+  .camp-motto-section {
+    padding: 45px 20px;
+  }
+
+  .camp-motto-inner h2 {
+    font-size: 29px;
+  }
+
+  .camp-motto-inner p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .camp-motto-inner .motto-lead {
+    font-size: 15px;
+  }
+
+  /* Only ONE image */
+  .photo-columns {
+    display: block;
+  }
+
+  .photo-columns .photo-box:not(:first-child) {
+    display: none;
+  }
+
+  .photo-columns .photo-box:first-child {
+    width: 100%;
+    height: 260px;
+  }
+
+  .photo-header {
+    display: none;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+  .camp-motto-section {
+    padding: 35px 16px;
+  }
+
+  .camp-motto-inner .eyebrow {
+    font-size: 10px;
+  }
+
+  .camp-motto-inner h2 {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .camp-motto-inner p {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 11px;
+  }
+
+  .camp-motto-inner .motto-lead {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-top: 16px;
+  }
+
+  .photo-layout {
+    margin: 16px 0;
+  }
+
+  /* Hide banner */
+  .photo-header {
+    display: none;
+  }
+
+  /* Keep only first image */
+  .photo-columns {
+    display: block;
+  }
+
+  .photo-columns .photo-box:not(:first-child) {
+    display: none;
+  }
+
+  .photo-columns .photo-box:first-child {
+    display: block;
+    width: 100%;
+    height: 210px;
+  }
+
+  .camp-motto-signoff {
+    font-size: 9px;
+    line-height: 1.45;
+    margin-top: 18px;
+  }
+
+  .camp-motto-cta {
+    margin-top: 18px;
+  }
+}
+@media (max-width: 900px) {
+  .healthcare-register-description {
+    display: none !important;
+  }
+
+  .healthcare-register-content {
+    gap: 10px;
   }
 }
