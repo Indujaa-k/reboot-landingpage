@@ -104,6 +104,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Phone must be exactly 10 digits (strip spaces/dashes/+91 etc. first)
+    const phoneDigits = formData.phone.replace(/\D/g, "").slice(-10);
+    if (!/^[0-9]{10}$/.test(phoneDigits)) {
+      setStatus("Enter a valid 10-digit phone number.", "error");
+      return;
+    }
+    formData.phone = phoneDigits;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      setStatus("Enter a valid email address.", "error");
+      return;
+    }
+
     setLoading(true, "Processing...");
 
     try {
@@ -120,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Slot filled up between selection and submit (server-side check).
       if (orderRes.status === 409) {
-        setLoading(false, "Pay ₹499 & Register");
+        setLoading(false, "Pay ₹699 & Register");
         setStatus(order.error || "That slot just filled up. Please pick another.", "error");
         loadSlotsForDate(formData.preferredDate); // refresh dropdown so it reflects reality
         return;
@@ -128,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!orderRes.ok) throw new Error(order.error || "Could not start payment.");
 
-      setLoading(false, "Pay ₹499 & Register");
+      setLoading(false, "Pay ₹699 & Register");
 
       const rzp = new Razorpay({
         key,
@@ -141,6 +155,14 @@ document.addEventListener("DOMContentLoaded", () => {
           name: formData.name,
           contact: formData.phone,
           email: formData.email,
+        },
+        method: {
+          netbanking: true,
+          card: true,
+          upi: true,
+          wallet: false,
+          emi: false,
+          paylater: false,
         },
         theme: { color: "#ffc107" },
         handler: async (response) => {
@@ -159,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       rzp.open();
     } catch (err) {
-      setLoading(false, "Pay ₹499 & Register");
+      setLoading(false, "Pay ₹699 & Register");
       setStatus(err.message || "Something went wrong. Please try again.", "error");
     }
   });
@@ -210,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       setStatus(err.message, "error");
     } finally {
-      setLoading(false, "Pay ₹499 & Register");
+      setLoading(false, "Pay ₹699 & Register");
     }
   }
 });

@@ -9,24 +9,41 @@
    SLOT_CAPACITY paid registrations. Checked here as a final safety net —
    the primary gate should be in payment.controller before an order is
    created (see note at the bottom of this file).
+
+   Reference numbers: RMC-26001, RMC-26002, ... — atomically incremented
+   via the Counter model so concurrent registrations never collide.
    ========================================================================= */
 
 const Registration = require("../model/Registration");
+const Counter = require("../model/Counter");
 const { CAMP_FEE_RUPEES } = require("./paymentController");
 const { sendConfirmationEmail } = require("../utils/mailer");
 const { CAMP_SLOTS, SLOT_CAPACITY } = require("../config/slots");
-
-function generateReferenceNumber() {
-  const stamp = Date.now().toString(36).toUpperCase();
-  const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
-  return `RMHC-${stamp}-${rand}`;
-}
 
 const CAMP_DATE_LABELS = {
   "2026-09-04": "4th Sept 2026",
   "2026-09-05": "5th Sept 2026",
   "2026-09-06": "6th Sept 2026",
 };
+
+/* -------------------------------------------------------------------------
+   Reference numbers: RMC-26001, RMC-26002, ...
+   "26" = 2-digit year, "001" = sequential counter for that year,
+   atomically incremented so concurrent registrations never collide.
+------------------------------------------------------------------------- */
+async function generateReferenceNumber() {
+  const yearShort = new Date().getFullYear().toString().slice(-2);
+  const counterId = `rmc_${yearShort}`;
+
+  const counter = await Counter.findOneAndUpdate(
+    { _id: counterId },
+    { $inc: { seq: 1 } },
+    { new: true, upsert: true }
+  );
+
+  const seqPadded = String(counter.seq).padStart(3, "0");
+  return `RMC-${yearShort}${seqPadded}`;
+}
 
 /* -------------------------------------------------------------------------
    Shared helper: how many paid seats are taken for a given date+time.
@@ -121,7 +138,7 @@ exports.createRegistration = async (req, res) => {
       });
     }
 
-    const referenceNumber = generateReferenceNumber();
+    const referenceNumber = await generateReferenceNumber();
 
     const registration = await Registration.create({
       referenceNumber,
