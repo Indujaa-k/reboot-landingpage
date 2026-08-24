@@ -357,6 +357,10 @@
         letter-spacing: 0.3px;
       }
 
+      .start-strip .counter{
+         color:#050505 !important
+      }
+
       .stats-strip .stat .stars {
         color: #d99a00 !important;
         font-size: 20px;
@@ -1059,8 +1063,9 @@
 
       @media (max-width: 600px) {
         .mhc-for-you {
-          padding: 45px 20px 25px;
+          padding: 44px 20px 25px;
           border-radius: 14px;
+          margin-top: 30px;
         }
 
         .mhc-for-you-inner {
@@ -1078,8 +1083,9 @@
         }
 
         .mhc-for-you-heading h2 {
-          font-size: 24px;
+          font-size: 20px;
           letter-spacing: -0.6px;
+          text-align: flex-start;
         }
 
         .mhc-for-you-item {
@@ -1444,7 +1450,7 @@
           padding: 55px 18px 50px;
         }
         .healthcare-register-inner h2 {
-          font-size: 26px;
+          font-size: 15px;
           line-height: 1.25;
           letter-spacing: -0.5px;
         }
@@ -1556,6 +1562,15 @@
         .camp-motto-inner p {
           font-size: 15px;
           line-height: 1.65;
+        }
+      }
+      @media (max-width: 600px) {
+        .camp-motto-section-none {
+          display: none;
+        }
+
+        .camp-motto-inner h2 {
+          font-size: 20px;
         }
       }
 
@@ -2007,7 +2022,11 @@
       </div>
       <div></div>
       <div class="countdown-bar">
-        <span class="countdown-label">Register in next</span>
+        <span 
+          ><button class="countdown-label" type="button" onclick="openRegisterModal()">
+            Register in next
+          </button></span
+        >
         <div class="countdown-units">
           <div class="countdown-unit">
             <b id="cd-days">--</b><span>Days</span>
@@ -2242,7 +2261,10 @@
           </div>
           <div class="mental-step-text">
             <strong>Get Your Confirmation.</strong>
-            <p>Receive your registration confirmation and camp details.</p>
+            <p>
+              Check your email for your registration confirmation and complete
+              camp details.
+            </p>
           </div>
         </div>
       </div>
@@ -2718,7 +2740,7 @@
             <img src="logo-2.png" alt="Mental Health Camp Logo" />
           </div>
           <div class="camp-title-area">
-            <h2>THIS CAMP IS<br />FOR YOU IF...</h2>
+            <h2>THIS CAMP IS FOR YOU IF...</h2>
 
             <div class="camp-image-grid">
               <img
@@ -2836,13 +2858,21 @@
           professional mental health care more accessible and approachable.
         </p>
 
-        <p data-aos="fade-up" data-aos-delay="200">
+        <p
+          data-aos="fade-up"
+          data-aos-delay="200"
+          class="camp-motto-section-none"
+        >
           Seeking help is not weakness. It is an act of courage, awareness, and
           self-care. Everyone deserves compassionate and quality care,
           regardless of their background or financial status.
         </p>
 
-        <p data-aos="fade-up" data-aos-delay="240">
+        <p
+          data-aos="fade-up"
+          data-aos-delay="240"
+          class="camp-motto-section-none"
+        >
           Together, we can make mental health care in Tiruppur more accessible,
           affordable, and free from stigma.
         </p>
@@ -3006,25 +3036,9 @@
         <img src="logo-2.png" alt="Reboot Mental Health Center" />
         REBOOT MENTAL HEALTH CENTER
       </div>
-
-      <div>
-        <a href="./termsandconditions.html">Terms and Condition</a>
-      </div>
-
-      <div>
-        <a href="./privacypolicy.html">Privacy Policy</a>
-      </div>
-      <div>
-        Developed by
-        <a
-          href="https://paletteproduction.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Palette Production
-        </a>
-      </div>
-      <div>© 2026 Reboot Mental Health Center. All rights reserved.</div>
+      <div><a href="./termsandconditions.html">Terms and Condition</a></div>
+      <div><a href="./privacypolicy.html">Privacy Policy</a></div>
+      <div>© 2026 palette production. All rights reserved.</div>
     </footer>
     <div class="register-modal-overlay" id="register-modal-overlay">
       <div class="register-modal">
