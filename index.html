@@ -590,75 +590,75 @@
       }
 
       @media (max-width: 768px) {
-  .mental-how-it-works {
-    margin-top: 55px;
-    padding: 55px 0 30px;
-  }
-  .mental-how-title {
-    font-size: 30px;
-    letter-spacing: -1px;
-    margin-bottom: 40px;
-  }
-  .mental-how-steps {
-    width: 88%;
-    grid-template-columns: 1fr;
-    row-gap: 40px;
-  }
+        .mental-how-it-works {
+          margin-top: 55px;
+          padding: 55px 0 30px;
+        }
+        .mental-how-title {
+          font-size: 30px;
+          letter-spacing: -1px;
+          margin-bottom: 40px;
+        }
+        .mental-how-steps {
+          width: 88%;
+          grid-template-columns: 1fr;
+          row-gap: 40px;
+        }
 
-  .mental-how-step {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "label label"
-      "icon  text";
-    column-gap: 14px;
-  }
-  .mental-step-label {
-    grid-area: label;
-    margin-bottom: 14px;
-  }
-  .mental-step-line {
-    grid-area: icon;
-    max-width: 100%;
-  }
-  .mental-step-text {
-    grid-area: text;
-    max-width: none;
-    margin-top: 0;
-    align-self: center;
-  }
+        .mental-how-step {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          grid-template-areas:
+            "label label"
+            "icon  text";
+          column-gap: 14px;
+        }
+        .mental-step-label {
+          grid-area: label;
+          margin-bottom: 14px;
+        }
+        .mental-step-line {
+          grid-area: icon;
+          max-width: 100%;
+        }
+        .mental-step-text {
+          grid-area: text;
+          max-width: none;
+          margin-top: 0;
+          align-self: center;
+        }
 
-  .mental-step-text strong {
-    font-size: 17px;
-  }
-  .mental-step-text p {
-    font-size: 14.5px;
-  }
-  .mental-line {
-    display: none;
-  }
-  .mental-how-cta {
-    width: 88%;
-    margin-top: 45px;
-    padding: 22px;
-    flex-direction: column;
-    text-align: center;
-  }
-  .mental-how-cta-text {
-    margin: 16px 0 20px;
-  }
-  .mental-how-cta-text strong {
-    font-size: 16px;
-  }
-  .mental-how-cta-text span {
-    font-size: 13.5px;
-  }
-  .mental-how-cta-btn {
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
-  }
-}
+        .mental-step-text strong {
+          font-size: 17px;
+        }
+        .mental-step-text p {
+          font-size: 14.5px;
+        }
+        .mental-line {
+          display: none;
+        }
+        .mental-how-cta {
+          width: 88%;
+          margin-top: 45px;
+          padding: 22px;
+          flex-direction: column;
+          text-align: center;
+        }
+        .mental-how-cta-text {
+          margin: 16px 0 20px;
+        }
+        .mental-how-cta-text strong {
+          font-size: 16px;
+        }
+        .mental-how-cta-text span {
+          font-size: 13.5px;
+        }
+        .mental-how-cta-btn {
+          width: 100%;
+          text-align: center;
+          box-sizing: border-box;
+        }
+      }
 
       .mental-outcomes {
         width: 100%;
@@ -2298,7 +2298,9 @@
           </span>
 
           <h3 class="box-heading">For Individuals</h3>
-          <p class="box-sub">For anyone carrying a heavy burden quietly, on their own.</p>
+          <p class="box-sub">
+            For anyone carrying a heavy burden quietly, on their own.
+          </p>
 
           <div class="sub-list">
             <div class="sub-item">
@@ -3004,6 +3006,8 @@
         <img src="logo-2.png" alt="Reboot Mental Health Center" />
         REBOOT MENTAL HEALTH CENTER
       </div>
+      <div><a href="./termsandconditions.html">Terms and Condition</a></div>
+      <div><a href="./privacypolicy.html">Privacy Policy</a></div>
       <div>© 2026 Reboot Mental Health Center. All rights reserved.</div>
     </footer>
 
@@ -3029,19 +3033,19 @@
             <input type="text" id="reg-name" name="name" required />
           </div>
 
-  <div>
-    <label for="reg-phone">Phone Number</label>
-    <input
-  type="tel"
-  id="reg-phone"
-  name="phone"
-  inputmode="numeric"
-  pattern="[0-9]{10}"
-  maxlength="10"
-  title="Enter a 10-digit phone number"
-  required
-/>
-  </div>
+          <div>
+            <label for="reg-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="reg-phone"
+              name="phone"
+              inputmode="numeric"
+              pattern="[0-9]{10}"
+              maxlength="10"
+              title="Enter a 10-digit phone number"
+              required
+            />
+          </div>
 
           <div>
             <label for="reg-email">Email Address</label>
@@ -3070,16 +3074,17 @@
             </select>
           </div>
 
-  <div>
-  <label for="reg-source">How did you hear about us?</label>
-  <select id="reg-source" name="source" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="WhatsApp">WhatsApp</option>
-    <option value="Facebook">Facebook</option>
-    <option value="Referral">Referral</option>
-    <option value="Other">Other</option>
-  </select>
-</div>
+          <div>
+            <label for="reg-source">How did you hear about us?</label>
+            <select id="reg-source" name="source" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Instagram">Instagram</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Referral">Referral</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
           <div>
             <label for="reg-reason">What is the main reason for joining?</label>
@@ -3099,7 +3104,43 @@
             </select>
           </div>
 
-          <button type="submit" class="modal-submit-btn" id="modal-submit-btn">
+          <!-- Terms & Privacy Consent -->
+          <div class="terms-consent">
+            <label class="terms-label">
+              <input
+                type="checkbox"
+                id="terms-checkbox"
+                name="termsAccepted"
+                required
+              />
+
+              <span>
+                I accept the
+                <a
+                  href="./termsandconditions.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Terms & Conditions
+                </a>
+                and
+                <a
+                  href="./privacypolicy.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy </a
+                >.
+              </span>
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="modal-submit-btn"
+            id="modal-submit-btn"
+            disabled
+          >
             Pay ₹699 & Register
           </button>
 
@@ -3501,7 +3542,14 @@
         }
       })();
     </script>
+    <script>
+      const termsCheckbox = document.getElementById("terms-checkbox");
+      const submitButton = document.getElementById("modal-submit-btn");
 
+      termsCheckbox.addEventListener("change", function () {
+        submitButton.disabled = !this.checked;
+      });
+    </script>
     <script src="js/register.js"></script>
   </body>
 </html>
