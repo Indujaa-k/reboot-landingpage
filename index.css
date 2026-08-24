@@ -332,7 +332,7 @@ a {
     gap: 8px;
   }
 
-  .flexRow-section1{
+  .flexRow-section1 {
     margin-bottom: 15px;
   }
 
@@ -889,7 +889,6 @@ a {
   }
 }
 @media (max-width: 640px) {
-  
   .experience-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1784,7 +1783,7 @@ a {
     margin-top: 6px;
     font-size: 20px;
     letter-spacing: 0.04em;
-    color: #ffff;
+    color: #000000;
     text-transform: uppercase;
   }
   .stats-strip .stat > span {
@@ -3369,7 +3368,7 @@ footer.site-footer {
 }
 
 @media (max-width: 600px) {
-  .mental-outcomes{
+  .mental-outcomes {
     margin-top: 50px;
   }
 }
@@ -3593,4 +3592,41 @@ footer.site-footer {
   .healthcare-register-content {
     gap: 10px;
   }
+}
+.terms-consent {
+  margin: 20px 0;
+}
+
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.terms-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #173f35;
+}
+
+.terms-label a {
+  color: #173f35;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.modal-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-submit-btn:not(:disabled) {
+  opacity: 1;
+  cursor: pointer;
 }
