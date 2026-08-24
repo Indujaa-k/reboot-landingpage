@@ -1909,7 +1909,7 @@ section {
 .coach-portrait {
   aspect-ratio: 4/5;
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
   position: relative;
   display: flex;
   align-items: center;
@@ -3215,9 +3215,6 @@ footer.site-footer {
   }
 }
 @media (max-width: 900px) {
-  .coach-portrait {
-    display: none !important;
-  }
   .coach-section {
     display: block !important;
   }
