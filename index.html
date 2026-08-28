@@ -18,7 +18,34 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
     <script src="https://unpkg.com/lucide@latest"></script>
-
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1460620629223280");
+      fbq("track", "PageView");
+    </script>
     <style>
       .static-cta-bar {
         display: flex;
@@ -357,8 +384,8 @@
         letter-spacing: 0.3px;
       }
 
-      .start-strip .counter{
-         color:#050505 !important
+      .start-strip .counter {
+        color: #050505 !important;
       }
 
       .stats-strip .stat .stars {
@@ -1955,6 +1982,197 @@
           font-size: 8px;
         }
       }
+      .site-footer .foot-phone {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .site-footer .foot-phone a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .site-footer .foot-phone a:hover {
+        text-decoration: underline;
+      }
+
+      /* Button-adjacent contact number */
+      .btn-call-note {
+        margin-top: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        line-height: 1.4;
+        color: #555555;
+        text-align: center;
+      }
+      .btn-call-note a {
+        color: #111111;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .btn-call-note a:hover {
+        text-decoration: underline;
+      }
+      .btn-call-note-box {
+        margin-top: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        line-height: 1.4;
+        color: #fffefe;
+        text-align: center;
+      }
+      .btn-call-note-box a {
+        color: #fcfcfc;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .btn-call-note-box a:hover {
+        text-decoration: underline;
+      }
+
+      /* =========================================================
+         FIND US / LOCATION MAP — responsive
+      ========================================================= */
+      .location-section {
+        max-width: 1180px;
+        width: 90%;
+        margin: 30px auto 60px;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+      .location-header {
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto 36px;
+      }
+      .location-header h2 {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(26px, 3.4vw, 38px);
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        color: #111111;
+      }
+      .location-header p {
+        margin: 14px 0 0;
+        font-size: 15.5px;
+        line-height: 1.55;
+        color: #555555;
+      }
+      .location-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow: hidden;
+        background: #fdfbf9;
+        border: 1px solid #e6e0dc;
+        border-radius: 16px;
+      }
+      .map-embed {
+        position: relative;
+        width: 100%;
+        /* 16:9-ish frame that adapts to any width, incl. mobile */
+        aspect-ratio: 16 / 10;
+        background: #eee;
+      }
+      .map-embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+      .location-details {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 24px;
+        border-top: 1px solid #e6e0dc;
+      }
+      .location-details .location-address {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: #333333;
+        max-width: 560px;
+      }
+      .location-details .location-address i {
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: #d99a00;
+      }
+      .location-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .location-actions a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 20px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .location-actions .directions-btn {
+        background: #ffc107;
+        color: #111111;
+      }
+      .location-actions .directions-btn:hover {
+        box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+      }
+      .location-actions .call-btn {
+        background: #ffffff;
+        color: #111111;
+        border: 1px solid #ddd;
+      }
+      .location-actions .call-btn:hover {
+        background: #fafafa;
+      }
+
+      @media (max-width: 700px) {
+        .location-section {
+          width: 88%;
+          margin: 20px auto 45px;
+        }
+        .location-header {
+          margin-bottom: 26px;
+        }
+        .location-header h2 {
+          font-size: 26px;
+        }
+        .location-header p {
+          font-size: 14.5px;
+        }
+        .location-card {
+          border-radius: 14px;
+        }
+        .map-embed {
+          aspect-ratio: 4 / 3;
+        }
+        .location-details {
+          flex-direction: column;
+          align-items: stretch;
+          padding: 18px;
+        }
+        .location-details .location-address {
+          max-width: none;
+        }
+        .location-actions {
+          width: 100%;
+        }
+        .location-actions a {
+          flex: 1;
+          justify-content: center;
+        }
+      }
     </style>
   </head>
 
@@ -1962,13 +2180,20 @@
     <div id="loader">
       <div class="loader-word mono" id="loader-word">INITIALIZING</div>
       <img
-        src="logo.png"
+        src="./assets/logo.png"
         class="loader-logo"
         id="loader-logo"
         alt="Reboot Mental Health Center"
       />
     </div>
-
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1460620629223280&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <section class="hero">
       <div class="section1-flex">
         <div class="flexRow-section1">
@@ -1992,7 +2217,7 @@
           <div class="section1-flex-column">
             <div class="section1-flexgap-row">
               <div class="section1-flexgap-row1">
-                <img src="./logo-1.png" />
+                <img src="./assets/logo-1.png" />
               </div>
 
               <div class="text-section">
@@ -2008,6 +2233,10 @@
                 Take the First Step – Register Now
               </button>
             </div>
+            <div class="btn-call-note-box">
+              Prefer to talk? Call
+              <a href="tel:+919994871126">+91 99948 71126</a>
+            </div>
             <div class="bulletpoints">
               <div class="bulletpoints-1">
                 <div>Professional care</div>
@@ -2022,8 +2251,12 @@
       </div>
       <div></div>
       <div class="countdown-bar">
-        <span 
-          ><button class="countdown-label" type="button" onclick="openRegisterModal()">
+        <span
+          ><button
+            class="countdown-label"
+            type="button"
+            onclick="openRegisterModal()"
+          >
             Register in next
           </button></span
         >
@@ -2072,13 +2305,18 @@
 
     <section class="static-cta-bar">
       <div class="bar-logo">
-        <img src="logo-2.png" alt="Reboot Mental Health Center" />
+        <img src="./assets/logo-2.png" alt="Reboot Mental Health Center" />
       </div>
       <div class="bar-text">
         <strong
           ><h2>Take the first step toward better mental health.</h2></strong
         >
-        <span class="sub">No judgment. No complicated process.</span>
+        <span class="sub"
+          >No judgment. No complicated process. Call
+          <a href="tel:+919994871126" style="color: inherit"
+            >+91 99948 71126</a
+          ></span
+        >
       </div>
       <button type="button" class="bar-btn" onclick="openRegisterModal()">
         Register Now
@@ -2107,9 +2345,6 @@
           <div class="experience-content">
             <span>01</span>
             <h3>Constant Overthinking?</h3>
-            <!-- <p>
-              Your mind never seems to slow down, even when you want to rest.
-            </p> -->
           </div>
         </div>
 
@@ -2123,10 +2358,6 @@
           <div class="experience-content">
             <span>02</span>
             <h3>Feeling Emotionally Exhausted?</h3>
-            <!-- <p>
-              Everything feels heavy, and even simple things take too much
-              energy.
-            </p> -->
           </div>
         </div>
 
@@ -2140,10 +2371,6 @@
           <div class="experience-content">
             <span>03</span>
             <h3>Difficulty Sleeping?</h3>
-            <!-- <p>
-              Your thoughts keep you awake when your body desperately needs
-              rest.
-            </p> -->
           </div>
         </div>
 
@@ -2154,7 +2381,6 @@
           <div class="experience-content">
             <span>04</span>
             <h3>Anxiety or Excessive Worry?</h3>
-            <!-- <p>You constantly worry about what might happen next.</p> -->
           </div>
         </div>
 
@@ -2168,9 +2394,6 @@
           <div class="experience-content">
             <span>05</span>
             <h3>Lack of Motivation?</h3>
-            <!-- <p>
-              Things you once enjoyed may no longer feel meaningful or exciting.
-            </p> -->
           </div>
         </div>
 
@@ -2184,10 +2407,6 @@
           <div class="experience-content">
             <span>06</span>
             <h3>Relationship or Family Stress?</h3>
-            <!-- <p>
-              Important relationships may feel complicated, draining, or
-              difficult.
-            </p> -->
           </div>
         </div>
 
@@ -2277,13 +2496,18 @@
           <strong>Ready to take the first step?</strong>
           <span>Register for the Mental Health Camp in just a few steps.</span>
         </div>
-        <button
-          type="button"
-          class="mental-how-cta-btn"
-          onclick="openRegisterModal()"
-        >
-          Register Now
-        </button>
+        <div>
+          <button
+            type="button"
+            class="mental-how-cta-btn"
+            onclick="openRegisterModal()"
+          >
+            Register Now
+          </button>
+          <div class="btn-call-note">
+            Or call <a href="tel:+919994871126">+91 99948 71126</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2495,10 +2719,6 @@
       </div>
     </section>
     <section class="gallery-section">
-      <!-- =========================
-       GALLERY HEADING
-  ========================== -->
-
       <div class="gallery-header">
         <span class="gallery-label">MENTAL HEALTH CAMP</span>
 
@@ -2510,14 +2730,8 @@
         </p>
       </div>
 
-      <!-- =========================
-       GALLERY
-  ========================== -->
-
       <div class="gallery-wrapper" id="galleryWrapper">
         <div class="gallery-track" id="galleryTrack">
-          <!-- SET 1 -->
-
           <div class="gallery-item">
             <img src="./assets/1.jpg" alt="Mental Health Camp" />
           </div>
@@ -2569,8 +2783,6 @@
           <div class="gallery-item">
             <img src="./assets/13.jpg" alt="Mental Health Camp" />
           </div>
-
-          <!-- SET 2 -->
 
           <div class="gallery-item">
             <img src="./assets/1.jpg" alt="Mental Health Camp" />
@@ -2625,10 +2837,6 @@
           </div>
         </div>
       </div>
-
-      <!-- =========================
-       IMAGE LIGHTBOX
-  ========================== -->
 
       <div class="gallery-lightbox" id="gallery-lightbox">
         <button
@@ -2679,19 +2887,24 @@
 
     <div class="inline-cta-strip" data-aos="fade-up">
       <p>Ready to feel understood? Seats for the camp are limited.</p>
-      <button
-        type="button"
-        class="inline-cta-btn"
-        onclick="openRegisterModal()"
-      >
-        Register Now
-      </button>
+      <div>
+        <button
+          type="button"
+          class="inline-cta-btn"
+          onclick="openRegisterModal()"
+        >
+          Register Now
+        </button>
+        <div class="btn-call-note">
+          Or call <a href="tel:+919994871126">+91 99948 71126</a>
+        </div>
+      </div>
     </div>
 
     <section class="coach">
       <div class="coach-portrait" data-aos="fade-right">
         <img
-          src="founder.png"
+          src="./assets/founder.png"
           alt="M. Shajitha Rahima, Founder of Reboot Mental Health Center"
           class="founder-photo"
         />
@@ -2737,26 +2950,26 @@
       <div class="mhc-for-you-inner">
         <div class="mhc-for-you-heading" data-aos="fade-right">
           <div class="mhc-logo-circle">
-            <img src="logo-2.png" alt="Mental Health Camp Logo" />
+            <img src="./assets/logo-2.png" alt="Mental Health Camp Logo" />
           </div>
           <div class="camp-title-area">
             <h2>THIS CAMP IS FOR YOU IF...</h2>
 
             <div class="camp-image-grid">
               <img
-                src="./if-1.jpg"
+                src="./assets/if-1.jpg"
                 alt="People talking together"
                 class="camp-img camp-img-1"
               />
 
               <img
-                src="./if-3.jpg"
+                src="./assets/if-3.jpg"
                 alt="Person practicing mindfulness"
                 class="camp-img camp-img-2"
               />
 
               <img
-                src="./if-2.jpg"
+                src="./assets/if-2.jpg"
                 alt="Journaling and self reflection"
                 class="camp-img camp-img-3"
               />
@@ -2830,7 +3043,7 @@
 
         <div class="photo-layout">
           <div class="photo-header">
-            <img src="./gdi-1.jpg" alt="Mental Health Camp" />
+            <img src="./assets/gdi-1.jpg" alt="Mental Health Camp" />
           </div>
 
           <div class="photo-columns">
@@ -2895,6 +3108,9 @@
           >
             Register for the Camp
           </button>
+          <div class="btn-call-note">
+            Or call <a href="tel:+919994871126">+91 99948 71126</a>
+          </div>
         </div>
       </div>
     </section>
@@ -3001,6 +3217,9 @@
           >
             Still have questions? Register and we'll reach out
           </button>
+          <div class="btn-call-note">
+            Or call <a href="tel:+919994871126">+91 99948 71126</a>
+          </div>
         </div>
       </div>
     </section>
@@ -3027,18 +3246,88 @@
         <div class="healthcare-register-details">
           <div><span class="register-dot"></span>10:00 AM – 6:30 PM IST</div>
           <div><span class="register-dot"></span>In-Person Camp, Tiruppur</div>
+          <div>
+            <span class="register-dot"></span
+            ><a href="tel:+919994871126" style="color: inherit"
+              >+91 99948 71126</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="location-section"
+      id="location"
+      aria-labelledby="location-heading"
+    >
+      <div class="location-header">
+        <h2 id="location-heading">Find Us</h2>
+        <p>
+          Visit Reboot Mental Health Center in person. Tap the map for
+          directions, or call ahead if you'd like to plan your visit.
+        </p>
+      </div>
+
+      <div class="location-card" data-aos="fade-up">
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1907.869642690465!2d77.36011917049123!3d11.158980870318631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9071e2dba72a9%3A0xc493045c7ba554c7!2sReboot%20Mental%20Health%20Center!5e1!3m2!1sen!2sin!4v1787913216444!5m2!1sen!2sin"
+            title="Reboot Mental Health Center location"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="location-details">
+          <div class="location-address">
+            <i data-lucide="map-pin"></i>
+            <span>Reboot Mental Health Center, Tiruppur, Tamil Nadu</span>
+          </div>
+          <div class="location-actions">
+            <a
+              class="directions-btn"
+              href="https://www.google.com/maps/search/?api=1&query=Reboot%20Mental%20Health%20Center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get Directions
+            </a>
+            <a class="call-btn" href="tel:+919994871126"> Call Us </a>
+          </div>
         </div>
       </div>
     </section>
 
     <footer class="site-footer">
       <div class="foot-brand" style="color: #050505">
-        <img src="logo-2.png" alt="Reboot Mental Health Center" />
+        <img src="./assets/logo-2.png" alt="Reboot Mental Health Center" />
         REBOOT MENTAL HEALTH CENTER
       </div>
-      <div><a href="./termsandconditions.html">Terms and Condition</a></div>
-      <div><a href="./privacypolicy.html">Privacy Policy</a></div>
-      <div>© 2026 palette production. All rights reserved.</div>
+
+      <div class="foot-phone">
+        <a href="tel:+919994871126">+91 99948 71126</a>
+      </div>
+
+      <div>
+        <a href="./termsandconditions.html">Terms and Condition</a>
+      </div>
+
+      <div>
+        <a href="./privacypolicy.html">Privacy Policy</a>
+      </div>
+      <div>
+        Developed by
+        <a
+          href="https://paletteproduction.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Palette Production
+        </a>
+      </div>
+      <div>© 2026 Reboot Mental Health Center. All rights reserved.</div>
     </footer>
     <div class="register-modal-overlay" id="register-modal-overlay">
       <div class="register-modal">
@@ -3054,6 +3343,8 @@
         <div class="modal-sub">
           Reserve your seat at the in-person Mental Health Camp and, if you'd
           like, request a personal appointment. We'll email your confirmation.
+          Questions? Call us at
+          <a href="tel:+919994871126">+91 99948 71126</a>.
         </div>
 
         <form id="register-form">
@@ -3173,6 +3464,11 @@
             Pay ₹699 & Register
           </button>
 
+          <div class="btn-call-note">
+            Trouble registering? Call
+            <a href="tel:+919994871126">+91 99948 71126</a>
+          </div>
+
           <div class="modal-status" id="modal-status"></div>
         </form>
       </div>
@@ -3182,9 +3478,6 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script>
-      /* =========================================================
-         INIT: lucide icons + AOS
-      ========================================================= */
       document.addEventListener("DOMContentLoaded", () => {
         lucide.createIcons();
         if (window.AOS) {
@@ -3197,9 +3490,6 @@
         }
       });
 
-      /* =========================================================
-         LOADER INTRO (this is what unhides the page)
-      ========================================================= */
       const loader = document.getElementById("loader");
       const loaderLogo = document.getElementById("loader-logo");
       const loaderWord = document.getElementById("loader-word");
@@ -3228,9 +3518,6 @@
       }
       runIntro();
 
-      /* =========================================================
-         REVEAL ON SCROLL (.reveal elements)
-      ========================================================= */
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -3243,9 +3530,6 @@
         io.observe(el);
       });
 
-      /* =========================================================
-         FAQ ACCORDION
-      ========================================================= */
       document.querySelectorAll(".healthcare-faq-question").forEach((btn) => {
         btn.addEventListener("click", () => {
           const item = btn.closest(".healthcare-faq-item");
@@ -3270,10 +3554,6 @@
         });
       });
 
-      /* =========================================================
-         REGISTER MODAL (openRegisterModal must be global for
-         inline onclick attributes across the page)
-      ========================================================= */
       const registerOverlay = document.getElementById("register-modal-overlay");
 
       function openRegisterModal() {
@@ -3291,9 +3571,6 @@
         if (e.key === "Escape") closeRegisterModal();
       });
 
-      /* =========================================================
-         STATS COUNTER (.counter elements in .stats-strip)
-      ========================================================= */
       const startCounter = (counter) => {
         const target = parseFloat(counter.dataset.target);
         const decimal = parseInt(counter.dataset.decimal || "0");
@@ -3331,9 +3608,6 @@
       const statsStrip = document.querySelector(".stats-strip");
       if (statsStrip) statsObserver.observe(statsStrip);
 
-      /* =========================================================
-         COUNTDOWN TIMER
-      ========================================================= */
       (function () {
         const targetDate = new Date("2026-09-04T09:00:00+05:30").getTime();
 
@@ -3370,9 +3644,6 @@
         const timer = setInterval(updateCountdown, 1000);
       })();
 
-      /* =========================================================
-         "EXPERIENCE • HEAL • GROW" STAGGERED DROP
-      ========================================================= */
       document.addEventListener("DOMContentLoaded", () => {
         const section = document.querySelector(".ehg-section");
         const items = section.querySelectorAll(".ehg-word, .ehg-dot");
@@ -3398,13 +3669,10 @@
     </script>
 
     <script>
-      /* =========================================================
-         GALLERY - AUTO SCROLL + DRAG + LIGHTBOX
-      ========================================================= */
       const galleryWrapper = document.getElementById("galleryWrapper");
       const galleryTrack = document.getElementById("galleryTrack");
 
-      const GALLERY_SPEED = 40; // smaller = faster, larger = slower
+      const GALLERY_SPEED = 40;
 
       let galleryPosition = 0;
       let isDragging = false;
@@ -3424,7 +3692,6 @@
         const gap = parseFloat(itemStyle.gap) || 0;
         const itemWidth = firstItem.getBoundingClientRect().width;
 
-        // 13 images + 12 gaps between them + 1 gap connecting to next set
         oneSetWidth = itemWidth * 13 + gap * 13;
       }
 
@@ -3544,9 +3811,6 @@
     </script>
 
     <script>
-      /* =========================================================
-         "WHO IS THIS CAMP FOR" BOX REVEAL
-      ========================================================= */
       (function () {
         var boxes = document.querySelectorAll(".camp-box");
         if ("IntersectionObserver" in window) {

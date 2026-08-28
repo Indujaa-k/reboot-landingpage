@@ -20,7 +20,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-function buildConfirmationHtml({ name, referenceNumber, campDateLabel, preferredTime }) {
+const CAMP_LOCATION_NAME = "Reboot Mental Health Center";
+const CAMP_LOCATION_MAP_URL = "https://maps.app.goo.gl/vXkD5JHPiueT6tXZ7";
+
+function buildConfirmationHtml({
+  name,
+  referenceNumber,
+  campDateLabel,
+  preferredTime,
+}) {
   return `
   <div style="font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; color: #111;">
     <div style="background:#ffc107; padding: 24px; border-radius: 10px 10px 0 0; text-align:center;">
@@ -47,9 +55,21 @@ function buildConfirmationHtml({ name, referenceNumber, campDateLabel, preferred
         </tr>
         <tr>
           <td style="padding:8px 0; color:#777; border-top:1px solid #f2f2f2;">Location</td>
-          <td style="padding:8px 0; font-weight:bold; text-align:right; border-top:1px solid #f2f2f2;">In-Person Camp, Tiruppur</td>
+          <td style="padding:8px 0; font-weight:bold; text-align:right; border-top:1px solid #f2f2f2;">${CAMP_LOCATION_NAME}, Tiruppur</td>
         </tr>
       </table>
+
+      <div style="margin: 24px 0; text-align:center;">
+        <a
+          href="${CAMP_LOCATION_MAP_URL}"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display:inline-block; background:#ffc107; color:#0d0d0d; text-decoration:none; font-weight:bold; font-size:14px; padding:12px 22px; border-radius:8px;"
+        >
+          📍 View Location on Google Maps
+        </a>
+      </div>
+
       <p style="font-size:14.5px; line-height:1.6; color:#333;">
         No judgment. No pressure. Just reply to this email if anything
         changes or if you have questions before the camp.
@@ -61,12 +81,25 @@ function buildConfirmationHtml({ name, referenceNumber, campDateLabel, preferred
   </div>`;
 }
 
-async function sendConfirmationEmail({ to, name, referenceNumber, campDateLabel, preferredTime }) {
+async function sendConfirmationEmail({
+  to,
+  name,
+  referenceNumber,
+  campDateLabel,
+  preferredTime,
+}) {
   return transporter.sendMail({
-    from: process.env.MAIL_FROM || `"Reboot Mental Health Center" <${process.env.SMTP_USER}>`,
+    from:
+      process.env.MAIL_FROM ||
+      `"Reboot Mental Health Center" <${process.env.SMTP_USER}>`,
     to,
     subject: `Registration Confirmed — ${referenceNumber}`,
-    html: buildConfirmationHtml({ name, referenceNumber, campDateLabel, preferredTime }),
+    html: buildConfirmationHtml({
+      name,
+      referenceNumber,
+      campDateLabel,
+      preferredTime,
+    }),
   });
 }
 
